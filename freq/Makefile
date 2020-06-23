@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -o
 compile:
-	$(CC) $(CFLAGS) -S main.c
-	$(CC) $(CFLAGS) freq main.c
+	$(CC) $(CFLAGS) -S freq.c
+	$(CC) $(CFLAGS) freq freq.c
 	git add --all && git commit -m "Update: freq_compile"
 clean:
-	rm -rf main.s freq
+	rm -rf freq.s freq
 	git add --all && git commit -m "Update: freq_clean"
 run:
 	@./freq
