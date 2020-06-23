@@ -3,25 +3,38 @@
 ## Author
 * Landon WONG, UCAS
 * 王嵩岳, 2018K8009929033
+## Description
+This assignment has three parts:
+| Assignment Name | Description |
+| :---------------: | :---------------: |
+| atoi | Use the assembler to implement the atoi function and convert strings to numbers (need to consider the sign and irrelevant symbols) |
+| memcpy | Use the assembler to implement the memcpy function, realize memory data movement, optimize as much as possible, and introduce performance evaluation and evaluation efficiency |
+| freq | Use embedded assembly to record the execution cycle, combined with the timing function, calculate the frequency of machine operation |
 ## File structure
+For checking assignment:
+| Filename | Description |
+| :---------------: | :---------------: |
+| `atoi/atoi.s` | Assignment #1 (atoi) |
+| `memcpy/memcpy.s` | Assignment #2 (memcpy) |
+| `freq/freq.c` | Assignment #3 (freq) |
 ```
 AssembleLangFinal
   |
-  |--doc            # **assignment report**
+  |--doc            # assignment report
   |    |--2018K8009929033.pdf
   |
   |--atoi
   |    |--main.c    # test main program
-  |    |--**atoi.s**    # Assignment #1: atoi
+  |    |--atoi.s    # Assignment #1: atoi
   |    |--Makefile
   |
   |--memcpy
   |    |--main.c    # test main program
-  |    |--**memcpy.s**  # Assignment #2: memcpy
+  |    |--memcpy.s  # Assignment #2: memcpy
   |    |--Makefile
   | 
   |--freq
-  |    |--**freq.c**    # Assignment #3: frequency
+  |    |--freq.c    # Assignment #3: frequency
   |    |--Makefile
   |
   |--Readme.md      # Documentation
@@ -60,6 +73,6 @@ AssembleLangFinal
 
 | Command | Description |
 | :---------------: | :---------------: |
-| `make freq_compile` | Compile program freq/main.c |
+| `make freq_compile` | Compile program freq/freq.c |
 | `make freq_run` | Run freq test program |
 | `make freq_clean` | Delete intermediate temporary files |
