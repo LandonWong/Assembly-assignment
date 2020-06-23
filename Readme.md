@@ -11,16 +11,16 @@
 | `make atoi_clean` | Delete intermediate temporary files |
 2. For assignment #2: memcpy
 
- Command | Description |
-  - | - |
- `make memcpy_asm` | Compile `memcpy/memcpy.s` and main program `memcpy/main.c`. Generate `*.o` files |
- `make memcpy_link` | Link `*.o` files |
- `make memcpy_run` | Run memcpy test program |
- `make memcpy_clean` | Delete intermediate temporary files |
+| Command | Description |
+| :---------------: | :---------------: |
+| `make memcpy_asm` | Compile `memcpy/memcpy.s` and main program `memcpy/main.c`. Generate `*.o` files |
+| `make memcpy_link` | Link `*.o` files |
+| `make memcpy_run` | Run memcpy test program |
+| `make memcpy_clean` | Delete intermediate temporary files |
 3. For assignment #3: frequency
 
- Command | Description |
-  -  | - |
- `make freq_compile` | Compile program freq/main.c |
- `make freq_run` | Run freq test program |
- `make freq_clean` | Delete intermediate temporary files |
+| Command | Description |
+| :---------------: | :---------------: |
+| `make freq_compile` | Compile program freq/main.c |
+| `make freq_run` | Run freq test program |
+| `make freq_clean` | Delete intermediate temporary files |
