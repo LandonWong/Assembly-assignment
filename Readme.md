@@ -1,27 +1,27 @@
-# Asseble Language Final Assignment (20sp,ucas)
+# Assemble Language Final Assignment (20sp,ucas)
 ## wangsongyue18@mails.ucas.ac.cn
 ## Author
 * Landon WONG, UCAS
-* 王嵩岳,2018K8009929033
+* 王嵩岳, 2018K8009929033
 ## File structure
 ```
 AssembleLangFinal
   |
-  |--doc            # assignment report
+  |--doc            # **assignment report**
   |    |--2018K8009929033.pdf
   |
   |--atoi
   |    |--main.c    # test main program
-  |    |--atoi.s    # Assignment #1: atoi
+  |    |--**atoi.s**    # Assignment #1: atoi
   |    |--Makefile
   |
   |--memcpy
   |    |--main.c    # test main program
-  |    |--memcpy.s  # Assignment #2: memcpy
+  |    |--**memcpy.s**  # Assignment #2: memcpy
   |    |--Makefile
   | 
   |--freq
-  |    |--main.c    # Assignment #3: frequency
+  |    |--**freq.c**    # Assignment #3: frequency
   |    |--Makefile
   |
   |--Readme.md      # Documentation
