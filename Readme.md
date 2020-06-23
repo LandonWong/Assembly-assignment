@@ -1,5 +1,8 @@
 # Asseble Language Final Assignment (20sp,ucas)
 ## wangsongyue18@mails.ucas.ac.cn
+## Author
+* Landon WONG, UCAS
+* 王嵩岳,2018K8009929033
 ## File structure
 ```
 AssembleLangFinal
@@ -28,6 +31,15 @@ AssembleLangFinal
   |--LICENSE        # MIT License
 ```
 ## Usage
+**Note: All the following commands are executed in the top directory**
+
+0. Global
+
+| Command | Description |
+| :---------------: | :---------------: |
+| `make cmt` | Commit all changes |
+| `make push` | Push to my repo at GitHub |
+
 1. For assignment **#1: atoi**
 
 | Command | Description |
