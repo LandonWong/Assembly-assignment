@@ -1,4 +1,7 @@
-autocmt.sh
+Makefile
+atoi/Makefile
+memcpy/Makefile
+freq/Makefile
 # Build and Release Folders
 bin-debug/
 bin-release/
