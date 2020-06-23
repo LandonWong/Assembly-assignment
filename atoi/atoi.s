@@ -3,8 +3,8 @@
 	.type	myatoi, @function
 myatoi:
 .L0:
-	movl	4(%esp), %eax
-	push	%ebx
-	xor	%eax,%eax
+	movl	4(%esp), %eax	#get address of nptr 
+	push	%ebx		#save
+	mov	%eax,%ebx
 	pop	%ebx
 	ret
