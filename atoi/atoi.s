@@ -4,6 +4,7 @@
 myatoi:
 .L0:
 	movl	4(%esp), %eax
-	movsbl	(%eax), %eax
-	subl	$48, %eax
+	push	%ebx
+	xor	%eax,%eax
+	pop	%ebx
 	ret
