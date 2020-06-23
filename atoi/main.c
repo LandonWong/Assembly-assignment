@@ -7,7 +7,7 @@ char* medium[BENCH_SIZE];
 char* advanced[BENCH_SIZE];
 
 int
-myatoi(char *a){return 352;};
+myatoi(const char *nptr);
 
 void
 basic_test(){
