@@ -1,3 +1,3 @@
-time = $(date "+%m/%d %H:%M:%S")
+time = $(date "+%Y/%m/%d %H:%M:%S")
 git add --all
 git commit -m "Update project $time"
