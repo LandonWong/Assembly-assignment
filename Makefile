@@ -1,6 +1,6 @@
 atoi_asm:
-	cd atoi && make asm
+	@cd atoi && $(MAKE) asm
 atoi_link:
-	cd atoi make link
+	@cd atoi && $(MAKE) link
 atoi_clean:
-	cd atoi make clean
+	@cd atoi && $(MAKE) clean
