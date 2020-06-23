@@ -1,2 +1,2 @@
 git add --all
-git commit -m "Update project $1"
+git commit -m "Update project: $1"
