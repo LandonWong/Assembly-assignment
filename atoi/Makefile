@@ -9,7 +9,8 @@ asm:
 	#as -o atoi.o atoi.S
 	git add --all && git commit -m "Update: atoi_asm"
 link:
-	ld -o atoi main.o atoi.o
+	$(CC) main.o atoi.o -o atoi -lm
+	#ld -o atoi main.o atoi.o
 	git add --all && git commit -m "Update: atoi_link"
 clean:
 	rm -rf main.o atoi.o main.s atoi
