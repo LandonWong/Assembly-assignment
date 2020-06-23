@@ -9,8 +9,11 @@ myatoi:
 	.loc 1 2 0
 	.cfi_startproc
 .LVL0:
+	.loc 1 3 0
+	movl	4(%esp), %eax
+	movsbl	(%eax), %eax
+	subl	$48, %eax
 	.loc 1 4 0
-	movl	$1, %eax
 	ret
 	.cfi_endproc
 .LFE0:

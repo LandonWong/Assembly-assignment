@@ -1,4 +1,4 @@
 int
 myatoi(const char *nptr){
-	return 1;
+	return nptr[0] - '0';
 }
