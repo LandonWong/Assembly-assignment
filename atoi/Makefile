@@ -4,8 +4,7 @@ CFLAGS = -w -O -m32
 asm:
 	$(CC) $(CFLAGS) -S main.c
 	$(CC) $(CFLAGS) -c main.c
-	$(CC) $(CFLAGS) -S atoi.c
-	$(CC) $(CFLAGS) -c atoi.c
+	$(CC) $(CFLAGS) -c atoi.s
 	#as -o atoi.o atoi.S
 	git add --all && git commit -m "Update: atoi_asm"
 link:
