@@ -1,3 +1,4 @@
+# ! bin/sh
 time = $(date)
 echo $time
 git add --all
