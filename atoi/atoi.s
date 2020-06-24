@@ -10,20 +10,20 @@ myatoi:
 	push	%ecx		# use for store elements
 	xor	%ecx,%ecx	# clear
 	mov	$1,%ebx		# sign(value: 1/-1): default = 1
-.L1:
-	movzx	(%edx),%ecx	
-	cmp	$' ',%cl
+	
+.L1:				# L1: Skip space
+	movzx	(%edx),%ecx	# load element
+	cmp	$' ',%cl	# skip ' '
+	je	.L6		
+	cmp	$'\n',%cl	# skip '\n'
 	je	.L6
-	cmp	$'\n',%cl
+	cmp	$'\t',%cl	# skip '\t'
 	je	.L6
-	cmp	$'\t',%cl
-	je	.L6
-	jmp	.L2
-.L6:
+	jmp	.L2		# skip finish, jump to L2
+.L6:				# L1 <skip loop>, continue scan and skip
 	inc	%edx
 	jmp	.L1
-.L2:
-	movzx	(%edx),%ecx
+.L2:				# L2: Read '+'/'-'
 	cmp	$'-',%cl
 	je	.L3
 	cmp	$'+',%cl
@@ -56,6 +56,3 @@ myatoi:
 	pop	%ecx
 	pop	%ebx
 	ret
-#	.size	myatoi, .-myatoi
-#	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-#	.section	.note.GNU-stack,"",@progbits
