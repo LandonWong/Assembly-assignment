@@ -51,7 +51,6 @@ myatoi:
 	imull	%ebx,%eax
 	pop	%ecx
 	pop	%ebx
-	pop	%edx
 	ret
 	.size	myatoi, .-myatoi
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
