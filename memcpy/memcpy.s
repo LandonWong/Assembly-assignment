@@ -18,7 +18,7 @@ mymemcpy:
 .L15:
 	mov	%rsi,%rcx
 	and	$3,%rcx
-	jz	.L3
+	#jz	.L3
 	sub	$0x4,%rcx
 	not	%rcx
 	inc	%rcx
