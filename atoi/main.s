@@ -388,7 +388,7 @@ init:
 	.size	init, .-init
 	.section	.rodata.str1.1
 .LC24:
-	.string	"res=%u,%u\n"
+	.string	"res=%u,%lu\n"
 	.text
 	.globl	main
 	.type	main, @function
