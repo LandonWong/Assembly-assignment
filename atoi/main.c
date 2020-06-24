@@ -90,7 +90,7 @@ void init(){
 	basic[3] = "+2351";
 	medium[0] = "\t256";
 	medium[1] = "         -658";
-	medium[2] = "\n 23452";
+	medium[2] = "\n\n\n\t 23452";
 	medium[3] = "-2561_ds";
 	advanced[0] = "- 256adfs";
 	advanced[1] = "   -a2sdfdfda";
