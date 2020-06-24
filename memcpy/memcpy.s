@@ -1,10 +1,8 @@
-	.file	"memcpy.c"
 	.text
 	.globl	mymemcpy
 	.type	mymemcpy, @function
 mymemcpy:
-	movq	%rsi, %rax
+	movl	%edx,%ebx
+	movl	%edi,%eax
+	xor	%r8d,%r8d
 	ret
-	.size	mymemcpy, .-mymemcpy
-	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-	.section	.note.GNU-stack,"",@progbits
