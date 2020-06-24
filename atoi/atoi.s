@@ -7,10 +7,6 @@ myatoi:
 	push	%edx
 	xor	%edx,%edx
 	movl	4(%esp),%edx 	# base ptr
-	movl	%edx,%eax
-	pop	%edx
-	ret
-	movl	(%edx),%edx
 	push	%ebx		# sign
 	xor	%eax,%eax	# return value
 	push	%ecx
