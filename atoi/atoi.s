@@ -6,87 +6,118 @@
 myatoi:
 .LFB0:
 	.cfi_startproc
-	pushl	%edi
+	pushl	%ebp
 	.cfi_def_cfa_offset 8
-	.cfi_offset 7, -8
-	pushl	%esi
+	.cfi_offset 5, -8
+	pushl	%edi
 	.cfi_def_cfa_offset 12
-	.cfi_offset 6, -12
-	pushl	%ebx
+	.cfi_offset 7, -12
+	pushl	%esi
 	.cfi_def_cfa_offset 16
-	.cfi_offset 3, -16
-	movl	16(%esp), %ecx
+	.cfi_offset 6, -16
+	pushl	%ebx
+	.cfi_def_cfa_offset 20
+	.cfi_offset 3, -20
+	movl	20(%esp), %ecx
 	movsbl	(%ecx), %edx
 	leal	-9(%edx), %eax
 	cmpb	$1, %al
-	ja	.L20
+	ja	.L18
 	.p2align 4,,10
 	.p2align 3
-.L17:
+.L15:
 	addl	$1, %ecx
 	movsbl	(%ecx), %edx
 	leal	-9(%edx), %eax
 	cmpb	$1, %al
-	jbe	.L17
-.L20:
+	jbe	.L15
+.L18:
 	cmpb	$32, %dl
-	je	.L17
+	je	.L15
 	cmpb	$45, %dl
-	je	.L22
+	je	.L20
 	cmpb	$43, %dl
-	movl	$1, %edi
-	je	.L23
+	movl	$2147483647, %ebp
+	movl	$1, %esi
+	je	.L21
 .L6:
-	leal	-48(%edx), %esi
-	leal	-48(%edx), %eax
-	movl	%esi, %ebx
+	leal	-48(%edx), %ebx
+	subl	$48, %edx
 	cmpb	$9, %bl
 	jbe	.L9
-	jmp	.L24
+	jmp	.L22
 	.p2align 4,,10
 	.p2align 3
 .L8:
-	leal	(%eax,%eax,4), %eax
-	leal	-48(%edx,%eax,2), %eax
-	cmpl	$458752, %eax
-	jg	.L13
+	leal	(%edx,%edx,4), %edx
+	leal	-48(%ebx,%edx,2), %edx
+	cmpl	$458752, %edx
+	jg	.L1
 .L9:
 	addl	$1, %ecx
-	movsbl	(%ecx), %edx
-	leal	-48(%edx), %ebx
-	cmpb	$9, %bl
+	movsbl	(%ecx), %ebx
+	leal	-48(%ebx), %edi
+	movl	%edi, %eax
+	cmpb	$9, %al
 	jbe	.L8
-	imull	%edi, %eax
+	movl	%esi, %eax
+	imull	%edx, %eax
+	movl	%eax, %ebp
+.L7:
+.L1:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
-	.cfi_def_cfa_offset 12
+	.cfi_def_cfa_offset 16
+	movl	%ebp, %eax
 	popl	%esi
+	.cfi_restore 6
+	.cfi_def_cfa_offset 12
 	popl	%edi
+	.cfi_restore 7
+	.cfi_def_cfa_offset 8
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa_offset 4
 	ret
-.L23:
+	.p2align 4,,10
+	.p2align 3
+.L21:
 	.cfi_restore_state
 	movsbl	1(%ecx), %edx
 	addl	$1, %ecx
-	leal	-48(%edx), %esi
-	leal	-48(%edx), %eax
-	movl	%esi, %ebx
+	leal	-48(%edx), %ebx
+	subl	$48, %edx
 	cmpb	$9, %bl
 	jbe	.L9
-.L24:
-	popl	%ebx
-	xorl	%eax, %eax
-	popl	%esi
-	popl	%edi
-	ret
-.L13:
-	popl	%ebx
-	movl	$2147483647, %eax
-	popl	%esi
-	popl	%edi
-	ret
 .L22:
+	xorl	%ebp, %ebp
+	popl	%ebx
+	.cfi_remember_state
+	.cfi_restore 3
+	.cfi_def_cfa_offset 16
+	movl	%ebp, %eax
+	popl	%esi
+	.cfi_restore 6
+	.cfi_def_cfa_offset 12
+	popl	%edi
+	.cfi_restore 7
+	.cfi_def_cfa_offset 8
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L20:
+	.cfi_restore_state
 	movsbl	1(%ecx), %edx
-	movl	$-1, %edi
+	movl	$-2147483647, %ebp
 	addl	$1, %ecx
+	movl	$-1, %esi
 	jmp	.L6
+	.cfi_endproc
+.LFE0:
+	.size	myatoi, .-myatoi
+	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+	.section	.note.GNU-stack,"",@progbits
