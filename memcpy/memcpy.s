@@ -10,7 +10,6 @@ mymemcpy:
 	mov	%rdi,%rax	# dest, rsi: src
 	push	%r8
 	xor	%r8,%r8		# offset
-	jmp	.L1
 .L2:
 	cmp	$4,%rbx
 	jl	.L6
