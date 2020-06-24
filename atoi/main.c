@@ -5,7 +5,7 @@
 char *basic[BENCH_SIZE];
 char *medium[BENCH_SIZE];
 char *advanced[BENCH_SIZE];
-
+char c[10] = "1234";
 int
 myatoi(const char *nptr);
 
@@ -96,7 +96,6 @@ void init(){
 int
 main(){
 	int i = 0;
-	char c[10] = "1234";
 	init();
 	//basic_test();
 	//medium_test();

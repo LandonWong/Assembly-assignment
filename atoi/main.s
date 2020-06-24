@@ -401,18 +401,12 @@ main:
 	pushl	%esi
 	pushl	%ebx
 	pushl	%ecx
-	subl	$28, %esp
+	subl	$12, %esp
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
-	movl	%gs:20, %eax
-	movl	%eax, -28(%ebp)
-	xorl	%eax, %eax
-	movl	$875770417, -38(%ebp)
-	movl	$0, -34(%ebp)
-	movw	$0, -30(%ebp)
 	call	init
 	subl	$12, %esp
-	leal	-38(%ebp), %esi
+	leal	c@GOTOFF(%ebx), %esi
 	pushl	%esi
 	call	myatoi@PLT
 	pushl	%esi
@@ -422,9 +416,6 @@ main:
 	pushl	$1
 	call	__printf_chk@PLT
 	addl	$32, %esp
-	movl	-28(%ebp), %edx
-	xorl	%gs:20, %edx
-	jne	.L36
 	movl	$0, %eax
 	leal	-12(%ebp), %esp
 	popl	%ecx
@@ -433,9 +424,15 @@ main:
 	popl	%ebp
 	leal	-4(%ecx), %esp
 	ret
-.L36:
-	call	__stack_chk_fail_local
 	.size	main, .-main
+	.globl	c
+	.data
+	.align 4
+	.type	c, @object
+	.size	c, 10
+c:
+	.string	"1234"
+	.zero	5
 	.comm	advanced,16,4
 	.comm	medium,16,4
 	.comm	basic,16,4
@@ -446,6 +443,5 @@ main:
 __x86.get_pc_thunk.bx:
 	movl	(%esp), %ebx
 	ret
-	.hidden	__stack_chk_fail_local
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
