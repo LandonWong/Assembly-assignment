@@ -11,10 +11,10 @@ mymemcpy:
 	push	%r8
 	xor	%r8,%r8		# offset
 .L2:
-	cmp	$0x4,%ebx
-	jl	.L3
+	cmp	$4,%ebx
+	jl	.L6
 	mov	%esi,%ecx
-	and	$0x3,%ecx
+	and	$3,%ecx
 	jz	.L3
 	sub	$0x4,%ecx
 	not	%ecx
@@ -22,7 +22,7 @@ mymemcpy:
 	jmp	.L6
 .L3:
 	cmp	$0x10,%ebx
-	jl	.L4
+	jl	.L7
 	mov	%esi,%ecx
 	and	$0xf,%ecx
 	jz	.L4
@@ -32,7 +32,7 @@ mymemcpy:
 	jmp	.L7
 .L4:
 	cmp	$0x100,%ebx
-	jl	.L5
+	jl	.L8
 	mov	%esi,%ecx
 	and	$0x3f,%ecx
 	jz	.L5
