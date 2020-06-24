@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -w -O4 -m32
+CFLAGS = -w -O2 -m32
 
 asm:
 	$(CC) $(CFLAGS) -S main.c
