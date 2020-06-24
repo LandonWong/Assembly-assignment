@@ -15,7 +15,6 @@
 .LC4:
 	.string	"<<<<< BASIC Test Done >>>>>>\n"
 	.text
-	.p2align 4,,15
 	.globl	basic_test
 	.type	basic_test, @function
 basic_test:
@@ -27,29 +26,50 @@ basic_test:
 	pushl	%edi
 	.cfi_def_cfa_offset 12
 	.cfi_offset 7, -12
-	xorl	%ebp, %ebp
 	pushl	%esi
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
 	pushl	%ebx
 	.cfi_def_cfa_offset 20
 	.cfi_offset 3, -20
-	call	__x86.get_pc_thunk.bx
-	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	subl	$40, %esp
 	.cfi_def_cfa_offset 60
+	call	__x86.get_pc_thunk.bx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	leal	.LC0@GOTOFF(%ebx), %eax
 	pushl	%eax
 	.cfi_def_cfa_offset 64
 	call	puts@PLT
-	leal	.LC2@GOTOFF(%ebx), %eax
 	addl	$16, %esp
 	.cfi_def_cfa_offset 48
-	movl	basic@GOT(%ebx), %esi
-	movl	$0, 8(%esp)
-	movl	%eax, 4(%esp)
+	movl	$0, 12(%esp)
+	movl	$0, %esi
+	movl	basic@GOT(%ebx), %ebp
+	movl	%ebp, 8(%esp)
+	jmp	.L4
+.L8:
+	subl	$12, %esp
+	.cfi_def_cfa_offset 60
+	pushl	%eax
+	.cfi_def_cfa_offset 64
+	movl	basic@GOT(%ebx), %eax
+	pushl	(%eax,%esi,4)
+	.cfi_def_cfa_offset 68
+	pushl	%esi
+	.cfi_def_cfa_offset 72
 	leal	.LC1@GOTOFF(%ebx), %eax
-	movl	%eax, 12(%esp)
+	pushl	%eax
+	.cfi_def_cfa_offset 76
+	pushl	$1
+	.cfi_def_cfa_offset 80
+	call	__printf_chk@PLT
+	addl	$1, 44(%esp)
+	addl	$32, %esp
+	.cfi_def_cfa_offset 48
+.L3:
+	addl	$1, %esi
+	cmpl	$4, %esi
+	je	.L7
 .L4:
 	subl	$4, %esp
 	.cfi_def_cfa_offset 52
@@ -57,13 +77,13 @@ basic_test:
 	.cfi_def_cfa_offset 56
 	pushl	$0
 	.cfi_def_cfa_offset 60
-	pushl	(%esi,%ebp,4)
+	pushl	0(%ebp,%esi,4)
 	.cfi_def_cfa_offset 64
 	call	strtol@PLT
 	movl	%eax, %edi
-	popl	%eax
+	addl	$4, %esp
 	.cfi_def_cfa_offset 60
-	pushl	(%esi,%ebp,4)
+	pushl	0(%ebp,%esi,4)
 	.cfi_def_cfa_offset 64
 	call	myatoi@PLT
 	addl	$16, %esp
@@ -76,26 +96,26 @@ basic_test:
 	.cfi_def_cfa_offset 60
 	pushl	%eax
 	.cfi_def_cfa_offset 64
-	pushl	(%esi,%ebp,4)
+	movl	24(%esp), %eax
+	pushl	(%eax,%esi,4)
 	.cfi_def_cfa_offset 68
-	pushl	%ebp
+	pushl	%esi
 	.cfi_def_cfa_offset 72
-	pushl	28(%esp)
+	leal	.LC2@GOTOFF(%ebx), %eax
+	pushl	%eax
 	.cfi_def_cfa_offset 76
 	pushl	$1
 	.cfi_def_cfa_offset 80
 	call	__printf_chk@PLT
 	addl	$32, %esp
 	.cfi_def_cfa_offset 48
-.L3:
-	addl	$1, %ebp
-	cmpl	$4, %ebp
-	jne	.L4
-	leal	.LC3@GOTOFF(%ebx), %eax
+	jmp	.L3
+.L7:
 	pushl	$4
 	.cfi_def_cfa_offset 52
-	pushl	12(%esp)
+	pushl	16(%esp)
 	.cfi_def_cfa_offset 56
+	leal	.LC3@GOTOFF(%ebx), %eax
 	pushl	%eax
 	.cfi_def_cfa_offset 60
 	pushl	$1
@@ -119,31 +139,6 @@ basic_test:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,10
-	.p2align 3
-.L8:
-	.cfi_def_cfa_offset 48
-	.cfi_offset 3, -20
-	.cfi_offset 5, -8
-	.cfi_offset 6, -16
-	.cfi_offset 7, -12
-	subl	$12, %esp
-	.cfi_def_cfa_offset 60
-	pushl	%eax
-	.cfi_def_cfa_offset 64
-	pushl	(%esi,%ebp,4)
-	.cfi_def_cfa_offset 68
-	pushl	%ebp
-	.cfi_def_cfa_offset 72
-	pushl	36(%esp)
-	.cfi_def_cfa_offset 76
-	pushl	$1
-	.cfi_def_cfa_offset 80
-	call	__printf_chk@PLT
-	addl	$1, 40(%esp)
-	addl	$32, %esp
-	.cfi_def_cfa_offset 48
-	jmp	.L3
 	.cfi_endproc
 .LFE41:
 	.size	basic_test, .-basic_test
@@ -155,7 +150,6 @@ basic_test:
 .LC6:
 	.string	"<<<<< MEDIUM Test Done >>>>>>\n"
 	.text
-	.p2align 4,,15
 	.globl	medium_test
 	.type	medium_test, @function
 medium_test:
@@ -167,29 +161,50 @@ medium_test:
 	pushl	%edi
 	.cfi_def_cfa_offset 12
 	.cfi_offset 7, -12
-	xorl	%ebp, %ebp
 	pushl	%esi
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
 	pushl	%ebx
 	.cfi_def_cfa_offset 20
 	.cfi_offset 3, -20
-	call	__x86.get_pc_thunk.bx
-	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	subl	$40, %esp
 	.cfi_def_cfa_offset 60
+	call	__x86.get_pc_thunk.bx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	leal	.LC5@GOTOFF(%ebx), %eax
 	pushl	%eax
 	.cfi_def_cfa_offset 64
 	call	puts@PLT
-	leal	.LC2@GOTOFF(%ebx), %eax
 	addl	$16, %esp
 	.cfi_def_cfa_offset 48
-	movl	medium@GOT(%ebx), %esi
-	movl	$0, 8(%esp)
-	movl	%eax, 4(%esp)
+	movl	$0, 12(%esp)
+	movl	$0, %esi
+	movl	medium@GOT(%ebx), %ebp
+	movl	%ebp, 8(%esp)
+	jmp	.L12
+.L16:
+	subl	$12, %esp
+	.cfi_def_cfa_offset 60
+	pushl	%eax
+	.cfi_def_cfa_offset 64
+	movl	medium@GOT(%ebx), %eax
+	pushl	(%eax,%esi,4)
+	.cfi_def_cfa_offset 68
+	pushl	%esi
+	.cfi_def_cfa_offset 72
 	leal	.LC1@GOTOFF(%ebx), %eax
-	movl	%eax, 12(%esp)
+	pushl	%eax
+	.cfi_def_cfa_offset 76
+	pushl	$1
+	.cfi_def_cfa_offset 80
+	call	__printf_chk@PLT
+	addl	$1, 44(%esp)
+	addl	$32, %esp
+	.cfi_def_cfa_offset 48
+.L11:
+	addl	$1, %esi
+	cmpl	$4, %esi
+	je	.L15
 .L12:
 	subl	$4, %esp
 	.cfi_def_cfa_offset 52
@@ -197,45 +212,45 @@ medium_test:
 	.cfi_def_cfa_offset 56
 	pushl	$0
 	.cfi_def_cfa_offset 60
-	pushl	(%esi,%ebp,4)
+	pushl	0(%ebp,%esi,4)
 	.cfi_def_cfa_offset 64
 	call	strtol@PLT
 	movl	%eax, %edi
-	popl	%eax
+	addl	$4, %esp
 	.cfi_def_cfa_offset 60
-	pushl	(%esi,%ebp,4)
+	pushl	0(%ebp,%esi,4)
 	.cfi_def_cfa_offset 64
 	call	myatoi@PLT
 	addl	$16, %esp
 	.cfi_def_cfa_offset 48
 	cmpl	%edi, %eax
-	je	.L15
+	je	.L16
 	subl	$8, %esp
 	.cfi_def_cfa_offset 56
 	pushl	%edi
 	.cfi_def_cfa_offset 60
 	pushl	%eax
 	.cfi_def_cfa_offset 64
-	pushl	(%esi,%ebp,4)
+	movl	24(%esp), %eax
+	pushl	(%eax,%esi,4)
 	.cfi_def_cfa_offset 68
-	pushl	%ebp
+	pushl	%esi
 	.cfi_def_cfa_offset 72
-	pushl	28(%esp)
+	leal	.LC2@GOTOFF(%ebx), %eax
+	pushl	%eax
 	.cfi_def_cfa_offset 76
 	pushl	$1
 	.cfi_def_cfa_offset 80
 	call	__printf_chk@PLT
 	addl	$32, %esp
 	.cfi_def_cfa_offset 48
-.L11:
-	addl	$1, %ebp
-	cmpl	$4, %ebp
-	jne	.L12
-	leal	.LC3@GOTOFF(%ebx), %eax
+	jmp	.L11
+.L15:
 	pushl	$4
 	.cfi_def_cfa_offset 52
-	pushl	12(%esp)
+	pushl	16(%esp)
 	.cfi_def_cfa_offset 56
+	leal	.LC3@GOTOFF(%ebx), %eax
 	pushl	%eax
 	.cfi_def_cfa_offset 60
 	pushl	$1
@@ -259,31 +274,6 @@ medium_test:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,10
-	.p2align 3
-.L15:
-	.cfi_def_cfa_offset 48
-	.cfi_offset 3, -20
-	.cfi_offset 5, -8
-	.cfi_offset 6, -16
-	.cfi_offset 7, -12
-	subl	$12, %esp
-	.cfi_def_cfa_offset 60
-	pushl	%eax
-	.cfi_def_cfa_offset 64
-	pushl	(%esi,%ebp,4)
-	.cfi_def_cfa_offset 68
-	pushl	%ebp
-	.cfi_def_cfa_offset 72
-	pushl	36(%esp)
-	.cfi_def_cfa_offset 76
-	pushl	$1
-	.cfi_def_cfa_offset 80
-	call	__printf_chk@PLT
-	addl	$1, 40(%esp)
-	addl	$32, %esp
-	.cfi_def_cfa_offset 48
-	jmp	.L11
 	.cfi_endproc
 .LFE42:
 	.size	medium_test, .-medium_test
@@ -298,7 +288,6 @@ medium_test:
 .LC9:
 	.string	"<<<<< ADVANCED Test Done >>>>>>\n"
 	.text
-	.p2align 4,,15
 	.globl	advanced_test
 	.type	advanced_test, @function
 advanced_test:
@@ -310,57 +299,52 @@ advanced_test:
 	pushl	%edi
 	.cfi_def_cfa_offset 12
 	.cfi_offset 7, -12
-	xorl	%edi, %edi
 	pushl	%esi
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
 	pushl	%ebx
 	.cfi_def_cfa_offset 20
 	.cfi_offset 3, -20
-	call	__x86.get_pc_thunk.bx
-	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	subl	$40, %esp
 	.cfi_def_cfa_offset 60
+	call	__x86.get_pc_thunk.bx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	leal	.LC7@GOTOFF(%ebx), %eax
 	pushl	%eax
 	.cfi_def_cfa_offset 64
 	call	puts@PLT
-	leal	.LC8@GOTOFF(%ebx), %eax
-	movl	advanced@GOT(%ebx), %esi
 	addl	$16, %esp
 	.cfi_def_cfa_offset 48
 	movl	$0, 12(%esp)
-	movl	%eax, 4(%esp)
-.L20:
-	leal	0(,%edi,4), %eax
-	subl	$4, %esp
-	.cfi_def_cfa_offset 52
-	movl	%eax, 12(%esp)
-	pushl	$10
-	.cfi_def_cfa_offset 56
-	pushl	$0
+	movl	$0, %esi
+	movl	advanced@GOT(%ebx), %edi
+	movl	%edi, 8(%esp)
+	jmp	.L21
+.L27:
+	subl	$12, %esp
 	.cfi_def_cfa_offset 60
-	pushl	(%esi,%edi,4)
+	pushl	%eax
 	.cfi_def_cfa_offset 64
-	call	strtol@PLT
-	movl	%eax, %ebp
-	popl	%eax
-	.cfi_def_cfa_offset 60
-	pushl	(%esi,%edi,4)
-	.cfi_def_cfa_offset 64
-	call	myatoi@PLT
-	addl	$16, %esp
+	movl	advanced@GOT(%ebx), %eax
+	pushl	(%eax,%esi,4)
+	.cfi_def_cfa_offset 68
+	pushl	%esi
+	.cfi_def_cfa_offset 72
+	leal	.LC1@GOTOFF(%ebx), %eax
+	pushl	%eax
+	.cfi_def_cfa_offset 76
+	pushl	$1
+	.cfi_def_cfa_offset 80
+	call	__printf_chk@PLT
+	addl	$1, 44(%esp)
+	addl	$32, %esp
 	.cfi_def_cfa_offset 48
-	cmpl	%ebp, %eax
-	je	.L25
-	cmpl	$3, %edi
-	je	.L21
-	cmpl	$2, %edi
-	je	.L22
-	movl	%ebp, %ecx
-	movl	%ebp, %edx
+	jmp	.L19
+.L28:
+	movl	4(%esp), %edx
+	movl	%edx, %ecx
 	sarl	$31, %ecx
-.L19:
+.L20:
 	subl	$4, %esp
 	.cfi_def_cfa_offset 52
 	pushl	%ecx
@@ -369,27 +353,61 @@ advanced_test:
 	.cfi_def_cfa_offset 60
 	pushl	%eax
 	.cfi_def_cfa_offset 64
-	leal	0(,%edi,4), %eax
-	pushl	(%eax,%esi)
+	movl	24(%esp), %eax
+	pushl	0(%ebp,%eax)
 	.cfi_def_cfa_offset 68
-	pushl	%edi
+	pushl	%esi
 	.cfi_def_cfa_offset 72
-	pushl	28(%esp)
+	leal	.LC8@GOTOFF(%ebx), %eax
+	pushl	%eax
 	.cfi_def_cfa_offset 76
 	pushl	$1
 	.cfi_def_cfa_offset 80
 	call	__printf_chk@PLT
 	addl	$32, %esp
 	.cfi_def_cfa_offset 48
-.L18:
-	addl	$1, %edi
-	cmpl	$4, %edi
-	jne	.L20
-	leal	.LC3@GOTOFF(%ebx), %eax
+.L19:
+	addl	$1, %esi
+	cmpl	$4, %esi
+	je	.L26
+.L21:
+	leal	0(,%esi,4), %ebp
+	subl	$4, %esp
+	.cfi_def_cfa_offset 52
+	pushl	$10
+	.cfi_def_cfa_offset 56
+	pushl	$0
+	.cfi_def_cfa_offset 60
+	pushl	(%edi,%esi,4)
+	.cfi_def_cfa_offset 64
+	call	strtol@PLT
+	movl	%eax, 20(%esp)
+	addl	$4, %esp
+	.cfi_def_cfa_offset 60
+	pushl	(%edi,%esi,4)
+	.cfi_def_cfa_offset 64
+	call	myatoi@PLT
+	addl	$16, %esp
+	.cfi_def_cfa_offset 48
+	cmpl	4(%esp), %eax
+	je	.L27
+	cmpl	$3, %esi
+	je	.L22
+	cmpl	$2, %esi
+	jne	.L28
+	movl	$-2147483648, %edx
+	movl	$-1, %ecx
+	jmp	.L20
+.L22:
+	movl	$2147483647, %edx
+	movl	$0, %ecx
+	jmp	.L20
+.L26:
 	pushl	$4
 	.cfi_def_cfa_offset 52
 	pushl	16(%esp)
 	.cfi_def_cfa_offset 56
+	leal	.LC3@GOTOFF(%ebx), %eax
 	pushl	%eax
 	.cfi_def_cfa_offset 60
 	pushl	$1
@@ -413,40 +431,6 @@ advanced_test:
 	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,10
-	.p2align 3
-.L25:
-	.cfi_def_cfa_offset 48
-	.cfi_offset 3, -20
-	.cfi_offset 5, -8
-	.cfi_offset 6, -16
-	.cfi_offset 7, -12
-	subl	$12, %esp
-	.cfi_def_cfa_offset 60
-	pushl	%eax
-	.cfi_def_cfa_offset 64
-	leal	.LC1@GOTOFF(%ebx), %eax
-	pushl	(%esi,%edi,4)
-	.cfi_def_cfa_offset 68
-	pushl	%edi
-	.cfi_def_cfa_offset 72
-	pushl	%eax
-	.cfi_def_cfa_offset 76
-	pushl	$1
-	.cfi_def_cfa_offset 80
-	call	__printf_chk@PLT
-	addl	$1, 44(%esp)
-	addl	$32, %esp
-	.cfi_def_cfa_offset 48
-	jmp	.L18
-.L21:
-	movl	$2147483647, %edx
-	xorl	%ecx, %ecx
-	jmp	.L19
-.L22:
-	movl	$-2147483648, %edx
-	movl	$-1, %ecx
-	jmp	.L19
 	.cfi_endproc
 .LFE43:
 	.size	advanced_test, .-advanced_test
@@ -482,7 +466,6 @@ advanced_test:
 .LC23:
 	.string	"Benchmark prepare done. Test begin"
 	.text
-	.p2align 4,,15
 	.globl	init
 	.type	init, @function
 init:
@@ -500,71 +483,72 @@ init:
 	pushl	%ebx
 	.cfi_def_cfa_offset 20
 	.cfi_offset 3, -20
-	xorl	%esi, %esi
+	subl	$24, %esp
+	.cfi_def_cfa_offset 44
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
-	subl	$40, %esp
-	.cfi_def_cfa_offset 60
 	leal	.LC10@GOTOFF(%ebx), %eax
 	pushl	%eax
-	.cfi_def_cfa_offset 64
+	.cfi_def_cfa_offset 48
 	call	puts@PLT
+	addl	$16, %esp
+	.cfi_def_cfa_offset 32
+	movl	$0, %esi
 	movl	basic@GOT(%ebx), %ebp
 	movl	medium@GOT(%ebx), %edi
-	addl	$16, %esp
-	.cfi_def_cfa_offset 48
-	movl	advanced@GOT(%ebx), %edx
-.L27:
-	movl	%edx, 12(%esp)
+.L30:
 	subl	$12, %esp
-	.cfi_def_cfa_offset 60
-	addl	$4, %esi
+	.cfi_def_cfa_offset 44
 	pushl	$100
-	.cfi_def_cfa_offset 64
-	call	malloc@PLT
-	movl	%eax, -4(%esi,%ebp)
-	movl	$100, (%esp)
-	call	malloc@PLT
-	movl	$100, (%esp)
-	movl	%eax, -4(%esi,%edi)
-	call	malloc@PLT
-	movl	28(%esp), %edx
-	addl	$16, %esp
 	.cfi_def_cfa_offset 48
-	movl	%eax, -4(%esi,%edx)
+	call	malloc@PLT
+	movl	%eax, (%esi,%ebp)
+	movl	$100, (%esp)
+	call	malloc@PLT
+	movl	%eax, (%esi,%edi)
+	movl	$100, (%esp)
+	call	malloc@PLT
+	movl	advanced@GOT(%ebx), %edx
+	movl	%eax, (%esi,%edx)
+	addl	$4, %esi
+	addl	$16, %esp
+	.cfi_def_cfa_offset 32
 	cmpl	$16, %esi
-	jne	.L27
-	leal	.LC11@GOTOFF(%ebx), %eax
+	jne	.L30
+	movl	basic@GOT(%ebx), %eax
+	leal	.LC11@GOTOFF(%ebx), %edx
+	movl	%edx, (%eax)
+	leal	.LC12@GOTOFF(%ebx), %edx
+	movl	%edx, 4(%eax)
+	leal	.LC13@GOTOFF(%ebx), %edx
+	movl	%edx, 8(%eax)
+	leal	.LC14@GOTOFF(%ebx), %edx
+	movl	%edx, 12(%eax)
+	movl	medium@GOT(%ebx), %eax
+	leal	.LC15@GOTOFF(%ebx), %edx
+	movl	%edx, (%eax)
+	leal	.LC16@GOTOFF(%ebx), %edx
+	movl	%edx, 4(%eax)
+	leal	.LC17@GOTOFF(%ebx), %edx
+	movl	%edx, 8(%eax)
+	leal	.LC18@GOTOFF(%ebx), %edx
+	movl	%edx, 12(%eax)
+	movl	advanced@GOT(%ebx), %eax
+	leal	.LC19@GOTOFF(%ebx), %edx
+	movl	%edx, (%eax)
+	leal	.LC20@GOTOFF(%ebx), %edx
+	movl	%edx, 4(%eax)
+	leal	.LC21@GOTOFF(%ebx), %edx
+	movl	%edx, 8(%eax)
+	leal	.LC22@GOTOFF(%ebx), %edx
+	movl	%edx, 12(%eax)
 	subl	$12, %esp
-	.cfi_def_cfa_offset 60
-	movl	%eax, 0(%ebp)
-	leal	.LC12@GOTOFF(%ebx), %eax
-	movl	%eax, 4(%ebp)
-	leal	.LC13@GOTOFF(%ebx), %eax
-	movl	%eax, 8(%ebp)
-	leal	.LC14@GOTOFF(%ebx), %eax
-	movl	%eax, 12(%ebp)
-	leal	.LC15@GOTOFF(%ebx), %eax
-	movl	%eax, (%edi)
-	leal	.LC16@GOTOFF(%ebx), %eax
-	movl	%eax, 4(%edi)
-	leal	.LC17@GOTOFF(%ebx), %eax
-	movl	%eax, 8(%edi)
-	leal	.LC18@GOTOFF(%ebx), %eax
-	movl	%eax, 12(%edi)
-	leal	.LC19@GOTOFF(%ebx), %eax
-	movl	%eax, (%edx)
-	leal	.LC20@GOTOFF(%ebx), %eax
-	movl	%eax, 4(%edx)
-	leal	.LC21@GOTOFF(%ebx), %eax
-	movl	%eax, 8(%edx)
-	leal	.LC22@GOTOFF(%ebx), %eax
-	movl	%eax, 12(%edx)
+	.cfi_def_cfa_offset 44
 	leal	.LC23@GOTOFF(%ebx), %eax
 	pushl	%eax
-	.cfi_def_cfa_offset 64
+	.cfi_def_cfa_offset 48
 	call	puts@PLT
-	addl	$44, %esp
+	addl	$28, %esp
 	.cfi_def_cfa_offset 20
 	popl	%ebx
 	.cfi_restore 3
@@ -587,8 +571,7 @@ init:
 	.string	"1235"
 .LC25:
 	.string	"res=%d\n"
-	.section	.text.startup,"ax",@progbits
-	.p2align 4,,15
+	.text
 	.globl	main
 	.type	main, @function
 main:
@@ -608,8 +591,8 @@ main:
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	call	init
-	leal	.LC24@GOTOFF(%ebx), %eax
 	subl	$12, %esp
+	leal	.LC24@GOTOFF(%ebx), %eax
 	pushl	%eax
 	call	myatoi@PLT
 	addl	$12, %esp
@@ -619,8 +602,8 @@ main:
 	pushl	$1
 	call	__printf_chk@PLT
 	addl	$16, %esp
+	movl	$0, %eax
 	leal	-8(%ebp), %esp
-	xorl	%eax, %eax
 	popl	%ecx
 	.cfi_restore 1
 	.cfi_def_cfa 1, 0
