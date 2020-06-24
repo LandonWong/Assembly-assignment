@@ -101,6 +101,6 @@ main(){
 	//basic_test();
 	//medium_test();
 	//advanced_test();
-	printf("res=%u,%lu\n",myatoi(c),c);
+	printf("res=%u,%lx\n",myatoi(c),c);
 	return 0;
 }
