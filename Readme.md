@@ -1,9 +1,15 @@
-# Assemble Language Final Assignment (20sp,ucas)
+# Assemble Language Final Assignment (20sp, ucas)
 ## wangsongyue18@mails.ucas.ac.cn
 ## Author
 * Landon WONG, UCAS
 * 王嵩岳, 2018K8009929033
 * Last modified: Jun. 24, 2020
+## Notice
+<span id = "Anchor">Note</span>
+* Development environment: Ubuntu amd-64 (physical machine), compilation tool: gcc
+* If an error is reported when executing `make *_asm` (including `make memcpy_asm`, `make atoi_asm`):\
+`fatal error: bits/libc-header-start.h: No such file or directory`, this is because `gcc-multilib` is not configured.\
+Please execute `sudo apt-get install gcc-multilib` and try to execute again.
 ## Description
 This assignment has three parts:
 | Assignment Name | Description |
@@ -46,13 +52,14 @@ AssembleLangFinal
   |
   |--Readme.md      # Documentation
   |
+  |--Readme.pdf     # Documentation (PDF)
+  |
   |--Makefile
   |
   |--LICENSE        # MIT License
 ```
 ## Usage
-**Note: All the following commands are executed in the top directory**
-
+**NOTE: All the following commands are executed in the top directory.**
 0. Global
 
 | Command | Description |
@@ -68,6 +75,7 @@ AssembleLangFinal
 | `make atoi_link` | Link *.o files |
 | `make atoi_run` | Run atoi test program |
 | `make atoi_clean` | Delete intermediate temporary files |
+
 2. For assignment **#2: memcpy**
 
 | Command | Description |
