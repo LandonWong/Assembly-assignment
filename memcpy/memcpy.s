@@ -35,6 +35,7 @@ mymemcpy:
 	sub	$16,%rcx
 	not	%rcx
 	inc	%rcx
+	shr	$2,%rcx
 	jmp	.L7
 .L4:
 	cmp	$64,%rbx
@@ -48,6 +49,7 @@ mymemcpy:
 	sub	$64,%rcx
 	not	%rcx
 	inc	%rcx
+	shr	$4,%rcx
 	jmp	.L8
 .L5:
 	jmp	.L10
