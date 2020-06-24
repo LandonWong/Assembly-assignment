@@ -5,7 +5,7 @@
 char *basic[BENCH_SIZE];
 char *medium[BENCH_SIZE];
 char *advanced[BENCH_SIZE];
-char c[10] = "1234";
+
 int
 myatoi(const char *nptr);
 
@@ -19,10 +19,12 @@ basic_test(){
 		ref = atoi(basic[i]);
 		mine = myatoi(basic[i]);
 		if(ref == mine){
-			printf("[%d:%s] PASS : %d\n",i,basic[i],mine);
+			printf("[%d] PASS : %d\n",i,mine);
+			printf("str:%s\n",basic[i]);
 			passnum++;
 		}else{
-			printf("[%d:%s] FAIL : MINE: %d, REF: %d\n",i,basic[i],mine,ref);
+			printf("[%d] FAIL : MINE: %d, REF: %d\n",i,mine,ref);
+			printf("str:%s\n",basic[i]);
 		}
 	}
 	printf("pass %d / %d\n",passnum,BENCH_SIZE);
@@ -39,10 +41,12 @@ medium_test(){
 		ref = atoi(medium[i]);
 		mine = myatoi(medium[i]);
 		if(ref == mine){
-			printf("[%d:%s] PASS : %d\n",i,medium[i],mine);
+			printf("[%d] PASS : %d\n",i,mine);
+			printf("str:%s\n",medium[i]);;
 			passnum++;
 		}else{
-			printf("[%d:%s] FAIL : MINE: %d, REF: %d\n",i,medium[i],mine,ref);
+			printf("[%d] FAIL : MINE: %d, REF: %d\n",i,mine,ref);
+			printf("str:%s\n",medium[i]);
 		}
 	}
 	printf("pass %d / %d\n",passnum,BENCH_SIZE);
@@ -59,10 +63,12 @@ advanced_test(){
 		ref = atoi(advanced[i]);
 		mine = myatoi(advanced[i]);
 		if((i == 3) ? mine == 2147483647 : (i == 2) ? mine == -2147483648 : ref == mine){
-			printf("[%d:%s] PASS : %d\n",i,advanced[i],mine);
+			printf("[%d] PASS : %d\n",i,mine);
+			printf("str:%s\n",advanced[i]);
 			passnum++;
 		}else{
-			printf("[%d:%s] FAIL : MINE: %d, REF: %ld \n",i,advanced[i],mine,(i == 3) ? 2147483647 : (i == 2) ? -2147483648 : ref);
+			printf("[%d] FAIL : MINE: %d, REF: %d\n",i,mine,(i == 3) ? 2147483647 : (i == 2) ? -2147483648 : ref);
+			printf("str:%s\n",advanced[i]);
 		}
 	}
 	printf("pass %d / %d\n",passnum,BENCH_SIZE);
