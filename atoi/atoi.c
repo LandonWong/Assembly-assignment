@@ -1,4 +1,4 @@
 int
 myatoi(const char *nptr){
-L:	return *nptr;
+L:	return nptr;
 }

@@ -7,7 +7,6 @@ myatoi:
 	.cfi_startproc
 .L2:
 	movl	4(%esp), %eax
-	movsbl	(%eax), %eax
 	ret
 	.cfi_endproc
 .LFE0:
