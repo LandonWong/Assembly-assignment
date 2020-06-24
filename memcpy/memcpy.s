@@ -37,7 +37,7 @@ mymemcpy:
 	inc	%rcx
 	jmp	.L7
 .L4:
-	cmp	$0x100,%rbx
+	cmp	$64,%rbx
 	jge	.L17
 	mov	%rbx,%rcx
 	jmp	.L8
@@ -45,7 +45,7 @@ mymemcpy:
 	mov	%rsi,%rcx
 	and	$0x3f,%rcx
 	jz	.L5
-	sub	$0x100,%rcx
+	sub	$64,%rcx
 	not	%rcx
 	inc	%rcx
 	jmp	.L8
