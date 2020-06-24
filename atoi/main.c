@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #define MAXLEN		100
 #define BENCH_SIZE	4
-char* basic[BENCH_SIZE];
-char* medium[BENCH_SIZE];
-char* advanced[BENCH_SIZE];
+char *basic[BENCH_SIZE];
+char *medium[BENCH_SIZE];
+char *advanced[BENCH_SIZE];
 
 int
 myatoi(const char *nptr);
@@ -100,6 +100,6 @@ main(){
 	//basic_test();
 	//medium_test();
 	//advanced_test();
-	printf("res=%d\n",myatoi(basic[0]));
+	printf("res=%d\n",basic[0]/*myatoi(basic[0])*/);
 	return 0;
 }

@@ -589,12 +589,9 @@ main:
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	call	init
-	subl	$12, %esp
+	subl	$4, %esp
 	movl	basic@GOT(%ebx), %eax
 	pushl	(%eax)
-	call	myatoi@PLT
-	addl	$12, %esp
-	pushl	%eax
 	leal	.LC24@GOTOFF(%ebx), %eax
 	pushl	%eax
 	pushl	$1
