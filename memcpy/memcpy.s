@@ -12,7 +12,10 @@ mymemcpy:
 	xor	%r8,%r8		# offset
 .L2:
 	cmp	$4,%rbx
-	jl	.L6
+	jge	.L15
+	mov	%rbx,%rcx
+	jmp	.L6
+.L15:
 	mov	%rsi,%rcx
 	and	$3,%rcx
 	jz	.L3
@@ -21,12 +24,15 @@ mymemcpy:
 	inc	%rcx
 	jmp	.L6
 .L3:
-	cmp	$0x10,%rbx
-	jl	.L7
+	cmp	$16,%rbx
+	jge	.L12
+	mov	%rbx,%rcx
+	jmp	.L7
+.L12:
 	mov	%rsi,%rcx
 	and	$0xf,%rcx
 	jz	.L4
-	sub	$0x10,%rcx
+	sub	$16,%rcx
 	not	%rcx
 	inc	%rcx
 	jmp	.L7
