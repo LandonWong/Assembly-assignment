@@ -13,11 +13,13 @@ myatoi:
 .L1:
 	movb	(%edx),%cl
 	cmp	$' ',%cl
-	jne	.L2
+	je	.L6
 	cmp	$'\n',%cl
-	jne	.L2
+	je	.L6
 	cmp	$'\t',%cl
-	jne	.L2
+	je	.L6
+	jmp	.L2
+.L6:
 	inc	%edx
 	jmp	.L1
 .L2:
