@@ -10,7 +10,7 @@ mymemcpy:
 	movl	%edi,%eax	# dest, esi: src
 	push	%r8
 	xor	%r8,%r8		# offset
-	ret
+	jmp	.L1
 .L2:
 	cmp	$4,%ebx
 	jl	.L6
