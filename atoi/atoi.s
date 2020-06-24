@@ -7,11 +7,11 @@ myatoi:
 	movl	4(%esp),%edx 	# base ptr
 	push	%ebx		# sign
 	xor	%eax,%eax	# return value
-	push	%ecx
-	xor	%ecx,%ecx
-	mov	$1,%ebx
+	push	%ecx		# use for store elements
+	xor	%ecx,%ecx	# clear
+	mov	$1,%ebx		# sign(value: 1/-1): default = 1
 .L1:
-	movzx	(%edx),%ecx
+	movzx	(%edx),%ecx	
 	cmp	$' ',%cl
 	je	.L6
 	cmp	$'\n',%cl
@@ -36,9 +36,9 @@ myatoi:
 .L5:
 	movzx	(%edx),%ecx
 	cmp	$'0',%cl
-	jl	.L100
+	jl	.L8
 	cmp	$'9',%cl
-	jg	.L100
+	jg	.L8
 	imull	$10,%eax
 	jo	.L7
 	sub	$'0',%eax
@@ -49,13 +49,13 @@ myatoi:
 .L7:
 	mov	$0x7fffffff,%eax
 	cmp	$1,%ebx
-	je	.L100
+	je	.L8
 	not	%eax
-.L100:
+.L8:
 	imull	%ebx,%eax
 	pop	%ecx
 	pop	%ebx
 	ret
-	.size	myatoi, .-myatoi
-	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-	.section	.note.GNU-stack,"",@progbits
+#	.size	myatoi, .-myatoi
+#	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+#	.section	.note.GNU-stack,"",@progbits
