@@ -43,7 +43,7 @@ mymemcpy:
 	jmp	.L8
 .L17:
 	mov	%rsi,%rcx
-	and	$0x3f,%rcx
+	and	$0x2f,%rcx
 	jz	.L5
 	sub	$64,%rcx
 	not	%rcx
