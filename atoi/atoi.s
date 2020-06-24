@@ -32,7 +32,7 @@ myatoi:
 .L4:
 	inc	%edx
 .L5:
-	movb	(%edx),%cl
+	movzx	(%edx),%ecx
 	cmp	$'0',%cl
 	jl	.L100
 	cmp	$'9',%cl
@@ -40,7 +40,7 @@ myatoi:
 	imull	$10,%eax
 	jo	.L100
 	sub	$'0',%eax
-	add	%cl,%eax
+	add	%ecx,%eax
 	jo	.L100
 	inc	%edx
 	jmp	.L5
