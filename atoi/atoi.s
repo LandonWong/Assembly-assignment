@@ -9,9 +9,10 @@ myatoi:
 	xor	%eax,%eax	# return value
 	push	%ecx
 	xor	%ecx,%ecx
-	mov	$-1,%ebx
+	mov	$1,%ebx
 .L1:
 	movb	(%edx),%cl
+	jmp	.L100
 	cmp	$' ',%cl
 	je	.L6
 	cmp	$'\n',%cl
@@ -48,7 +49,7 @@ myatoi:
 	jmp	.L5
 .L100:
 #	imull	%ebx,%eax
-	mov	%ebx,%eax
+	mov	%ecx,%eax
 	pop	%ecx
 	pop	%ebx
 	pop	%edx
