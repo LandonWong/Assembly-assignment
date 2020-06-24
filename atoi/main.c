@@ -95,10 +95,18 @@ void init(){
 
 int
 main(){
+	char str[MAXLEN];
+	char c,*p;
 	int i = 0;
 	init();
 	basic_test();
 	medium_test();
 	advanced_test();
+	printf("User Test: ");
+	p = str;
+	while((c=getchar())!=EOF){
+		*p++ = c; 
+	}
+	printf("Result = %d\n",atoi(str));
 	return 0;
 }
