@@ -38,7 +38,10 @@ mymemcpy:
 	jmp	.L7
 .L4:
 	cmp	$0x100,%rbx
-	jl	.L8
+	jge	.L17
+	mov	%rbx,%rcx
+	jmp	.L8
+.L17:
 	mov	%rsi,%rcx
 	and	$0x3f,%rcx
 	jz	.L5
