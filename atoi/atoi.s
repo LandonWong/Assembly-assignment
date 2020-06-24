@@ -1,4 +1,5 @@
 	.text
+	.align	4
 	.globl	myatoi
 	.type	myatoi, @function
 myatoi:

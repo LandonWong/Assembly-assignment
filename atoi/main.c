@@ -100,6 +100,6 @@ main(){
 	//basic_test();
 	//medium_test();
 	//advanced_test();
-	printf("res=%d\n",'1'/*myatoi("1235")*/);
+	printf("res=%d\n",myatoi("1235"));
 	return 0;
 }
