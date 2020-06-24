@@ -34,13 +34,14 @@ myatoi:
 	je	.L3
 	cmp	$'+',%cl		# sign has been already set to 1, just nptr++ 
 	je	.L4
-	jmp	.L5			# Cannot find
+	jmp	.L50			# Cannot find
 .L3:					# set sign = -1
 	mov	$-1,%ebx
 .L4:					# nptr++
 	inc	%edx
 .L5:					# L5: <main loop>
 	movzx	(%edx),%ecx		# load element
+.L50:
 	cmp	$'0',%cl		# is not num
 	jl	.L8
 	cmp	$'9',%cl		# is not num
@@ -57,8 +58,10 @@ myatoi:
 	cmp	$1,%ebx
 	je	.L8
 	not	%eax			# if sign == -1, set value min
+	jmp	.L9
 .L8:
 	imull	%ebx,%eax		# result = result * sign
+.L9:
 	pop	%ecx
 	pop	%ebx			# restore registers
 	ret				# return
