@@ -80,7 +80,7 @@ mymemcpy:
 	movq	%r10,8(%rax,%r8)
 	add	$16,%r8
 	add	$16,%rsi
-	sub	$161,%rbx
+	sub	$16,%rbx
 	loop	.L9
 	pop	%r10
 	pop	%r9
