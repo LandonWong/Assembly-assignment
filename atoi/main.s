@@ -582,6 +582,11 @@ init:
 	.cfi_endproc
 .LFE44:
 	.size	init, .-init
+	.section	.rodata.str1.1
+.LC24:
+	.string	"1235"
+.LC25:
+	.string	"res=%d\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4,,15
 	.globl	main
@@ -596,18 +601,31 @@ main:
 	pushl	%ebp
 	.cfi_escape 0x10,0x5,0x2,0x75,0
 	movl	%esp, %ebp
+	pushl	%ebx
 	pushl	%ecx
-	.cfi_escape 0xf,0x3,0x75,0x7c,0x6
-	subl	$4, %esp
+	.cfi_escape 0xf,0x3,0x75,0x78,0x6
+	.cfi_escape 0x10,0x3,0x2,0x75,0x7c
+	call	__x86.get_pc_thunk.bx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	call	init
-	call	basic_test
-	call	medium_test
-	call	advanced_test
-	addl	$4, %esp
+	leal	.LC24@GOTOFF(%ebx), %eax
+	subl	$12, %esp
+	pushl	%eax
+	call	myatoi@PLT
+	addl	$12, %esp
+	pushl	%eax
+	leal	.LC25@GOTOFF(%ebx), %eax
+	pushl	%eax
+	pushl	$1
+	call	__printf_chk@PLT
+	addl	$16, %esp
+	leal	-8(%ebp), %esp
 	xorl	%eax, %eax
 	popl	%ecx
 	.cfi_restore 1
 	.cfi_def_cfa 1, 0
+	popl	%ebx
+	.cfi_restore 3
 	popl	%ebp
 	.cfi_restore 5
 	leal	-4(%ecx), %esp

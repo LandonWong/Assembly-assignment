@@ -97,8 +97,9 @@ int
 main(){
 	int i = 0;
 	init();
-	basic_test();
-	medium_test();
-	advanced_test();
+	//basic_test();
+	//medium_test();
+	//advanced_test();
+	printf("res=%d\n",myatoi("1235"));
 	return 0;
 }
