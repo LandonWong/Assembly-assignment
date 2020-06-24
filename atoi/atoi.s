@@ -9,7 +9,7 @@ myatoi:
 	xor	%eax,%eax	# return value
 	push	%ecx
 	xor	%ecx,%ecx
-	mov	$1,%ebx
+	mov	$-1,%ebx
 .L1:
 	movb	(%edx),%cl
 	cmp	$' ',%cl
