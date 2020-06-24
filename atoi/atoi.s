@@ -45,8 +45,7 @@ myatoi:
 	inc	%edx
 	jmp	.L5
 .L100:
-	imull	%ebx,%eax
-	mov	$10,%eax
+#	imull	%ebx,%eax
 	pop	%ecx
 	pop	%ebx
 	pop	%edx
