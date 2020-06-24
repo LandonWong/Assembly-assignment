@@ -206,24 +206,12 @@ advanced_test:
 	movl	$0, %esi
 	movl	advanced@GOT(%ebx), %edi
 	movl	%edi, 8(%esp)
-	jmp	.L21
-.L27:
-	subl	$12, %esp
-	pushl	%eax
-	movl	advanced@GOT(%ebx), %eax
-	pushl	(%eax,%esi,4)
-	pushl	%esi
-	leal	.LC1@GOTOFF(%ebx), %eax
-	pushl	%eax
-	pushl	$1
-	call	__printf_chk@PLT
-	addl	$1, 44(%esp)
-	addl	$32, %esp
-	jmp	.L19
+	jmp	.L24
 .L28:
-	movl	4(%esp), %edx
-	movl	%edx, %ecx
-	sarl	$31, %ecx
+	cmpl	$2147483647, %eax
+	je	.L19
+	movl	$2147483647, %edx
+	movl	$0, %ecx
 .L20:
 	subl	$4, %esp
 	pushl	%ecx
@@ -237,11 +225,11 @@ advanced_test:
 	pushl	$1
 	call	__printf_chk@PLT
 	addl	$32, %esp
-.L19:
+.L23:
 	addl	$1, %esi
 	cmpl	$4, %esi
-	je	.L26
-.L21:
+	je	.L27
+.L24:
 	leal	0(,%esi,4), %ebp
 	subl	$4, %esp
 	pushl	$10
@@ -253,20 +241,35 @@ advanced_test:
 	pushl	(%edi,%esi,4)
 	call	myatoi@PLT
 	addl	$16, %esp
-	cmpl	4(%esp), %eax
-	je	.L27
 	cmpl	$3, %esi
-	je	.L22
+	je	.L28
 	cmpl	$2, %esi
-	jne	.L28
+	je	.L29
+	movl	4(%esp), %edx
+	movl	%edx, %ecx
+	sarl	$31, %ecx
+	cmpl	4(%esp), %eax
+	jne	.L20
+.L19:
+	subl	$12, %esp
+	pushl	%eax
+	movl	advanced@GOT(%ebx), %eax
+	pushl	0(%ebp,%eax)
+	pushl	%esi
+	leal	.LC1@GOTOFF(%ebx), %eax
+	pushl	%eax
+	pushl	$1
+	call	__printf_chk@PLT
+	addl	$1, 44(%esp)
+	addl	$32, %esp
+	jmp	.L23
+.L29:
+	cmpl	$-2147483648, %eax
+	je	.L19
 	movl	$-2147483648, %edx
 	movl	$-1, %ecx
 	jmp	.L20
-.L22:
-	movl	$2147483647, %edx
-	movl	$0, %ecx
-	jmp	.L20
-.L26:
+.L27:
 	pushl	$4
 	pushl	16(%esp)
 	leal	.LC3@GOTOFF(%ebx), %eax
@@ -332,7 +335,7 @@ init:
 	movl	$0, %esi
 	movl	basic@GOT(%ebx), %ebp
 	movl	medium@GOT(%ebx), %edi
-.L30:
+.L31:
 	subl	$12, %esp
 	pushl	$100
 	call	malloc@PLT
@@ -347,7 +350,7 @@ init:
 	addl	$4, %esi
 	addl	$16, %esp
 	cmpl	$16, %esi
-	jne	.L30
+	jne	.L31
 	movl	basic@GOT(%ebx), %eax
 	leal	.LC11@GOTOFF(%ebx), %edx
 	movl	%edx, (%eax)
