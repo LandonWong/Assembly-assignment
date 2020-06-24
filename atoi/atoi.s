@@ -62,14 +62,8 @@ myatoi:
 	.cfi_restore 3
 	.cfi_def_cfa_offset 12
 	popl	%esi
-	.cfi_restore 6
-	.cfi_def_cfa_offset 8
 	popl	%edi
-	.cfi_restore 7
-	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,10
-	.p2align 3
 .L23:
 	.cfi_restore_state
 	movsbl	1(%ecx), %edx
@@ -81,43 +75,18 @@ myatoi:
 	jbe	.L9
 .L24:
 	popl	%ebx
-	.cfi_remember_state
-	.cfi_restore 3
-	.cfi_def_cfa_offset 12
 	xorl	%eax, %eax
 	popl	%esi
-	.cfi_restore 6
-	.cfi_def_cfa_offset 8
 	popl	%edi
-	.cfi_restore 7
-	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,10
-	.p2align 3
 .L13:
-	.cfi_restore_state
 	popl	%ebx
-	.cfi_remember_state
-	.cfi_restore 3
-	.cfi_def_cfa_offset 12
 	movl	$2147483647, %eax
 	popl	%esi
-	.cfi_restore 6
-	.cfi_def_cfa_offset 8
 	popl	%edi
-	.cfi_restore 7
-	.cfi_def_cfa_offset 4
 	ret
-	.p2align 4,,10
-	.p2align 3
 .L22:
-	.cfi_restore_state
 	movsbl	1(%ecx), %edx
 	movl	$-1, %edi
 	addl	$1, %ecx
 	jmp	.L6
-	.cfi_endproc
-.LFE0:
-	.size	myatoi, .-myatoi
-	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-	.section	.note.GNU-stack,"",@progbits

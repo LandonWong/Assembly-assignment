@@ -14,9 +14,11 @@ myatoi(const char *nptr){
 	while(*nptr >= '0' && *nptr <= '9'){
 		result = result * 10;
 		result = result + *nptr - '0';
-		if(result > 0x70000)
-			return 0x7fffffff;
+		if(result > 0x70000){
+			result = 0x7fffffff;
+			goto L;
+		}
 		nptr++;
 	}
-	return sign * result;
+L:	return sign * result;
 }
