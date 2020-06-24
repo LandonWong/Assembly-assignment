@@ -568,8 +568,6 @@ init:
 	.size	init, .-init
 	.section	.rodata.str1.1
 .LC24:
-	.string	"1235"
-.LC25:
 	.string	"res=%d\n"
 	.text
 	.globl	main
@@ -592,12 +590,12 @@ main:
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	call	init
 	subl	$12, %esp
-	leal	.LC24@GOTOFF(%ebx), %eax
-	pushl	%eax
+	movl	basic@GOT(%ebx), %eax
+	pushl	(%eax)
 	call	myatoi@PLT
 	addl	$12, %esp
 	pushl	%eax
-	leal	.LC25@GOTOFF(%ebx), %eax
+	leal	.LC24@GOTOFF(%ebx), %eax
 	pushl	%eax
 	pushl	$1
 	call	__printf_chk@PLT
