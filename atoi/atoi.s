@@ -1,77 +1,121 @@
 	.file	"atoi.c"
 	.text
+	.p2align 4,,15
 	.globl	myatoi
 	.type	myatoi, @function
 myatoi:
 .LFB0:
 	.cfi_startproc
-	pushl	%esi
+	pushl	%ebp
 	.cfi_def_cfa_offset 8
-	.cfi_offset 6, -8
-	pushl	%ebx
+	.cfi_offset 5, -8
+	pushl	%edi
 	.cfi_def_cfa_offset 12
-	.cfi_offset 3, -12
-	movl	12(%esp), %edx
-	movzbl	(%edx), %ecx
-	leal	-9(%ecx), %eax
+	.cfi_offset 7, -12
+	pushl	%esi
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	pushl	%ebx
+	.cfi_def_cfa_offset 20
+	.cfi_offset 3, -20
+	movl	20(%esp), %ecx
+	movsbl	(%ecx), %edx
+	leal	-9(%edx), %eax
 	cmpb	$1, %al
-	jbe	.L14
-	cmpb	$32, %cl
-	jne	.L2
-.L14:
-	addl	$1, %edx
-	movzbl	(%edx), %ecx
-	leal	-9(%ecx), %eax
+	ja	.L18
+	.p2align 4,,10
+	.p2align 3
+.L15:
+	addl	$1, %ecx
+	movsbl	(%ecx), %edx
+	leal	-9(%edx), %eax
 	cmpb	$1, %al
-	jbe	.L14
-	cmpb	$32, %cl
-	je	.L14
-.L2:
-	cmpb	$45, %cl
-	je	.L16
+	jbe	.L15
+.L18:
+	cmpb	$32, %dl
+	je	.L15
+	cmpb	$45, %dl
+	je	.L20
+	cmpb	$43, %dl
+	movl	$2147483647, %ebp
 	movl	$1, %esi
-	cmpb	$43, %cl
-	je	.L17
+	je	.L21
 .L6:
-	movzbl	(%edx), %eax
-	leal	-48(%eax), %ecx
-	cmpb	$9, %cl
-	ja	.L12
-	movsbl	%al, %eax
-	leal	-48(%eax), %eax
-.L9:
-	addl	$1, %edx
-	movzbl	(%edx), %ecx
-	leal	-48(%ecx), %ebx
+	leal	-48(%edx), %ebx
+	subl	$48, %edx
 	cmpb	$9, %bl
-	ja	.L7
-	leal	(%eax,%eax,4), %eax
-	movsbl	%cl, %ecx
-	leal	-48(%ecx,%eax,2), %eax
-	cmpl	$458752, %eax
-	jle	.L9
-	movl	$2147483647, %eax
+	jbe	.L9
+	jmp	.L22
+	.p2align 4,,10
+	.p2align 3
+.L8:
+	leal	(%edx,%edx,4), %edx
+	leal	-48(%ebx,%edx,2), %edx
+	cmpl	$458752, %edx
+	jg	.L1
+.L9:
+	addl	$1, %ecx
+	movsbl	(%ecx), %ebx
+	leal	-48(%ebx), %edi
+	movl	%edi, %eax
+	cmpb	$9, %al
+	jbe	.L8
+	movl	%esi, %eax
+	imull	%edx, %eax
+	movl	%eax, %ebp
 .L7:
-	imull	%esi, %eax
+.L1:
 	popl	%ebx
 	.cfi_remember_state
 	.cfi_restore 3
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa_offset 16
+	movl	%ebp, %eax
 	popl	%esi
 	.cfi_restore 6
+	.cfi_def_cfa_offset 12
+	popl	%edi
+	.cfi_restore 7
+	.cfi_def_cfa_offset 8
+	popl	%ebp
+	.cfi_restore 5
 	.cfi_def_cfa_offset 4
 	ret
-.L16:
+	.p2align 4,,10
+	.p2align 3
+.L21:
 	.cfi_restore_state
-	addl	$1, %edx
+	movsbl	1(%ecx), %edx
+	addl	$1, %ecx
+	leal	-48(%edx), %ebx
+	subl	$48, %edx
+	cmpb	$9, %bl
+	jbe	.L9
+.L22:
+	xorl	%ebp, %ebp
+	popl	%ebx
+	.cfi_remember_state
+	.cfi_restore 3
+	.cfi_def_cfa_offset 16
+	movl	%ebp, %eax
+	popl	%esi
+	.cfi_restore 6
+	.cfi_def_cfa_offset 12
+	popl	%edi
+	.cfi_restore 7
+	.cfi_def_cfa_offset 8
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L20:
+	.cfi_restore_state
+	movsbl	1(%ecx), %edx
+	movl	$-2147483647, %ebp
+	addl	$1, %ecx
 	movl	$-1, %esi
 	jmp	.L6
-.L17:
-	addl	$1, %edx
-	jmp	.L6
-.L12:
-	movl	$0, %eax
-	jmp	.L7
 	.cfi_endproc
 .LFE0:
 	.size	myatoi, .-myatoi
