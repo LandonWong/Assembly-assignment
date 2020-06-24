@@ -332,9 +332,9 @@ advanced_test:
 .LC18:
 	.string	"-2561_ds"
 .LC19:
-	.string	"- 256adfs"
+	.string	"- \t256adfs"
 .LC20:
-	.string	"   -a2sdfdfda"
+	.string	"   -\n25a2sdfdfda"
 .LC21:
 	.string	"\n-99999999999"
 .LC22:

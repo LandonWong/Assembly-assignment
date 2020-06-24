@@ -92,8 +92,8 @@ void init(){
 	medium[1] = "         -658";
 	medium[2] = "\n\n\n\t 23452";
 	medium[3] = "-2561_ds";
-	advanced[0] = "- 256adfs";
-	advanced[1] = "   -a2sdfdfda";
+	advanced[0] = "- \t256adfs";
+	advanced[1] = "   -\n25a2sdfdfda";
 	advanced[2] = "\n-99999999999";
 	advanced[3] = "   +77777788888877";
 	printf("Benchmark prepare done. Test begin\n");
