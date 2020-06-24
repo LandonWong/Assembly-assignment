@@ -4,6 +4,7 @@
 myatoi:
 .L0:
 	push	%edx
+	xor	%edx,%edx
 	movl	4(%esp), %edx 	# base ptr
 	push	%ebx		# sign
 	xor	%eax,%eax	# return value
