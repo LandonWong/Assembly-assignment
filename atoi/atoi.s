@@ -8,7 +8,7 @@ myatoi:
 	push	%ebx		# sign
 	xor	%eax,%eax	# return value
 	push	%ecx
-	xor	%cl,%cl
+	xor	%ecx,%ecx
 	mov	$1,%ebx
 .L1:
 	movb	(%edx),%cl
@@ -45,7 +45,7 @@ myatoi:
 	inc	%edx
 	jmp	.L5
 .L100:
-#	imull	%ebx,%eax
+	imull	%ebx,%eax
 	pop	%ecx
 	pop	%ebx
 	pop	%edx
