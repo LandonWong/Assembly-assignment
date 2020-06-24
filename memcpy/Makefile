@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -w -O -fno-asynchronous-unwind-tables
+CFLAGS = -w -O -mmmx -fno-asynchronous-unwind-tables 
 
 asm:
 	$(CC) $(CFLAGS) -S main.c
