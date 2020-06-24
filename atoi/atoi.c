@@ -14,8 +14,8 @@ myatoi(const char *nptr){
 	while(*nptr >= '0' && *nptr <= '9'){
 		result = result * 10;
 		result = result + *nptr - '0';
-		if(result > 10000)
-			return 0xffffffff;
+		if(result > 0x7fffffff)
+			return 0x7fffffff;
 		nptr++;
 	}
 	return sign * result;
