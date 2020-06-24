@@ -388,7 +388,7 @@ init:
 	.size	init, .-init
 	.section	.rodata.str1.1
 .LC24:
-	.string	"res=%d\n"
+	.string	"res=%d,%d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -398,36 +398,38 @@ main:
 	pushl	-4(%ecx)
 	pushl	%ebp
 	movl	%esp, %ebp
+	pushl	%esi
 	pushl	%ebx
 	pushl	%ecx
-	subl	$16, %esp
+	subl	$28, %esp
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	movl	%gs:20, %eax
-	movl	%eax, -12(%ebp)
+	movl	%eax, -28(%ebp)
 	xorl	%eax, %eax
-	movl	$875770417, -22(%ebp)
-	movl	$0, -18(%ebp)
-	movw	$0, -14(%ebp)
+	movl	$875770417, -38(%ebp)
+	movl	$0, -34(%ebp)
+	movw	$0, -30(%ebp)
 	call	init
 	subl	$12, %esp
-	leal	-22(%ebp), %eax
-	pushl	%eax
+	leal	-38(%ebp), %esi
+	pushl	%esi
 	call	myatoi@PLT
-	addl	$12, %esp
+	pushl	%esi
 	pushl	%eax
 	leal	.LC24@GOTOFF(%ebx), %eax
 	pushl	%eax
 	pushl	$1
 	call	__printf_chk@PLT
-	addl	$16, %esp
-	movl	-12(%ebp), %edx
+	addl	$32, %esp
+	movl	-28(%ebp), %edx
 	xorl	%gs:20, %edx
 	jne	.L36
 	movl	$0, %eax
-	leal	-8(%ebp), %esp
+	leal	-12(%ebp), %esp
 	popl	%ecx
 	popl	%ebx
+	popl	%esi
 	popl	%ebp
 	leal	-4(%ecx), %esp
 	ret
