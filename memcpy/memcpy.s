@@ -8,7 +8,7 @@ mymemcpy:
 	call	__x86.get_pc_thunk.ax
 	addl	$_GLOBAL_OFFSET_TABLE_, %eax
 	addl	$1, 12(%ebp)
-	addl	$1, 16(%ebp)
+	subl	$1, 16(%ebp)
 	movl	8(%ebp), %eax
 	popl	%ebp
 	ret
