@@ -1,5 +1,4 @@
 	.text
-	.align	4
 	.globl	myatoi
 	.type	myatoi, @function
 myatoi:
@@ -52,7 +51,7 @@ myatoi:
 	jmp	.L5
 .L100:
 #	imull	%ebx,%eax
-	mov	%ecx,%eax
+	mov	%edx,%eax
 	pop	%ecx
 	pop	%ebx
 	pop	%edx
