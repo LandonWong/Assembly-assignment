@@ -320,7 +320,7 @@ advanced_test:
 .LC12:
 	.string	"2147483640"
 .LC13:
-	.string	"-155852"
+	.string	"-+-+-5852"
 .LC14:
 	.string	"+2351"
 .LC15:

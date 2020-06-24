@@ -86,7 +86,7 @@ void init(){
 	// Init benchmark
 	basic[0] = "352";
 	basic[1] = "2147483640";
-	basic[2] = "-155852";
+	basic[2] = "-+-+-5852";
 	basic[3] = "+2351";
 	medium[0] = "\t256";
 	medium[1] = "         -658";
