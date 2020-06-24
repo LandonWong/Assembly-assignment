@@ -3,6 +3,7 @@
 ## Author
 * Landon WONG, UCAS
 * 王嵩岳, 2018K8009929033
+* Last modified: Jun. 24, 2020
 ## Description
 This assignment has three parts:
 | Assignment Name | Description |
@@ -10,6 +11,12 @@ This assignment has three parts:
 | atoi | Use the assembler to implement the atoi function and convert strings to numbers (need to consider the sign and irrelevant symbols) |
 | memcpy | Use the assembler to implement the memcpy function, realize memory data movement, optimize as much as possible, and introduce performance evaluation and evaluation efficiency |
 | freq | Use embedded assembly to record the execution cycle, combined with the timing function, calculate the frequency of machine operation |
+Schedule:
+| Assignment Name | Status |
+| :---------------: | :---------------: |
+| atoi (#1) | Finished (Jun. 24) |
+| memcpy (#2) | INIT |
+| freq (#3) | INIT |
 ## File structure
 For checking assignment:
 | Filename | Description |
