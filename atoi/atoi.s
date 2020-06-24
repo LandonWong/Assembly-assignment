@@ -40,12 +40,14 @@ myatoi:
 	cmp	$'9',%cl
 	jg	.L100
 	imull	$10,%eax
-	jo	.L100
+	jo	.L7
 	sub	$'0',%eax
 	add	%ecx,%eax
-	jo	.L100
+	jo	.L7
 	inc	%edx
 	jmp	.L5
+.L7:
+	mov	$ff,%eax
 .L100:
 	imull	%ebx,%eax
 	pop	%ecx
