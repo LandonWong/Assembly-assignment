@@ -36,11 +36,13 @@ check(char *dest, const char *src, size_t n){
 int
 main(){
 	int align = 0;
+	void *a;
 	dest = (void *)malloc(SIZE * sizeof(char));
 	InitSrcArea(SIZE);
 	for(align = 0;align < 4;align++){
-		mymemcpy(dest,src + 0x10 + align,0x100);
+		a = mymemcpy(dest,src + 0x10 + align,0x100);
 		printf("1 Test src align %d, %s.\n",align,check(dest,src + 0x10 + align,0x100) == 1 ? "pass" : "fail");
+		printf("%lu,%lu\n",src,a);
 		//memcpy(dest,src + 0x10 + align,0x100);
 		//printf("1 Test src align %d, %s.\n",align,check(dest,src + 10 + align,500) == 1 ? "pass" : "fail");
 	}
