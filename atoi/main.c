@@ -100,6 +100,6 @@ main(){
 	//basic_test();
 	//medium_test();
 	//advanced_test();
-	printf("res=%d\n",basic[0]/*myatoi(basic[0])*/);
+	printf("res=%d\n",myatoi(1448676148));
 	return 0;
 }
