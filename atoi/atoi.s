@@ -23,7 +23,7 @@ myatoi:
 	inc	%edx
 	jmp	.L1
 .L2:
-	movb	(%edx),%cl
+	movzx	(%edx),%ecx
 	cmp	$'-',%cl
 	je	.L3
 	cmp	$'+',%cl
