@@ -386,6 +386,10 @@ init:
 	popl	%ebp
 	ret
 	.size	init, .-init
+	.section	.rodata.str1.1
+.LC24:
+	.string	"res=%d\n"
+	.text
 	.globl	main
 	.type	main, @function
 main:
@@ -394,16 +398,41 @@ main:
 	pushl	-4(%ecx)
 	pushl	%ebp
 	movl	%esp, %ebp
+	pushl	%ebx
 	pushl	%ecx
-	subl	$4, %esp
+	subl	$16, %esp
+	call	__x86.get_pc_thunk.bx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
+	movl	%gs:20, %eax
+	movl	%eax, -12(%ebp)
+	xorl	%eax, %eax
+	movl	$875770417, -22(%ebp)
+	movl	$0, -18(%ebp)
+	movw	$0, -14(%ebp)
 	call	init
-	call	basic_test
+	subl	$12, %esp
+	leal	-22(%ebp), %eax
+	pushl	%eax
+	call	myatoi@PLT
+	addl	$12, %esp
+	pushl	%eax
+	leal	.LC24@GOTOFF(%ebx), %eax
+	pushl	%eax
+	pushl	$1
+	call	__printf_chk@PLT
+	addl	$16, %esp
+	movl	-12(%ebp), %edx
+	xorl	%gs:20, %edx
+	jne	.L36
 	movl	$0, %eax
-	addl	$4, %esp
+	leal	-8(%ebp), %esp
 	popl	%ecx
+	popl	%ebx
 	popl	%ebp
 	leal	-4(%ecx), %esp
 	ret
+.L36:
+	call	__stack_chk_fail_local
 	.size	main, .-main
 	.comm	advanced,16,4
 	.comm	medium,16,4
@@ -415,5 +444,6 @@ main:
 __x86.get_pc_thunk.bx:
 	movl	(%esp), %ebx
 	ret
+	.hidden	__stack_chk_fail_local
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
