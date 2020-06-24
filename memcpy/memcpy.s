@@ -3,7 +3,7 @@
 	.globl	mymemcpy
 	.type	mymemcpy, @function
 mymemcpy:
-	movq	%rdx, %rax
+	movq	%rdi, %rax
 	ret
 	.size	mymemcpy, .-mymemcpy
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
