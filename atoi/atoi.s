@@ -11,7 +11,7 @@ myatoi:
 	xor	%ecx,%ecx
 	mov	$1,%ebx
 .L1:
-	movb	(%edx),%cl
+	movzx	(%edx),%ecx
 	jmp	.L100
 	cmp	$' ',%cl
 	je	.L6
