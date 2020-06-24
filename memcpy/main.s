@@ -187,7 +187,7 @@ main:
 .LBB12:
 .LBB13:
 	movq	%r12, %rcx
-	movq	src(%rip), %rdx
+	movq	dest(%rip), %rdx
 	leaq	.LC3(%rip), %rsi
 	movl	$1, %edi
 	movl	$0, %eax
