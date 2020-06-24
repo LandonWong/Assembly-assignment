@@ -10,6 +10,7 @@ myatoi:
 	push	%ecx
 	xor	%ecx,%ecx
 	mov	$1,%ebx
+	inc	%edx
 .L1:
 	movzx	(%edx),%ecx
 	jmp	.L100
