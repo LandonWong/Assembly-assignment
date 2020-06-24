@@ -1,16 +1,10 @@
-	.file	"atoi.c"
 	.text
 	.globl	myatoi
 	.type	myatoi, @function
 myatoi:
 .LFB0:
-	.cfi_startproc
 	pushl	%esi
-	.cfi_def_cfa_offset 8
-	.cfi_offset 6, -8
 	pushl	%ebx
-	.cfi_def_cfa_offset 12
-	.cfi_offset 3, -12
 	movl	12(%esp), %edx
 	movzbl	(%edx), %ecx
 	leal	-9(%ecx), %eax
@@ -65,14 +59,5 @@ myatoi:
 	imull	%esi, %eax
 .L1:
 	popl	%ebx
-	.cfi_restore 3
-	.cfi_def_cfa_offset 8
 	popl	%esi
-	.cfi_restore 6
-	.cfi_def_cfa_offset 4
 	ret
-	.cfi_endproc
-.LFE0:
-	.size	myatoi, .-myatoi
-	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-	.section	.note.GNU-stack,"",@progbits
