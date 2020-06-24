@@ -1,4 +1,3 @@
-	.file	"memcpy.c"
 	.text
 	.globl	mymemcpy
 	.type	mymemcpy, @function

@@ -1,4 +1,3 @@
-	.file	"atoi.c"
 	.text
 	.globl	myatoi
 	.type	myatoi, @function
