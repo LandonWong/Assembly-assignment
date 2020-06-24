@@ -17,7 +17,7 @@ myatoi:
 	xor	%ecx,%ecx		# clear
 	mov	$1,%ebx			# sign(value: 1/-1): default = 1
 .L1:					# L1: Skip space
-	movzx	(%edx),%ecx		# load element
+	movb	(%edx),%cl		# load element
 	cmp	$' ',%cl		# skip ' '
 	je	.L6			
 	cmp	$'\n',%cl		# skip '\n'
@@ -39,7 +39,7 @@ myatoi:
 .L4:					# nptr++
 	inc	%edx
 .L5:					# L5: <main loop>
-	movzx	(%edx),%ecx		# load element
+	movb	(%edx),%cl		# load element
 .L50:
 	cmp	$'0',%cl		# is not num
 	jl	.L8
