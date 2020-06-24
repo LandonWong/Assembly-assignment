@@ -3,12 +3,12 @@
 	.type	mymemcpy, @function
 mymemcpy:
 .L0:
-	#push	%rbx
-	#push	%rcx
-	#push	%rdx
+	push	%rbx
+	push	%rcx
+	push	%rdx
 	mov	%rdx,%rbx	# Remain length
 	mov	%rdi,%rax	# dest, rsi: src
-	#push	%r8
+	push	%r8
 	xor	%r8,%r8		# offset
 	jmp	.L1
 .L2:
@@ -109,8 +109,8 @@ mymemcpy:
 	cmp	$64,%rbx
 	jmp	.L2
 .L1:
-	#pop	%r8
-	#pop	%rdx
-	#pop	%rcx
-	#pop	%rbx
+	pop	%r8
+	pop	%rdx
+	pop	%rcx
+	pop	%rbx
 	ret
