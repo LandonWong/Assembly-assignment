@@ -55,7 +55,7 @@ mymemcpy:
 	jmp	.L10
 
 .L6:
-	mov	(%rsi),%rbx
+	movb	(%rsi),%dl
 	movb	%dl,(%rax,%r8)
 	inc	%r8
 	inc	%rsi
@@ -63,7 +63,7 @@ mymemcpy:
 	loop	.L6
 	jmp	.L2
 .L7:
-	mov	(%rsi),%rdx
+	movl	(%rsi),%edx
 	movl	%edx,(%rax,%r8)
 	add	$4,%r8
 	add	$4,%rsi
