@@ -74,16 +74,16 @@ mymemcpy:
 	movq	40(%rsi),%mm1
 	movq	48(%rsi),%mm2
 	movq	56(%rsi),%mm3
-	movq	%r9,(%rax,%r8)
-	movq	%r10,8(%rax,%r8)
-	movq	%r11,16(%rax,%r8)
-	movq	%r12,24(%rax,%r8)
-	movq	%mm0,32(%rax,%r8)
-	movq	%mm1,40(%rax,%r8)
-	movq	%mm2,48(%rax,%r8)
-	movq	%mm3,56(%rax,%r8)
-	add	$64,%r8
+	movq	%r9,(%rdx)
+	movq	%r10,8(%rdx)
+	movq	%r11,16(%rdx)
+	movq	%r12,24(%rdx)
+	movq	%mm0,32(%rdx)
+	movq	%mm1,40(%rdx)
+	movq	%mm2,48(%rdx)
+	movq	%mm3,56(%rdx)
 	add	$64,%rsi
+	add	$64,%rdx
 	sub	$64,%rbx
 	cmp	$64,%rbx
 	jge	.L11
