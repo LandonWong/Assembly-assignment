@@ -65,6 +65,11 @@ mymemcpy:
 	push	%r10
 	push	%r11
 	push	%r12
+	mov	%rbx,%rcx
+	shr	$6,%rcx
+	mov	%rcx,%r8
+	shl	$6,%r8
+	sub	%r8,%rbx	
 .L11:
 	movq	(%rsi),%r9
 	movq	8(%rsi),%r10
@@ -84,9 +89,10 @@ mymemcpy:
 	movq	%mm3,56(%rdi)
 	add	$64,%rsi
 	add	$64,%rdi
-	sub	$64,%rbx
-	cmp	$64,%rbx
-	jge	.L11
+	loop	.L11
+	#sub	$64,%rbx
+	#cmp	$64,%rbx
+	#jge	.L11
 	pop	%r12
 	pop	%r11
 	pop	%r10
