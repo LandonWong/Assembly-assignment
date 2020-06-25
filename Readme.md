@@ -5,10 +5,10 @@
 * 王嵩岳, 2018K8009929033
 * Last modified: Jun. 24, 2020
 ## Notice
-* Development environment: Ubuntu amd-64 (physical machine), compilation tool: gcc
-* If an error is reported when **executing `make *_asm`** (including `make memcpy_asm`, `make atoi_asm`):\
+* Development environment: Ubuntu 18.04 (Desktop) amd-64 (physical machine), Linux Kernel: 4.15, compilation tool: gcc
+* **ERROR Handle**: If an error is reported when executing `make *_asm` (including `make memcpy_asm`, `make atoi_asm`):\
 **`fatal error: bits/libc-header-start.h: No such file or directory`**, this is because `gcc-multilib` is not configured.\
-Please execute `sudo apt-get install gcc-multilib` and try to execute again.
+Please execute `sudo apt-get install gcc-multilib` and try to execute `make *_asm` again. This problem usually occurs when **running on virtual machines**.
 ## Description
 This assignment has three parts:
 | Assignment Name | Description |
@@ -58,7 +58,7 @@ AssembleLangFinal
   |--LICENSE        # MIT License
 ```
 ## Usage
-**NOTE: All the following commands are executed in the top directory.**\
+**NOTE: All the following commands are executed in the top directory.**
 
 0. Global
 
