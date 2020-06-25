@@ -52,12 +52,6 @@ mymemcpy:
 	sub	%r8,%rbx
 	cld
 	rep	movsl
-	#movl	(%rsi),%edx
-	#movl	%edx,(%rdi)
-	#add	$4,%rdi
-	#add	$4,%rsi
-	#sub	$4,%rbx
-	#loop	.L7
 	jmp	.L2
 .L8:
 	push	%r9
@@ -80,32 +74,39 @@ mymemcpy:
 	push	%r11
 	push	%r12
 .L11:
-	movq	(%rsi),%r9
-	movq	8(%rsi),%r10
-	movq	16(%rsi),%r11
-	movq	24(%rsi),%r12
-	movq	32(%rsi),%mm0
-	movq	40(%rsi),%mm1
-	movq	48(%rsi),%mm2
-	movq	56(%rsi),%mm3
-	movq	%r9,(%rdi)
-	movq	%r10,8(%rdi)
-	movq	%r11,16(%rdi)
-	movq	%r12,24(%rdi)
-	movq	%mm0,32(%rdi)
-	movq	%mm1,40(%rdi)
-	movq	%mm2,48(%rdi)
-	movq	%mm3,56(%rdi)
-	add	$64,%rdi
-	add	$64,%rsi
-	sub	$64,%rbx
-	cmp	$64,%rbx
-	jge	.L11
+	mov	%rbx,%rcx
+	shr	$3,%rcx
+	mov	%rcx,%r8
+	shl	$3,%r8
+	sub	%r8,%rbx
+	cld
+	rep	movsq
+#	movq	(%rsi),%r9
+#	movq	8(%rsi),%r10
+#	movq	16(%rsi),%r11
+#	movq	24(%rsi),%r12
+#	movq	32(%rsi),%mm0
+#	movq	40(%rsi),%mm1
+#	movq	48(%rsi),%mm2
+#	movq	56(%rsi),%mm3
+#	movq	%r9,(%rdi)
+#	movq	%r10,8(%rdi)
+#	movq	%r11,16(%rdi)
+#	movq	%r12,24(%rdi)
+#	movq	%mm0,32(%rdi)
+#	movq	%mm1,40(%rdi)
+#	movq	%mm2,48(%rdi)
+#	movq	%mm3,56(%rdi)
+#	add	$64,%rdi
+#	add	$64,%rsi
+#	sub	$64,%rbx
+#	cmp	$64,%rbx
+#	jge	.L11
 	pop	%r12
 	pop	%r11
 	pop	%r10
 	pop	%r9
-	cmp	$64,%rbx
+#	cmp	$64,%rbx
 	jmp	.L2
 .L1:
 	pop	%rdx
