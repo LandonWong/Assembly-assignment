@@ -764,7 +764,7 @@ main:
 basic_2_dst_offset:
 	.long	8
 	.long	32
-	.long	52224
+	.long	3072
 	.long	56
 	.long	56
 	.globl	basic_1_dst_offset
