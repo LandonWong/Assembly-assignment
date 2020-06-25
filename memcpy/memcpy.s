@@ -26,8 +26,6 @@ mymemcpy:
 .L3:
 	cmp	$16,%rbx
 	jge	.L12
-	mov	%rbx,%rcx
-	shr	$2,%rcx
 	jmp	.L7
 .L12:
 	mov	%rdi,%rcx
@@ -42,6 +40,8 @@ mymemcpy:
 	rep	movsb
 	jmp	.L2
 .L7:
+	mov	%rbx,%rcx
+	shr	$2,%rcx
 	mov	%rcx,%r8
 	shl	$2,%r8
 	sub	%r8,%rbx

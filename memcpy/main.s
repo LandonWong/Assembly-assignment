@@ -604,7 +604,7 @@ basic_1_src_offset:
 	.type	basic_2_size, @object
 	.size	basic_2_size, 20
 basic_2_size:
-	.long	52428
+	.long	34952
 	.long	65535
 	.long	4095
 	.long	49152
