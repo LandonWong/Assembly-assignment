@@ -30,10 +30,8 @@ mymemcpy:
 .L12:
 	mov	%rdi,%rcx
 	and	$7,%rcx
-	jz	.L4
-	jmp	.L30
-.L4:
-	jmp	.L10
+	jz	.L10
+	jmp	.L30	
 .L6:
 	sub	%rcx,%rbx
 	cld
@@ -50,6 +48,7 @@ mymemcpy:
 	jmp	.L2
 .L30:
 	movsl
+	sub	$4,%rbx
 	jmp	.L2
 .L10:
 	mov	%rbx,%rcx

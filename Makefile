@@ -22,6 +22,6 @@ freq_run:
 	@cd freq && $(MAKE) run
 cmt:
 	@git add --all
-	@git commit -m "Update: all"
+	@git commit -m "Update: make cmt"
 push:
 	@git push origin master
