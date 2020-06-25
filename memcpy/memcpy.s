@@ -61,39 +61,31 @@ mymemcpy:
 	rep	movsq
 	jmp	.L2
 .L25:
-	push	%r9
-	push	%r10
-	push	%r11
-	push	%r12
 	mov	%rbx,%rcx
 	shr	$6,%rcx
 	mov	%rcx,%r8
 	shl	$6,%r8
 	sub	%r8,%rbx	
 .L11:
-	movq	(%rsi),%mm7
-	movq	8(%rsi),%r10
-	movq	16(%rsi),%r11
-	movq	24(%rsi),%r12
-	movq	32(%rsi),%mm0
-	movq	40(%rsi),%mm1
-	movq	48(%rsi),%mm2
-	movq	56(%rsi),%mm3
-	movq	%mm7,(%rdi)
-	movq	%r10,8(%rdi)
-	movq	%r11,16(%rdi)
-	movq	%r12,24(%rdi)
-	movq	%mm0,32(%rdi)
-	movq	%mm1,40(%rdi)
-	movq	%mm2,48(%rdi)
-	movq	%mm3,56(%rdi)
+	movq	(%rsi),%mm0
+	movq	8(%rsi),%mm1
+	movq	16(%rsi),%mm2
+	movq	24(%rsi),%mm3
+	movq	32(%rsi),%mm4
+	movq	40(%rsi),%mm5
+	movq	48(%rsi),%mm6
+	movq	56(%rsi),%mm7
+	movq	%mm0,(%rdi)
+	movq	%mm1,8(%rdi)
+	movq	%mm2,16(%rdi)
+	movq	%mm3,24(%rdi)
+	movq	%mm4,32(%rdi)
+	movq	%mm5,40(%rdi)
+	movq	%mm6,48(%rdi)
+	movq	%mm7,56(%rdi)
 	add	$64,%rsi
 	add	$64,%rdi
 	loop	.L11
-	pop	%r12
-	pop	%r11
-	pop	%r10
-	pop	%r9
 	jmp	.L2
 .L1:
 	pop	%rdx
