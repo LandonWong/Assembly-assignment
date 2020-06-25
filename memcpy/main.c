@@ -100,7 +100,7 @@ main(){
 		       src + basic_2_src_offset[i],
 		       basic_2_size[i]);
 		gettimeofday(&tv2, NULL);
-		printf("[Norm] Test (basic #1) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		printf("[Norm] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 	}
 	// Medium1 benchmark (src unaligned)
 

@@ -160,7 +160,7 @@ check:
 	.string	"       Prod: %x --> %x, size = %d.\n"
 	.align 8
 .LC6:
-	.string	"[Norm] Test (basic #1) %d / 5:     ,time: %u.\n\n"
+	.string	"[Norm] Test (basic #2) %d / 5:     ,time: %u.\n\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4,,15
 	.globl	main
