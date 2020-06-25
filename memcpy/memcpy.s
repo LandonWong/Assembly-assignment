@@ -11,6 +11,8 @@ mymemcpy:
 	push	%r8
 	xor	%r8,%r8		# offset
 .L2:
+	test	%rbx,%rbx
+	jz	.L1
 	cmp	$4,%rbx
 	jge	.L15
 	mov	%rbx,%rcx
