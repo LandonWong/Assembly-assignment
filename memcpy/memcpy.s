@@ -71,7 +71,7 @@ mymemcpy:
 	shl	$6,%r8
 	sub	%r8,%rbx	
 .L11:
-	movq	(%rsi),%r9
+	movq	(%rsi),%mm7
 	movq	8(%rsi),%r10
 	movq	16(%rsi),%r11
 	movq	24(%rsi),%r12
@@ -79,7 +79,7 @@ mymemcpy:
 	movq	40(%rsi),%mm1
 	movq	48(%rsi),%mm2
 	movq	56(%rsi),%mm3
-	movq	%r9,(%rdi)
+	movq	%mm7,(%rdi)
 	movq	%r10,8(%rdi)
 	movq	%r11,16(%rdi)
 	movq	%r12,24(%rdi)
@@ -90,9 +90,6 @@ mymemcpy:
 	add	$64,%rsi
 	add	$64,%rdi
 	loop	.L11
-	#sub	$64,%rbx
-	#cmp	$64,%rbx
-	#jge	.L11
 	pop	%r12
 	pop	%r11
 	pop	%r10
