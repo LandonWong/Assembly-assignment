@@ -84,6 +84,7 @@ main(){
 	for(i = 0;i < BENCHNUM;i++){
 		pass = 0;
 		gettimeofday(&tv1, NULL);
+		gettimeofday(&tv1, NULL);
 		adst = mymemcpy(dst + basic_2_dst_offset[i],
 			        src + basic_2_src_offset[i],
 			        basic_2_size[i]);
