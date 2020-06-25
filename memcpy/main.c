@@ -89,6 +89,13 @@ main(){
 			      basic_2_size[i])
 			== 1);
 		printf("[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n",i+1 , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		printf("       Prod: %x --> %x, size = %d.\n",src + basic_2_src_offset[i],dst + basic_2_dst_offset[i],basic_2_size[i]);
+		gettimeofday(&tv1, NULL);
+		memcpy(dst + basic_2_dst_offset[i],
+		       src + basic_2_src_offset[i],
+		       basic_2_size[i]);
+		gettimeofday(&tv2, NULL);
+		printf("[Clib] Test (basic #1) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 	}
 	// Medium1 benchmark (src unaligned)
 
