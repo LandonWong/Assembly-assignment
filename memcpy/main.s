@@ -804,7 +804,7 @@ basic_1_src_offset:
 basic_2_size:
 	.long	69632
 	.long	99999
-	.long	4095
+	.long	65535
 	.long	49152
 	.long	65536
 	.globl	basic_1_size
