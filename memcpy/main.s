@@ -148,17 +148,19 @@ check:
 	.section	.rodata.str1.8,"aMS",@progbits,1
 	.align 8
 .LC2:
-	.string	"Test (basic #1) %d / 5: Prod: %x --> %x, size = %d.\n\n"
+	.string	"Test (basic #1) %d / 5: Prod: %x --> %x, size = %d.\n"
 	.section	.rodata.str1.1
 .LC3:
-	.string	"[Mine] %s time: %u.\n"
+	.string	"[Mine] %s time: %u.\n\n"
 .LC4:
-	.string	"[CLIB]      time: %u.\n"
+	.string	"[Mine] %s time: %u.\n"
 .LC5:
+	.string	"[CLIB]      time: %u.\n"
+.LC6:
 	.string	"[NORM]      time: %u.\n\n"
 	.section	.rodata.str1.8
 	.align 8
-.LC6:
+.LC7:
 	.string	"Test (basic #2) %d / 5: Prod: %x --> %x, size = %d.\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4,,15
@@ -411,7 +413,7 @@ main:
 .LBB72:
 .LBB70:
 	.loc 2 104 0
-	leaq	.LC6(%rip), %rsi
+	leaq	.LC7(%rip), %rsi
 	movl	$1, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
@@ -427,7 +429,7 @@ main:
 .LBB73:
 .LBB74:
 	.loc 2 104 0 discriminator 4
-	leaq	.LC3(%rip), %rsi
+	leaq	.LC4(%rip), %rsi
 	movl	$1, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
@@ -478,7 +480,7 @@ main:
 .LBB79:
 .LBB80:
 	.loc 2 104 0 discriminator 4
-	leaq	.LC4(%rip), %rsi
+	leaq	.LC5(%rip), %rsi
 	movl	$1, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
@@ -549,7 +551,7 @@ main:
 .LBB85:
 .LBB86:
 	.loc 2 104 0
-	leaq	.LC5(%rip), %rsi
+	leaq	.LC6(%rip), %rsi
 	movl	$1, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
@@ -638,7 +640,7 @@ main:
 .LBB93:
 .LBB71:
 	.loc 2 104 0
-	leaq	.LC6(%rip), %rsi
+	leaq	.LC7(%rip), %rsi
 	movl	$1, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
@@ -1480,7 +1482,7 @@ basic_1_size:
 	.byte	0x54
 	.uleb128 0x9
 	.byte	0x3
-	.quad	.LC6
+	.quad	.LC7
 	.byte	0
 	.uleb128 0x1e
 	.quad	.LVL78
@@ -1495,7 +1497,7 @@ basic_1_size:
 	.byte	0x54
 	.uleb128 0x9
 	.byte	0x3
-	.quad	.LC6
+	.quad	.LC7
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -1521,7 +1523,7 @@ basic_1_size:
 	.byte	0x54
 	.uleb128 0x9
 	.byte	0x3
-	.quad	.LC3
+	.quad	.LC4
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -1599,7 +1601,7 @@ basic_1_size:
 	.byte	0x54
 	.uleb128 0x9
 	.byte	0x3
-	.quad	.LC4
+	.quad	.LC5
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -1681,7 +1683,7 @@ basic_1_size:
 	.byte	0x54
 	.uleb128 0x9
 	.byte	0x3
-	.quad	.LC5
+	.quad	.LC6
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -2959,13 +2961,13 @@ basic_1_size:
 	.quad	.LVL51
 	.value	0xa
 	.byte	0x3
-	.quad	.LC6
+	.quad	.LC7
 	.byte	0x9f
 	.quad	.LVL77
 	.quad	.LVL78
 	.value	0xa
 	.byte	0x3
-	.quad	.LC6
+	.quad	.LC7
 	.byte	0x9f
 	.quad	0
 	.quad	0
@@ -2974,7 +2976,7 @@ basic_1_size:
 	.quad	.LVL53
 	.value	0xa
 	.byte	0x3
-	.quad	.LC3
+	.quad	.LC4
 	.byte	0x9f
 	.quad	0
 	.quad	0
@@ -3078,7 +3080,7 @@ basic_1_size:
 	.quad	.LVL60
 	.value	0xa
 	.byte	0x3
-	.quad	.LC4
+	.quad	.LC5
 	.byte	0x9f
 	.quad	0
 	.quad	0
@@ -3144,7 +3146,7 @@ basic_1_size:
 	.quad	.LVL70
 	.value	0xa
 	.byte	0x3
-	.quad	.LC5
+	.quad	.LC6
 	.byte	0x9f
 	.quad	0
 	.quad	0

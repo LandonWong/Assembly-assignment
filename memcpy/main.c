@@ -78,8 +78,8 @@ main(){
 			      src + basic_1_src_offset[i],
 			      basic_1_size[i])
 			== 1);
-		printf("Test (basic #1) %d / 5: Prod: %x --> %x, size = %d.\n\n",i+1,src + basic_1_src_offset[i],dst + basic_1_dst_offset[i],basic_1_size[i]);
-		printf("[Mine] %s time: %u.\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		printf("Test (basic #1) %d / 5: Prod: %x --> %x, size = %d.\n",i+1,src + basic_1_src_offset[i],dst + basic_1_dst_offset[i],basic_1_size[i]);
+		printf("[Mine] %s time: %u.\n\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 		memset(dst,0,SIZE);
 	}
 	// Basic2 benchmark (all aligned)
