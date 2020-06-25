@@ -142,10 +142,13 @@ check:
 	.string	"       Prod: %x --> %x, size = %d.\n"
 	.align 8
 .LC4:
-	.string	"[Norm] Test (basic #1) %d / 5:     ,time: %u.\n\n"
+	.string	"[Norm] Test (basic #2) %d / 5:     ,time: %u.\n\n"
 	.align 8
 .LC5:
 	.string	"[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n"
+	.align 8
+.LC6:
+	.string	"[Norm] Test (basic #1) %d / 5:     ,time: %u.\n\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -438,7 +441,7 @@ main:
 .LBB25:
 	.loc 2 104 0 discriminator 4
 	movl	%ebx, %edx
-	leaq	.LC4(%rip), %rsi
+	leaq	.LC6(%rip), %rsi
 	movl	$1, %edi
 	movl	$0, %eax
 	call	__printf_chk@PLT
@@ -548,7 +551,7 @@ basic_1_dst_offset:
 	.type	basic_2_src_offset, @object
 	.size	basic_2_src_offset, 20
 basic_2_src_offset:
-	.long	268
+	.long	16
 	.long	4388
 	.long	1628
 	.long	8
@@ -1309,7 +1312,7 @@ basic_1_size:
 	.byte	0x54
 	.uleb128 0x9
 	.byte	0x3
-	.quad	.LC4
+	.quad	.LC6
 	.uleb128 0x1d
 	.uleb128 0x1
 	.byte	0x51
@@ -2414,7 +2417,7 @@ basic_1_size:
 	.quad	.LVL51-.Ltext0
 	.value	0xa
 	.byte	0x3
-	.quad	.LC4
+	.quad	.LC6
 	.byte	0x9f
 	.quad	0
 	.quad	0

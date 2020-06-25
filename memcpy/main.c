@@ -11,7 +11,7 @@ int basic_1_size[BENCHNUM] = {1,2,4,8,64};
 int basic_2_size[BENCHNUM] = {0xcccc,0xffff,0xfff,0xc000,0x10000};
 
 int basic_1_src_offset[BENCHNUM] = {0x10,0x20,0xcc30,0x38,0x3778};
-int basic_2_src_offset[BENCHNUM] = {0x10c,0x1124,0x65c,0x8,0x888};
+int basic_2_src_offset[BENCHNUM] = {0x10,0x1124,0x65c,0x8,0x888};
 
 int basic_1_dst_offset[BENCHNUM] = {0x10c,0x1124,0x65c,0x8,0x88};
 int basic_2_dst_offset[BENCHNUM] = {0x1000,0x20,0xcc00,0x38,0x38};
@@ -83,7 +83,7 @@ main(){
 		       src + basic_1_src_offset[i],
 		       basic_1_size[i]);
 		gettimeofday(&tv2, NULL);
-		printf("[Norm] Test (basic #1) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		printf("[Norm] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 	}
 	// Basic2 benchmark (all aligned)
 	for(i = 0;i < BENCHNUM;i++){
