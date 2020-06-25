@@ -584,7 +584,7 @@ basic_1_dst_offset:
 	.type	basic_2_src_offset, @object
 	.size	basic_2_src_offset, 20
 basic_2_src_offset:
-	.long	16
+	.long	260
 	.long	4388
 	.long	1628
 	.long	8
