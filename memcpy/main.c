@@ -31,6 +31,15 @@ InitSrcArea(int size){
 	}
 }
 
+void *
+memcpy(void *dest, const void *src, size_t n){
+	char *tmp = dest;
+	while(n){
+		*tmp++ = (char)*src++;
+		n--;
+	}
+	return dest;
+}
 int
 check(char *dest, const char *src, size_t n){
 	while(n){
@@ -58,11 +67,11 @@ main(){
 	for(i = 0;i < BENCHNUM;i++){
 		pass = 0;
 		gettimeofday(&tv1, NULL);
-		/*adst = */mymemcpy(dst + basic_1_dst_offset[i],
+		adst = mymemcpy(dst + basic_1_dst_offset[i],
 			        src + basic_1_src_offset[i],
 			        basic_1_size[i]);
 		gettimeofday(&tv2, NULL);
-		pass = //(adst == dst + basic_1_dst_offset[i]) &&
+		pass = (adst == dst + basic_1_dst_offset[i]) &&
 		       (check(dst + basic_1_dst_offset[i],
 			      src + basic_1_src_offset[i],
 			      basic_1_size[i])
