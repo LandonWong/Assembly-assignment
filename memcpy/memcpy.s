@@ -10,7 +10,7 @@ mymemcpy:
 	mov	%rdi,%rax	# dest, rsi: src
 .L2:
 	test	%rbx,%rbx
-	#jz	.L1
+	jz	.L1
 	cmp	$4,%rbx
 	jge	.L15
 	mov	%rbx,%rcx
