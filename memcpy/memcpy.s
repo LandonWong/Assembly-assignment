@@ -36,11 +36,12 @@ mymemcpy:
 	mov	$1,%rcx
 	jmp	.L7
 .L4:
-	cmp	$64,%rbx
-	jge	.L10
-	mov	%rbx,%rcx
-	shr	$4,%rcx
-	jmp	.L8
+	jmp	.L10
+	#cmp	$64,%rbx
+	#jge	.L10
+	#mov	%rbx,%rcx
+	#shr	$4,%rcx
+	#jmp	.L8
 .L6:
 	sub	%rcx,%rbx
 	cld
