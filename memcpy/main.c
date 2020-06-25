@@ -35,7 +35,7 @@ void *
 memcpy(void *dest, const void *src, size_t n){
 	char *tmp = dest;
 	while(n){
-		*tmp++ = (char)*src++;
+		*tmp++ = (char *)src++;
 		n--;
 	}
 	return dest;
