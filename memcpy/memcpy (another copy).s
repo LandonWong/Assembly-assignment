@@ -16,7 +16,7 @@ mymemcpy:
 	mov	%rbx,%rcx
 	jmp	.L6
 .L15:
-	mov	%rdi,%rcx
+	mov	%rsi,%rcx
 	and	$3,%rcx
 	jz	.L3
 	sub	$0x4,%rcx
@@ -30,7 +30,7 @@ mymemcpy:
 	shr	$2,%rcx
 	jmp	.L7
 .L12:
-	mov	%rdi,%rcx
+	mov	%rsi,%rcx
 	and	$7,%rcx
 	jz	.L4
 	mov	$1,%rcx
