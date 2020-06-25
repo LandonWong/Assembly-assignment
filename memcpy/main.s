@@ -193,40 +193,39 @@ main:
 	jne	.L16
 	movl	$0, %ebx
 	.loc 1 51 0
-	leaq	.LC0(%rip), %r15
-	leaq	.LC1(%rip), %r14
+	leaq	.LC0(%rip), %r14
+	leaq	.LC1(%rip), %r13
 .LBB12:
 .LBB13:
 	.loc 2 104 0
-	leaq	.LC3(%rip), %r13
+	leaq	.LC3(%rip), %r12
 .L18:
 .LVL22:
-	leaq	16(%rbx), %rbp
 .LBE13:
 .LBE12:
 	.loc 1 50 0
-	movq	%rbp, %rdi
-	addq	dest(%rip), %rdi
+	movq	dest(%rip), %rax
+	leaq	16(%rax,%rbx), %rdi
 	movl	$256, %edx
 	movq	src(%rip), %rsi
 	call	mymemcpy@PLT
 .LVL23:
 	.loc 1 51 0
-	movq	%rbp, %rdi
-	addq	dest(%rip), %rdi
+	movq	dest(%rip), %rax
+	leaq	32(%rax,%rbx), %rdi
 	movl	$256, %edx
 	movq	src(%rip), %rsi
 	call	check
 .LVL24:
 	cmpl	$1, %eax
-	movq	%r14, %rcx
-	cmove	%r15, %rcx
+	movq	%r13, %rcx
+	cmove	%r14, %rcx
 .LVL25:
 .LBB15:
 .LBB14:
 	.loc 2 104 0
 	movl	%ebx, %edx
-	movq	%r13, %rsi
+	movq	%r12, %rsi
 	movl	$1, %edi
 	movl	$0, %eax
 	call	__printf_chk@PLT
@@ -772,7 +771,7 @@ main:
 	.uleb128 0x1
 	.byte	0x54
 	.uleb128 0x2
-	.byte	0x7d
+	.byte	0x7c
 	.sleb128 0
 	.uleb128 0x1b
 	.uleb128 0x1

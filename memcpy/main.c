@@ -48,7 +48,7 @@ main(){
 	}
 	for(align = 0;align < 4;align++){
 		mymemcpy(dest + 0x10 + align,src,0x100);
-		printf("2 Test dest align %d, %s.\n",align,check(dest + 0x10 + align,src,0x100) == 1 ? "pass" : "fail");
+		printf("2 Test dest align %d, %s.\n",align,check(dest + 0x20 + align,src,0x100) == 1 ? "pass" : "fail");
 		//memcpy(dest + 0x10 + align,src,0x100);
 	}
 	for(align = 0;align < 4;align++){
