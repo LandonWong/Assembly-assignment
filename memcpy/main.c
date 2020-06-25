@@ -14,7 +14,7 @@ int basic_1_src_offset[BENCHNUM] = {0x10,0x20,0xcc30,0x38,0x3778};
 int basic_2_src_offset[BENCHNUM] = {0x104,0x1124,0x65c,0x8,0x888};
 
 int basic_1_dst_offset[BENCHNUM] = {0x10c,0x1124,0x65c,0x8,0x88};
-int basic_2_dst_offset[BENCHNUM] = {0x1004,0x21,0xcc00,0x38,0x38};
+int basic_2_dst_offset[BENCHNUM] = {0x1004,0x20,0xcc00,0x38,0x38};
 
 
 void *
@@ -31,15 +31,15 @@ InitSrcArea(int size){
 	}
 }
 
-/*void *
-memcpy(void *dest, const void *src, size_t n){
+void *
+char_memcpy(void *dest, const void *src, size_t n){
 	char *tmp = dest;
 	while(n){
 		*tmp++ = (char *)src++;
 		n--;
 	}
 	return dest;
-}*/
+}
 
 int
 check(char *dest, const char *src, size_t n){
@@ -102,6 +102,12 @@ main(){
 		       basic_2_size[i]);
 		gettimeofday(&tv2, NULL);
 		printf("[CLIB] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		gettimeofday(&tv1, NULL);
+		char_memcpy(dst + basic_2_dst_offset[i],
+		       src + basic_2_src_offset[i],
+		       basic_2_size[i]);
+		gettimeofday(&tv2, NULL);
+		printf("[NORM] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 	}
 	// Medium1 benchmark (src unaligned)
 
