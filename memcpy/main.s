@@ -142,7 +142,7 @@ check:
 	.string	"       Prod: %x --> %x, size = %d.\n"
 	.align 8
 .LC4:
-	.string	"[Clib] Test (basic #1) %d / 5:     ,time: %u.\n\n"
+	.string	"[Norm] Test (basic #1) %d / 5:     ,time: %u.\n\n"
 	.align 8
 .LC5:
 	.string	"[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n"
