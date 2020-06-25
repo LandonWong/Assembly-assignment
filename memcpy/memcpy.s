@@ -44,7 +44,7 @@ mymemcpy:
 	jmp	.L2
 .L7:
 	mov	%rcx,%r8
-	imul	$4,%r8
+	shl	$2,%r8
 	sub	%r8,%rbx
 	cld
 	rep	movsl
