@@ -8,6 +8,8 @@ mymemcpy:
 	push	%rdx
 	mov	%rdx,%rbx	# Remain length
 	mov	%rdi,%rax	# dest, rsi: src
+	push	%r8
+	xor	%r8,%r8		# offset
 .L2:
 	test	%rbx,%rbx
 	jz	.L1
@@ -43,16 +45,16 @@ mymemcpy:
 	jmp	.L8
 .L6:
 	movb	(%rsi),%dl
-	movb	%dl,(%rdi)
-	inc	%rdi
+	movb	%dl,(%rax,%r8)
+	inc	%r8
 	inc	%rsi
 	dec	%rbx
 	loop	.L6
 	jmp	.L2
 .L7:
 	movl	(%rsi),%edx
-	movl	%edx,(%rdi)
-	add	$4,%rdi
+	movl	%edx,(%rax,%r8)
+	add	$4,%r8
 	add	$4,%rsi
 	sub	$4,%rbx
 	loop	.L7
@@ -63,9 +65,9 @@ mymemcpy:
 .L9:
 	movq	(%rsi),%r9
 	movq	8(%rsi),%r10
-	movq	%r9,(%rdi)
-	movq	%r10,8(%rdi)
-	add	$16,%rdi
+	movq	%r9,(%rax,%r8)
+	movq	%r10,8(%rax,%r8)
+	add	$16,%r8
 	add	$16,%rsi
 	sub	$16,%rbx
 	loop	.L9
@@ -86,15 +88,15 @@ mymemcpy:
 	movq	40(%rsi),%mm1
 	movq	48(%rsi),%mm2
 	movq	56(%rsi),%mm3
-	movq	%r9,(%rdi)
-	movq	%r10,8(%rdi)
-	movq	%r11,16(%rdi)
-	movq	%r12,24(%rdi)
-	movq	%mm0,32(%rdi)
-	movq	%mm1,40(%rdi)
-	movq	%mm2,48(%rdi)
-	movq	%mm3,56(%rdi)
-	add	$64,%rdi
+	movq	%r9,(%rax,%r8)
+	movq	%r10,8(%rax,%r8)
+	movq	%r11,16(%rax,%r8)
+	movq	%r12,24(%rax,%r8)
+	movq	%mm0,32(%rax,%r8)
+	movq	%mm1,40(%rax,%r8)
+	movq	%mm2,48(%rax,%r8)
+	movq	%mm3,56(%rax,%r8)
+	add	$64,%r8
 	add	$64,%rsi
 	sub	$64,%rbx
 	cmp	$64,%rbx
@@ -106,6 +108,7 @@ mymemcpy:
 	cmp	$64,%rbx
 	jmp	.L2
 .L1:
+	pop	%r8
 	pop	%rdx
 	pop	%rcx
 	pop	%rbx
