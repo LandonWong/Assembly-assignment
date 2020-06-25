@@ -105,7 +105,7 @@ main(){
 		       basic_2_size[i]);
 		gettimeofday(&tv2, NULL);
 		printf("[CLIB] Test (basic #2) %d / 5:     ,time: %u.\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
-		memset(dst,0,SIZE);
+		memset(dst,-1,SIZE);
 		gettimeofday(&tv1, NULL);
 		char_memcpy(dst + basic_2_dst_offset[i],
 		       src + basic_2_src_offset[i],
