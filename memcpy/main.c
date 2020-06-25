@@ -96,22 +96,22 @@ main(){
 			      src + basic_2_src_offset[i],
 			      basic_2_size[i])
 			== 1);
-		printf("[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n",i+1 , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
-		printf("       Prod: %x --> %x, size = %d.\n",src + basic_2_src_offset[i],dst + basic_2_dst_offset[i],basic_2_size[i]);
+		printf("Test (basic #2) %d / 5: Prod: %x --> %x, size = %d.\n",i+1,src + basic_2_src_offset[i],dst + basic_2_dst_offset[i],basic_2_size[i]);
+		printf("[Mine] %s,time: %u.\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
 		memset(dst,0,SIZE);
 		gettimeofday(&tv1, NULL);
 		memcpy(dst + basic_2_dst_offset[i],
 		       src + basic_2_src_offset[i],
 		       basic_2_size[i]);
 		gettimeofday(&tv2, NULL);
-		printf("[CLIB] Test (basic #2) %d / 5:     ,time: %u.\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		printf("[CLIB]      time: %u.\n",tv2.tv_usec - tv1.tv_usec);
 		memset(dst,-1,SIZE);
 		gettimeofday(&tv1, NULL);
 		char_memcpy(dst + basic_2_dst_offset[i],
 		       src + basic_2_src_offset[i],
 		       basic_2_size[i]);
 		gettimeofday(&tv2, NULL);
-		printf("[NORM] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
+		printf("[NORM]      time: %u.\n\n",tv2.tv_usec - tv1.tv_usec);
 		memset(dst,0,SIZE);
 	}
 	// Medium1 benchmark (src unaligned)
