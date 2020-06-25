@@ -44,22 +44,20 @@ mymemcpy:
 .L6:
 	sub	%rcx,%rbx
 	cld
-	rep	
-	movsb
-	#movb	(%rsi),%dl
-	#movb	%dl,(%rdi)
-	#inc	%rdi
-	#inc	%rsi
-	#dec	%rbx
-	#loop	.L6
+	rep	movsb
 	jmp	.L2
 .L7:
-	movl	(%rsi),%edx
-	movl	%edx,(%rdi)
-	add	$4,%rdi
-	add	$4,%rsi
-	sub	$4,%rbx
-	loop	.L7
+	mov	%rcx,%r8
+	imul	$4,%r8
+	sub	%r8,%rbx
+	cld
+	rep	movsl
+	#movl	(%rsi),%edx
+	#movl	%edx,(%rdi)
+	#add	$4,%rdi
+	#add	$4,%rsi
+	#sub	$4,%rbx
+	#loop	.L7
 	jmp	.L2
 .L8:
 	push	%r9
