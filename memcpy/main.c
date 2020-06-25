@@ -31,7 +31,7 @@ InitSrcArea(int size){
 	}
 }
 
-void *
+/*void *
 memcpy(void *dest, const void *src, size_t n){
 	char *tmp = dest;
 	while(n){
@@ -39,7 +39,7 @@ memcpy(void *dest, const void *src, size_t n){
 		n--;
 	}
 	return dest;
-}
+}*/
 
 int
 check(char *dest, const char *src, size_t n){
