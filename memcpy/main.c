@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define SIZE	1000
+#include <sys/time.h>
+#define SIZE	100000
 void *src;
 void *dest;
 
@@ -42,7 +43,6 @@ main(){
 	for(align = 0;align < 4;align++){
 		a = mymemcpy(dest,src + 0x21 + align,0x100);
 		printf("1 Test src align %d, %s.\n",align,check(dest,src + 0x21 + align,0x100) == 1 ? "pass" : "fail");
-		//printf("%lu,%lu\n",dest,a);
 		//memcpy(dest,src + 0x10 + align,0x100);
 		//printf("1 Test src align %d, %s.\n",align,check(dest,src + 10 + align,500) == 1 ? "pass" : "fail");
 	}
