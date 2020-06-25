@@ -53,6 +53,7 @@ main(){
 	void *adst;
 	dst = (void *)malloc(SIZE * sizeof(char));
 	InitSrcArea(SIZE);
+	gettimeofday(&tv1, NULL);
 	// Basic1 benchmark (all aligned)
 	for(i = 0;i < BENCHNUM;i++){
 		pass = 0;
