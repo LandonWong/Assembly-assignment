@@ -42,6 +42,7 @@ mymemcpy:
 	shr	$4,%rcx
 	jmp	.L8
 .L6:
+	sub	%rcx,%rbx
 	cld
 	rep	
 	movsb
