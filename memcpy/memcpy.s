@@ -29,6 +29,7 @@ mymemcpy:
 	cmp	$16,%rbx
 	jge	.L12
 	mov	%rbx,%rcx
+	shr	$2,%rcx
 	jmp	.L7
 .L12:
 	mov	%rsi,%rcx
