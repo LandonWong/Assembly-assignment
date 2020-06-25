@@ -6,6 +6,7 @@ mymemcpy:
 	push	%rbx
 	push	%rcx
 	push	%rdx
+	push	%r8
 	mov	%rdx,%rbx
 	mov	%rdi,%rax
 .L2:
@@ -60,6 +61,7 @@ mymemcpy:
 	rep	movsq
 	jmp	.L2
 .L1:
+	pop	%r8
 	pop	%rdx
 	pop	%rcx
 	pop	%rbx
