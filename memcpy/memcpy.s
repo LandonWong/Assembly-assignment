@@ -6,8 +6,8 @@ mymemcpy:
 	push	%rbx
 	push	%rcx
 	push	%rdx
-	mov	%rdx,%rbx	# Remain length
-	mov	%rdi,%rax	# dest, rsi: src
+	mov	%rdx,%rbx
+	mov	%rdi,%rax
 .L2:
 	test	%rbx,%rbx
 	jz	.L1
