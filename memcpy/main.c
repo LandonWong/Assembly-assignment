@@ -8,7 +8,7 @@ void *src;
 void *dst;
 
 int basic_1_size[BENCHNUM] = {1,2,4,8,64};
-int basic_2_size[BENCHNUM] = {0x10,0x100,0x1000,0xc000,0x10000};
+int basic_2_size[BENCHNUM] = {0xcccc,0xffff,0x1000,0xc000,0x10000};
 
 int basic_1_src_offset[BENCHNUM] = {0x10,0x20,0xcc30,0x38,0x3778};
 int basic_2_src_offset[BENCHNUM] = {0x10c,0x1124,0x65c,0x8,0x888};
@@ -66,10 +66,23 @@ main(){
 			      src + basic_1_src_offset[i],
 			      basic_1_size[i])
 			== 1);
-		printf("[Mine] Test 1: %s ,time: %u.\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
+		printf("[Mine] Test (basic #1) %d / 5: %s ,time: %u.\n",i , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
 	}
 	// Basic2 benchmark (all aligned)
-	
+	for(i = 0;i < BENCHNUM;i++){
+		pass = 0;
+		gettimeofday(&tv1, NULL);
+		adst = mymemcpy(dst + basic_2_dst_offset[i],
+			        src + basic_2_src_offset[i],
+			        basic_2_size[i]);
+		gettimeofday(&tv2, NULL);
+		pass = (adst == dst + basic_2_dst_offset[i]) &&
+		       (check(dst + basic_2_dst_offset[i],
+			      src + basic_2_src_offset[i],
+			      basic_2_size[i])
+			== 1);
+		printf("[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n",i , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
+	}
 	// Medium1 benchmark (src unaligned)
 
 	// Medium2 benchmark (dest unaligned)
