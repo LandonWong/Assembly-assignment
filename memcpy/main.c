@@ -31,6 +31,7 @@ InitSrcArea(int size){
 	}
 }
 
+
 void *
 char_memcpy(void *dest, const void *src, size_t n){
 	char *tmp = dest;
@@ -114,21 +115,5 @@ main(){
 	// Medium2 benchmark (dest unaligned)
 
 	// Advanced benchmark (src & dest unaligned)
-	
-	for(i = 0;i < BENCHNUM;i++){
-		gettimeofday(&tv1, NULL);
-		memcpy(dst + basic_2_dst_offset[i],
-		       src + basic_2_src_offset[i],
-		       basic_2_size[i]);
-		gettimeofday(&tv2, NULL);
-		printf("[CLIB] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
-		printf("       Prod: %x --> %x, size = %d.\n",src + basic_2_src_offset[i],dst + basic_2_dst_offset[i],basic_2_size[i]);
-		gettimeofday(&tv1, NULL);
-		char_memcpy(dst + basic_2_dst_offset[i],
-		       src + basic_2_src_offset[i],
-		       basic_2_size[i]);
-		gettimeofday(&tv2, NULL);
-		printf("[NORM] Test (basic #2) %d / 5:     ,time: %u.\n\n",i+1, tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
-	}
 	return 0;
 }
