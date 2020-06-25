@@ -759,7 +759,7 @@ basic_1_src_offset:
 	.size	basic_2_size, 20
 basic_2_size:
 	.long	69632
-	.long	99999
+	.long	999999
 	.long	4095
 	.long	49152
 	.long	65536
