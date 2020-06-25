@@ -3,7 +3,7 @@
 ## Author
 * Landon WONG, UCAS
 * 王嵩岳, 2018K8009929033
-* Last modified: Jun. 24, 2020
+* Last modified: Jun. 25, 2020
 ## Notice
 * Development environment: Ubuntu 18.04 (Desktop) amd-64 (physical machine), Linux Kernel: 4.15, compilation tool: gcc
 * **ERROR Handle**: If an error is reported when executing `make *_asm` (including `make memcpy_asm`, `make atoi_asm`):\
@@ -20,7 +20,7 @@ This assignment has three parts:
 | Assignment Name | Status |
 | :---------------: | :---------------: |
 | atoi (#1) | Finished (Jun. 24) |
-| memcpy (#2) | INIT |
+| memcpy (#2) | Almost Finished (Jun. 25) (need benchmark) |
 | freq (#3) | INIT |
 ## File structure
 For checking assignment:
