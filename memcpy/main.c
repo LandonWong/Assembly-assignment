@@ -66,7 +66,7 @@ main(){
 			      src + basic_1_src_offset[i],
 			      basic_1_size[i])
 			== 1);
-		printf("[Mine] Test (basic #1) %d / 5: %s ,time: %u.\n",i , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
+		printf("[Mine] Test (basic #1) %d / 5: %s ,time: %u.\n",i+1 , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 	}
 	// Basic2 benchmark (all aligned)
 	for(i = 0;i < BENCHNUM;i++){
@@ -81,7 +81,7 @@ main(){
 			      src + basic_2_src_offset[i],
 			      basic_2_size[i])
 			== 1);
-		printf("[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n",i , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
+		printf("[Mine] Test (basic #2) %d / 5: %s ,time: %u.\n",i+1 , pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 	}
 	// Medium1 benchmark (src unaligned)
 
