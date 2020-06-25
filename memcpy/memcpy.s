@@ -37,11 +37,6 @@ mymemcpy:
 	jmp	.L7
 .L4:
 	jmp	.L10
-	#cmp	$64,%rbx
-	#jge	.L10
-	#mov	%rbx,%rcx
-	#shr	$4,%rcx
-	#jmp	.L8
 .L6:
 	sub	%rcx,%rbx
 	cld
@@ -53,21 +48,6 @@ mymemcpy:
 	sub	%r8,%rbx
 	cld
 	rep	movsl
-	jmp	.L2
-.L8:
-	push	%r9
-	push	%r10
-.L9:
-	movq	(%rsi),%r9
-	movq	8(%rsi),%r10
-	movq	%r9,(%rdi)
-	movq	%r10,8(%rdi)
-	add	$16,%rdi
-	add	$16,%rsi
-	sub	$16,%rbx
-	loop	.L9
-	pop	%r10
-	pop	%r9
 	jmp	.L2
 .L10:
 	mov	%rbx,%rcx
