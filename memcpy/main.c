@@ -7,7 +7,7 @@
 void *src;
 void *dst;
 
-int basic_1_size[BENCHNUM] = {1,2,4,8,64};
+int basic_1_size[BENCHNUM] = {1,2,4,8,63};
 int basic_2_size[BENCHNUM] = {0x11000,99999,0xfff,0xc000,0x10000};
 
 int basic_1_src_offset[BENCHNUM] = {0x10,0x20,0xcc30,0x38,0x3778};

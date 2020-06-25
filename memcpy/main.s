@@ -764,7 +764,7 @@ basic_1_size:
 	.long	2
 	.long	4
 	.long	8
-	.long	64
+	.long	63
 	.comm	dst,8,8
 	.comm	src,8,8
 	.text
