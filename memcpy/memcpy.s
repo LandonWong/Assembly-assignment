@@ -91,7 +91,6 @@ mymemcpy:
 	pop	%r11
 	pop	%r10
 	pop	%r9
-	cmp	$64,%rbx
 	jmp	.L2
 .L1:
 	pop	%rdx
