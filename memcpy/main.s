@@ -154,20 +154,20 @@ main:
 	leaq	.LC2(%rip), %r13
 .LVL16:
 .L16:
-	leaq	33(%rbx), %rbp
+	leaq	32(%rbx), %rbp
 .LBE9:
 .LBE8:
 	.loc 1 44 0
 	movq	%rbp, %rsi
 	addq	src(%rip), %rsi
-	movl	$256, %edx
+	movl	$4096, %edx
 	movq	dest(%rip), %rdi
 	call	mymemcpy@PLT
 .LVL17:
 	.loc 1 45 0
 	movq	%rbp, %rsi
 	addq	src(%rip), %rsi
-	movl	$256, %edx
+	movl	$4096, %edx
 	movq	dest(%rip), %rdi
 	call	check
 .LVL18:
@@ -214,7 +214,7 @@ main:
 	.loc 1 51 0
 	movq	%rbp, %rdi
 	addq	dest(%rip), %rdi
-	movl	$256, %edx
+	movl	$4096, %edx
 	movq	src(%rip), %rsi
 	call	check
 .LVL24:
@@ -260,7 +260,7 @@ main:
 	addq	src(%rip), %rsi
 	movq	%rbp, %rdi
 	addq	dest(%rip), %rdi
-	movl	$256, %edx
+	movl	$4096, %edx
 	call	check
 .LVL30:
 	cmpl	$1, %eax
@@ -870,7 +870,7 @@ main:
 	.byte	0x51
 	.uleb128 0x3
 	.byte	0xa
-	.value	0x100
+	.value	0x1000
 	.byte	0
 	.uleb128 0x1d
 	.quad	.LVL18
@@ -881,7 +881,7 @@ main:
 	.byte	0x51
 	.uleb128 0x3
 	.byte	0xa
-	.value	0x100
+	.value	0x1000
 	.byte	0
 	.uleb128 0x1d
 	.quad	.LVL23
@@ -903,7 +903,7 @@ main:
 	.byte	0x51
 	.uleb128 0x3
 	.byte	0xa
-	.value	0x100
+	.value	0x1000
 	.byte	0
 	.uleb128 0x1d
 	.quad	.LVL29
@@ -924,7 +924,7 @@ main:
 	.byte	0x51
 	.uleb128 0x3
 	.byte	0xa
-	.value	0x100
+	.value	0x1000
 	.byte	0
 	.byte	0
 	.uleb128 0x1e
