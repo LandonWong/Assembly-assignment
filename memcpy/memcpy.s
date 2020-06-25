@@ -28,8 +28,8 @@ mymemcpy:
 	jge	.L12
 	jmp	.L7
 .L12:
-	mov	%rdi,%rcx
-	and	$7,%rcx
+	mov	%rdi,%r8
+	and	$7,%r8
 	jz	.L10
 	jmp	.L30	
 .L6:
@@ -53,9 +53,11 @@ mymemcpy:
 .L10:
 	mov	%rbx,%rcx
 	shr	$3,%rcx
-	mov	%rcx,%r8
-	shl	$3,%r8
-	sub	%r8,%rbx
+	mov	%r8,%rbx
+	#and	$7,%rbx
+	#mov	%rcx,%r8
+	#shl	$3,%r8
+	#sub	%r8,%rbx
 	cld
 	rep	movsq
 	jmp	.L2
