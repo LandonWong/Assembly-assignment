@@ -207,7 +207,7 @@ main:
 	.loc 1 50 0
 	movq	%rbp, %rdi
 	addq	dest(%rip), %rdi
-	movl	$256, %edx
+	movl	$4096, %edx
 	movq	src(%rip), %rsi
 	call	mymemcpy@PLT
 .LVL23:
@@ -252,7 +252,7 @@ main:
 	addq	src(%rip), %rsi
 	movq	%rbp, %rdi
 	addq	dest(%rip), %rdi
-	movl	$256, %edx
+	movl	$4096, %edx
 	call	mymemcpy@PLT
 .LVL29:
 	.loc 1 56 0
@@ -892,7 +892,7 @@ main:
 	.byte	0x51
 	.uleb128 0x3
 	.byte	0xa
-	.value	0x100
+	.value	0x1000
 	.byte	0
 	.uleb128 0x1d
 	.quad	.LVL24
@@ -914,7 +914,7 @@ main:
 	.byte	0x51
 	.uleb128 0x3
 	.byte	0xa
-	.value	0x100
+	.value	0x1000
 	.byte	0
 	.uleb128 0x1a
 	.quad	.LVL30
