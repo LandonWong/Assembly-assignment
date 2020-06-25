@@ -564,7 +564,7 @@ main:
 	.type	basic_2_dst_offset, @object
 	.size	basic_2_dst_offset, 20
 basic_2_dst_offset:
-	.long	4096
+	.long	4100
 	.long	32
 	.long	52224
 	.long	56
