@@ -678,7 +678,7 @@ main:
 	.type	basic_2_dst_offset, @object
 	.size	basic_2_dst_offset, 20
 basic_2_dst_offset:
-	.long	4100
+	.long	56
 	.long	32
 	.long	52224
 	.long	56
@@ -698,7 +698,7 @@ basic_1_dst_offset:
 	.type	basic_2_src_offset, @object
 	.size	basic_2_src_offset, 20
 basic_2_src_offset:
-	.long	260
+	.long	8
 	.long	4388
 	.long	1628
 	.long	8
@@ -718,7 +718,7 @@ basic_1_src_offset:
 	.type	basic_2_size, @object
 	.size	basic_2_size, 20
 basic_2_size:
-	.long	34952
+	.long	65536
 	.long	65535
 	.long	4095
 	.long	49152
