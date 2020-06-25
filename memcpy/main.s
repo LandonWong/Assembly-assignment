@@ -154,7 +154,7 @@ check:
 	.string	"       Prod: %x --> %x, size = %d.\n\n"
 	.section	.rodata.str1.1
 .LC4:
-	.string	"[Mine] %s,time: %u.\n"
+	.string	"[Mine] %s time: %u.\n"
 .LC5:
 	.string	"[CLIB]      time: %u.\n"
 .LC6:

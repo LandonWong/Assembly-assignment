@@ -97,7 +97,7 @@ main(){
 			      basic_2_size[i])
 			== 1);
 		printf("Test (basic #2) %d / 5: Prod: %x --> %x, size = %d.\n",i+1,src + basic_2_src_offset[i],dst + basic_2_dst_offset[i],basic_2_size[i]);
-		printf("[Mine] %s,time: %u.\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
+		printf("[Mine] %s time: %u.\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
 		memset(dst,0,SIZE);
 		gettimeofday(&tv1, NULL);
 		memcpy(dst + basic_2_dst_offset[i],
