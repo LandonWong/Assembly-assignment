@@ -160,7 +160,7 @@ check:
 	.string	"       Prod: %x --> %x, size = %d.\n"
 	.align 8
 .LC6:
-	.string	"[CLIB] Test (basic #2) %d / 5:     ,time: %u.\n\n"
+	.string	"[CLIB] Test (basic #2) %d / 5:     ,time: %u.\n"
 	.align 8
 .LC7:
 	.string	"[NORM] Test (basic #2) %d / 5:     ,time: %u.\n\n"
