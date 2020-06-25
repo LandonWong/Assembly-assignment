@@ -17,7 +17,7 @@ InitSrcArea:
 	.loc 1 24 0
 	movl	%edi, %ebx
 	.loc 1 25 0
-	movl	$1000000, %edi
+	movl	$100000, %edi
 .LVL1:
 	call	malloc@PLT
 .LVL2:
@@ -179,7 +179,7 @@ main:
 	.cfi_def_cfa_offset 24
 	.cfi_offset 14, -24
 	.loc 1 65 0
-	movl	$1000000, %edi
+	movl	$100000, %edi
 	.loc 1 60 0
 	pushq	%r13
 	.cfi_def_cfa_offset 32
@@ -206,7 +206,7 @@ main:
 .LBB54:
 .LBB55:
 	.loc 1 25 0
-	movl	$1000000, %edi
+	movl	$100000, %edi
 .LBE55:
 .LBE54:
 	.loc 1 65 0
@@ -217,7 +217,7 @@ main:
 	.loc 1 25 0
 	call	malloc@PLT
 .LVL25:
-	movl	$1000000, %edx
+	movl	$100000, %edx
 	movq	%rax, src(%rip)
 .LVL26:
 	.p2align 4,,10
@@ -333,7 +333,7 @@ main:
 	.loc 3 71 0 discriminator 4
 	movq	dst(%rip), %rdi
 	xorl	%esi, %esi
-	movl	$1000000, %edx
+	movl	$100000, %edx
 	call	memset@PLT
 .LVL40:
 .LBE65:
@@ -440,7 +440,7 @@ main:
 .LBB75:
 	.loc 3 71 0 discriminator 4
 	movq	dst(%rip), %rdi
-	movl	$1000000, %edx
+	movl	$100000, %edx
 	xorl	%esi, %esi
 	call	memset@PLT
 .LVL51:
@@ -501,7 +501,7 @@ main:
 .LBB83:
 	.loc 3 71 0 discriminator 4
 	movq	dst(%rip), %rdi
-	movl	$1000000, %edx
+	movl	$100000, %edx
 	xorl	%esi, %esi
 	call	memset@PLT
 .LVL58:
@@ -583,7 +583,7 @@ main:
 	.loc 3 71 0
 	movq	dst(%rip), %rdi
 	xorl	%esi, %esi
-	movl	$1000000, %edx
+	movl	$100000, %edx
 	call	memset@PLT
 .LVL68:
 .LBE91:
@@ -759,7 +759,7 @@ basic_1_src_offset:
 	.size	basic_2_size, 20
 basic_2_size:
 	.long	69632
-	.long	1048575
+	.long	99999
 	.long	4095
 	.long	49152
 	.long	65536
@@ -1353,7 +1353,7 @@ basic_1_size:
 	.byte	0x55
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.byte	0
 	.byte	0
@@ -1438,7 +1438,7 @@ basic_1_size:
 	.byte	0x51
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
@@ -1528,7 +1528,7 @@ basic_1_size:
 	.byte	0x51
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -1612,7 +1612,7 @@ basic_1_size:
 	.byte	0x51
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -1699,7 +1699,7 @@ basic_1_size:
 	.byte	0x51
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.byte	0
 	.uleb128 0x20
@@ -1745,7 +1745,7 @@ basic_1_size:
 	.byte	0x55
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.uleb128 0x23
 	.quad	.LVL30
@@ -2076,7 +2076,7 @@ basic_1_size:
 	.byte	0x55
 	.uleb128 0x5
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0
 	.byte	0
 	.uleb128 0x2c
@@ -2914,7 +2914,7 @@ basic_1_size:
 	.quad	.LVL26
 	.value	0x6
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0x9f
 	.quad	.LVL26
 	.quad	.LVL28
@@ -2951,7 +2951,7 @@ basic_1_size:
 	.quad	.LVL40
 	.value	0x6
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0x9f
 	.quad	0
 	.quad	0
@@ -2994,7 +2994,7 @@ basic_1_size:
 	.quad	.LVL51
 	.value	0x6
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0x9f
 	.quad	0
 	.quad	0
@@ -3098,7 +3098,7 @@ basic_1_size:
 	.quad	.LVL58
 	.value	0x6
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0x9f
 	.quad	0
 	.quad	0
@@ -3163,7 +3163,7 @@ basic_1_size:
 	.quad	.LVL68
 	.value	0x6
 	.byte	0xc
-	.long	0xf4240
+	.long	0x186a0
 	.byte	0x9f
 	.quad	0
 	.quad	0
