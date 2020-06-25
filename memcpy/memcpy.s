@@ -30,30 +30,16 @@ mymemcpy:
 	jmp	.L7
 .L12:
 	mov	%rsi,%rcx
-	and	$0xf,%rcx
+	and	$7,%rcx
 	jz	.L4
-	sub	$16,%rcx
-	not	%rcx
-	inc	%rcx
-	shr	$2,%rcx
+	mov	$1,%rcx
 	jmp	.L7
 .L4:
 	cmp	$64,%rbx
-	jge	.L17
+	jge	.L10
 	mov	%rbx,%rcx
-	jmp	.L8
-.L17:
-	mov	%rsi,%rcx
-	and	$0x2f,%rcx
-	jz	.L5
-	sub	$64,%rcx
-	not	%rcx
-	inc	%rcx
 	shr	$4,%rcx
 	jmp	.L8
-.L5:
-	jmp	.L10
-
 .L6:
 	movb	(%rsi),%dl
 	movb	%dl,(%rax,%r8)
