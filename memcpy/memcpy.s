@@ -42,12 +42,14 @@ mymemcpy:
 	shr	$4,%rcx
 	jmp	.L8
 .L6:
-	movb	(%rsi),%dl
-	movb	%dl,(%rdi)
-	inc	%rdi
-	inc	%rsi
-	dec	%rbx
-	loop	.L6
+	cld
+	rep	movsb
+	#movb	(%rsi),%dl
+	#movb	%dl,(%rdi)
+	#inc	%rdi
+	#inc	%rsi
+	#dec	%rbx
+	#loop	.L6
 	jmp	.L2
 .L7:
 	movl	(%rsi),%edx
