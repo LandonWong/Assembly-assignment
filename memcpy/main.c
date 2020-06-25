@@ -7,7 +7,7 @@
 void *src;
 void *dst;
 
-int basic_1_size[BENCHNUM] = {1,2,4,8,63};
+int basic_1_size[BENCHNUM] = {1,2,4,8,64};
 int basic_2_size[BENCHNUM] = {0x11000,99999,0xfff,0xc000,0x10000};
 
 int basic_1_src_offset[BENCHNUM] = {0x10,0x20,0xcc30,0x38,0x3778};
@@ -66,6 +66,7 @@ main(){
 	InitSrcArea(SIZE);
 	gettimeofday(&tv1, NULL);
 	// Basic1 benchmark (all aligned)
+	printf("<<< Basic 01 Test begin >>>\n");
 	for(i = 0;i < BENCHNUM;i++){
 		pass = 0;
 		gettimeofday(&tv1, NULL);
@@ -82,7 +83,9 @@ main(){
 		printf("[Mine] %s time: %u.\n\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
 		memset(dst,0,SIZE);
 	}
+	printf("<<< Basic 01 Test end >>>\n\n");
 	// Basic2 benchmark (all aligned)
+	printf("<<< Basic 02 Test begin >>>\n");
 	for(i = 0;i < BENCHNUM;i++){
 		pass = 0;
 		gettimeofday(&tv1, NULL);
@@ -114,6 +117,7 @@ main(){
 		printf("[NORM]      time: %u.\n\n",tv2.tv_usec - tv1.tv_usec);
 		memset(dst,0,SIZE);
 	}
+	printf("<<< Basic 02 Test end >>>\n\n");
 	// Medium1 benchmark (src unaligned)
 
 	// Medium2 benchmark (dest unaligned)
