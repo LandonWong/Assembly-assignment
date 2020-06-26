@@ -55,7 +55,7 @@ myatoi:
 .L7:					# L7: OVERFLOW handle
 	mov	$0x7fffffff,%eax	# set value max
 	cmp	$1,%ebx
-	je	.L8
+	je	.L9
 	not	%eax			# if sign == -1, set value min
 	jmp	.L9
 .L8:
