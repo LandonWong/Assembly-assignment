@@ -60,34 +60,29 @@ AssembleLangFinal
 ## Usage
 **NOTE: All the following commands are executed in the top directory.**
 
-0. Global
-
-| Command | Description |
-| :---------------: | :---------------: |
-| `make cmt` | Commit all changes |
-| `make push` | Push to my repo at GitHub |
+Make command format: `make VAL=<assignment name> ACT=<action>`
 
 1. For assignment **#1: atoi**
 
 | Command | Description |
 | :---------------: | :---------------: |
-| `make atoi_asm` | Compile `atoi/atoi.s` and main program `atoi/main.c`. Generate *.o files |
-| `make atoi_link` | Link *.o files |
-| `make atoi_run` | Run atoi test program |
-| `make atoi_clean` | Delete intermediate temporary files |
+| `make VAL=atoi ACT=asm` | Compile `atoi/atoi.s` and main program `atoi/main.c`. Generate *.o files |
+| `make VAL=atoi ACT=link` | Link `*.o` files |
+| `make VAL=atoi ACT=run` | Run atoi test program |
+| `make VAL=atoi ACT=clean` | Delete intermediate temporary files |
 
 2. For assignment **#2: memcpy**
 
 | Command | Description |
 | :---------------: | :---------------: |
-| `make memcpy_asm` | Compile `memcpy/memcpy.s` and main program `memcpy/main.c`. Generate `*.o` files |
-| `make memcpy_link` | Link `*.o` files |
-| `make memcpy_run` | Run memcpy test program |
-| `make memcpy_clean` | Delete intermediate temporary files |
+| `make VAL=memcpy ACT=asm` | Compile `memcpy/memcpy.s` and main program `memcpy/main.c`. Generate `*.o` files |
+| `make VAL=memcpy ACT=link` | Link `*.o` files |
+| `make VAL=memcpy ACT=run` | Run memcpy test program |
+| `make VAL=memcpy ACT=clean` | Delete intermediate temporary files |
 3. For assignment **#3: frequency**
 
 | Command | Description |
 | :---------------: | :---------------: |
-| `make freq_compile` | Compile program freq/freq.c |
-| `make freq_run` | Run freq test program |
-| `make freq_clean` | Delete intermediate temporary files |
+| `make VAL=freq ACT=compile` | Compile program `freq/freq.c` |
+| `make VAL=freq ACT=run` | Run freq test program |
+| `make VAL=freq ACT=clean` | Delete intermediate temporary files |
