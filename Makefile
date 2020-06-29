@@ -11,5 +11,5 @@ ifeq ($(ACT),run)
 	MSG ?= " test run."
 endif
 all:
+	@echo "[INFO] Assignment "$(VAL)" will be "$(MSG)
 	@cd $(VAL) && $(MAKE) $(ACT)
-	@echo "["$(VAL)"]"$(MSG)
