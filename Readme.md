@@ -59,14 +59,32 @@ AssembleLangFinal
 ```
 ## Usage
 **NOTE: All the following commands are executed in the top directory.**
-
+### Format
 Make command format: `make VAL=<assignment name> ACT=<action>`
+1. assignment name
 
+| `<assignment name>` | Description |
+| :---------------: | :---------------: |
+| `atoi` | Assignment #1 |
+| `memcpy` | Assignment #2 |
+| `freq` | Assignment #3 |
+
+2. action
+
+| `<action>` | Description |
+| :---------------: | :---------------: |
+| `asm` | compile but not link, only for assignment #1#2 |
+| `link` | link `*.o` |
+| `compile` | compile, only for assignment #3 |
+| `run` | run testbench |
+| `clear` | Delete intermediate temporary files |
+
+### Examples
 1. For assignment **#1: atoi**
 
 | Command | Description |
 | :---------------: | :---------------: |
-| `make VAL=atoi ACT=asm` | Compile `atoi/atoi.s` and main program `atoi/main.c`. Generate *.o files |
+| `make VAL=atoi ACT=asm` | Compile `atoi/atoi.s` and main program `atoi/main.c`. Generate `*.o` files |
 | `make VAL=atoi ACT=link` | Link `*.o` files |
 | `make VAL=atoi ACT=run` | Run atoi test program |
 | `make VAL=atoi ACT=clean` | Delete intermediate temporary files |
