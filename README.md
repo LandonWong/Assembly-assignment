@@ -21,7 +21,7 @@ This assignment has three parts:
 | :---------------: | :---------------: |
 | atoi (#1) | Finished (Jun. 24) |
 | memcpy (#2) | Almost Finished (Jun. 25) (need benchmark) |
-| freq (#3) | INIT |
+| freq (#3) | Finished (July. 04) |
 ## File structure
 For checking assignment:
 | Filename | Description |
