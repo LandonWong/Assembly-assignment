@@ -24,7 +24,7 @@ main:
 	or	%rax,%rdx
 	mov	%rdx,%rbp
 	mov	$0x7fffffff,%rcx
-	L1:
+L1:
 	xor	%ecx,%eax
 	inc	%eax
 	dec	%rcx
