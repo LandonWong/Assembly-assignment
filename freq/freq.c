@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <sys/time.h>
-void
-main(){
-	/*long cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
+	int cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
 	long time;
 	long cycle_1,cycle_2;
+void
+main(){
 	struct timeval tv1, tv2;
 	double cpufreq;
-	/*gettimeofday(&tv1, NULL);
-	asm(
+	gettimeofday(&tv1, NULL);
+	asm volatile(
 		"push	%eax\n\t"
 		"push	%ecx\n\t"
 		"rdtsc\n\t"
@@ -26,7 +26,7 @@ main(){
 	cycle_1 = cycle_1_l;
 	cycle_2 = cycle_2_l;
 	time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
-	cpufreq = (cycle_2 - cycle_1) / time;*/
+	cpufreq = (cycle_2 - cycle_1) / time;
 	printf("The cpu frequency is MHz\n");
 	return;
 }
