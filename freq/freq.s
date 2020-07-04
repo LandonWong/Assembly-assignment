@@ -8,19 +8,13 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB23:
-	.cfi_startproc
 	leal	4(%esp), %ecx
-	.cfi_def_cfa 1, 0
 	andl	$-16, %esp
 	pushl	-4(%ecx)
 	pushl	%ebp
-	.cfi_escape 0x10,0x5,0x2,0x75,0
 	movl	%esp, %ebp
 	pushl	%ebx
 	pushl	%ecx
-	.cfi_escape 0xf,0x3,0x75,0x78,0x6
-	.cfi_escape 0x10,0x3,0x2,0x75,0x7c
 	subl	$56, %esp
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
@@ -77,21 +71,12 @@ main:
 	jne	.L4
 	leal	-8(%ebp), %esp
 	popl	%ecx
-	.cfi_remember_state
-	.cfi_restore 1
-	.cfi_def_cfa 1, 0
 	popl	%ebx
-	.cfi_restore 3
 	popl	%ebp
-	.cfi_restore 5
 	leal	-4(%ecx), %esp
-	.cfi_def_cfa 4, 4
 	ret
 .L4:
-	.cfi_restore_state
 	call	__stack_chk_fail_local
-	.cfi_endproc
-.LFE23:
 	.size	main, .-main
 	.comm	cycle_2,4,4
 	.comm	cycle_1,4,4
@@ -101,12 +86,8 @@ main:
 	.hidden	__x86.get_pc_thunk.bx
 	.type	__x86.get_pc_thunk.bx, @function
 __x86.get_pc_thunk.bx:
-.LFB24:
-	.cfi_startproc
 	movl	(%esp), %ebx
 	ret
-	.cfi_endproc
-.LFE24:
 	.hidden	__stack_chk_fail_local
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
