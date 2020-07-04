@@ -11,7 +11,7 @@ main(){
 		"lfence\n\t"
 		"rdtscp\n\t"
 		"mov	%eax,cycle_1\n\t"
-		"mov	$0xfffff,%ecx\n\t"
+		"mov	$0xffffff,%ecx\n\t"
 		"L1:\n\t"
 		"xor	%ecx,%eax\n\t"
 		"inc	%eax\n\t"
@@ -22,6 +22,6 @@ main(){
 	gettimeofday(&tv2, NULL);
 	time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
 	cpufreq = (cycle_2 - cycle_1) / time;
-	printf("The cpu frequency is %.2f MHz\n",cpufreq);
+	printf("The cpu frequency is %.2f MHz, time = %d\n",cpufreq,time);
 	return;
 }
