@@ -29,7 +29,7 @@ main:
 # 10 "freq.c" 1
 	rdtscp
 	mov	%eax,cycle_1
-	mov	$0x7fffffff,%ecx
+	mov	$0xfffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
