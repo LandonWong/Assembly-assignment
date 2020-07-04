@@ -22,7 +22,6 @@ main:
 	rdtscp
 	shl	$32,%rdx
 	or	%rax,%rdx
-	mov	%rdx,%rbp
 	mov	$0x7fffffff,%rcx
 L1:
 	xor	%ecx,%eax
@@ -35,6 +34,7 @@ L1:
 	
 # 0 "" 2
 #NO_APP
+	movq	%rdx, %rbp
 	movq	%rax, %rbx
 	leaq	16(%rsp), %rdi
 	movl	$0, %esi

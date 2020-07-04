@@ -11,7 +11,6 @@ main(){
 		"rdtscp\n\t"
 		"shl	$32,%%rdx\n\t"
 		"or	%%rax,%%rdx\n\t"
-		"mov	%%rdx,%1\n\t"
 		"mov	$0x7fffffff,%%rcx\n"
 		"L1:\n\t"
 		"xor	%%ecx,%%eax\n\t"
@@ -21,7 +20,7 @@ main(){
 		"rdtscp\n\t"
 		"shl	$32,%%rdx\n\t"
 		"or	%%rdx,%%rax\n\t"
-		: "=a" (cycle_2), "=r" (cycle_1)
+		: "=a" (cycle_2), "=d" (cycle_1)
 	);
 	gettimeofday(&tv2, NULL);
 	time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
