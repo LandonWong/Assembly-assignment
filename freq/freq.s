@@ -3,7 +3,7 @@
 	.section	.rodata.str1.4,"aMS",@progbits,1
 	.align 4
 .LC0:
-	.string	"The cpu frequency is %.4f MHz, time = %d us, cycle = %d\n"
+	.string	"The cpu frequency is %.2f MHz, time = %d us, cycle = %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -30,7 +30,7 @@ main:
 	lfence
 	rdtscp
 	mov	%eax,cycle_1
-	mov	$0x7ffffff,%ecx
+	mov	$0x7fffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
