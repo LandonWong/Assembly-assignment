@@ -3,7 +3,7 @@
 ## Author
 * Landon WONG, UCAS
 * 王嵩岳, 2018K8009929033
-* Last modified: Jun. 25, 2020
+* Last modified: July. 04, 2020
 ## Notice
 * Development environment: Ubuntu 18.04 (Desktop) amd-64 (physical machine), Linux Kernel: 4.15, compilation tool: gcc
 * **ERROR Handle**: If an error is reported when executing `make *_asm` (including `make memcpy_asm`, `make atoi_asm`):\
@@ -32,31 +32,28 @@ For checking assignment:
 ```
 AssembleLangFinal
   |
-  |--doc            # assignment report
+  |--doc                    # assignment report
   |    |--2018K8009929033.pdf
   |
   |--atoi
-  |    |--main.c    # test main program
-  |    |--atoi.s    # Assignment #1: atoi
+  |    |--main.c            # test main program
+  |    |--atoi.s            # Assignment #1: atoi
   |    |--Makefile
   |
   |--memcpy
-  |    |--main.c    # test main program
-  |    |--memcpy.s  # Assignment #2: memcpy
+  |    |--main.c            # test main program
+  |    |--memcpy.s          # Assignment #2: memcpy
   |    |--Makefile
   | 
   |--freq
-  |    |--freq.c    # Assignment #3: frequency
+  |    |--freq.c            # Assignment #3: frequency
   |    |--Makefile
   |
-  |--Readme.md      # Documentation
-  |
-  |--Readme.pdf     # Documentation (PDF)
-  |
+  |--Readme.md              # Documentation
+  |--Readme.pdf             # Documentation (PDF)
   |--Makefile
-  |
-  |--LICENSE        # MIT License
-```
+  |--LICENSE            
+ ```
 ## Usage
 **NOTE: All the following commands are executed in the top directory.**
 ### Format
