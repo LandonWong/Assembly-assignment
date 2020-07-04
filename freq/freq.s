@@ -1,11 +1,6 @@
 	.file	"freq.c"
 	.text
 .Ltext0:
-	.section	.rodata
-	.align 4
-.LC0:
-	.string	"The cpu frequency is %.2f MHz\n"
-	.text
 	.globl	main
 	.type	main, @function
 main:
@@ -24,7 +19,7 @@ main:
 	pushl	%ecx
 	.cfi_escape 0xf,0x3,0x75,0x78,0x6
 	.cfi_escape 0x10,0x3,0x2,0x75,0x7c
-	subl	$80, %esp
+	subl	$48, %esp
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	.loc 1 4 0
@@ -64,11 +59,11 @@ main:
 	call	gettimeofday@PLT
 	addl	$16, %esp
 	.loc 1 26 0
-	movl	-60(%ebp), %eax
-	movl	%eax, -56(%ebp)
+	movl	-48(%ebp), %eax
+	movl	%eax, -44(%ebp)
 	.loc 1 27 0
-	movl	-52(%ebp), %eax
-	movl	%eax, -48(%ebp)
+	movl	-40(%ebp), %eax
+	movl	%eax, -36(%ebp)
 	.loc 1 28 0
 	movl	-20(%ebp), %edx
 	movl	-28(%ebp), %eax
@@ -80,23 +75,7 @@ main:
 	subl	%edx, %ecx
 	movl	%ecx, %edx
 	addl	%edx, %eax
-	movl	%eax, -44(%ebp)
-	.loc 1 29 0
-	movl	-48(%ebp), %eax
-	subl	-56(%ebp), %eax
-	cltd
-	idivl	-44(%ebp)
-	movl	%eax, -76(%ebp)
-	fildl	-76(%ebp)
-	fstpl	-40(%ebp)
-	.loc 1 30 0
-	subl	$4, %esp
-	pushl	-36(%ebp)
-	pushl	-40(%ebp)
-	leal	.LC0@GOTOFF(%ebx), %eax
-	pushl	%eax
-	call	printf@PLT
-	addl	$16, %esp
+	movl	%eax, -32(%ebp)
 	.loc 1 31 0
 	nop
 	.loc 1 32 0
@@ -141,15 +120,15 @@ __x86.get_pc_thunk.bx:
 	.file 8 "/usr/include/sys/time.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x41b
+	.long	0x402
 	.value	0x4
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF73
+	.long	.LASF71
 	.byte	0xc
-	.long	.LASF74
-	.long	.LASF75
+	.long	.LASF72
+	.long	.LASF73
 	.long	.Ltext0
 	.long	.Letext0-.Ltext0
 	.long	.Ldebug_line0
@@ -416,7 +395,7 @@ __x86.get_pc_thunk.bx:
 	.byte	0x6c
 	.byte	0
 	.uleb128 0xb
-	.long	.LASF76
+	.long	.LASF74
 	.byte	0x4
 	.byte	0x9a
 	.uleb128 0x8
@@ -468,7 +447,7 @@ __x86.get_pc_thunk.bx:
 	.byte	0x27
 	.byte	0
 	.uleb128 0xe
-	.long	.LASF77
+	.long	.LASF75
 	.uleb128 0xf
 	.long	.LASF50
 	.byte	0x4
@@ -565,14 +544,13 @@ __x86.get_pc_thunk.bx:
 	.uleb128 0x12
 	.long	0x370
 	.uleb128 0x13
-	.long	.LASF78
+	.long	.LASF76
 	.byte	0x1
 	.byte	0x4
 	.long	.LFB0
 	.long	.LFE0-.LFB0
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x417
 	.uleb128 0x14
 	.long	.LASF64
 	.byte	0x1
@@ -585,7 +563,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -60
+	.sleb128 -48
 	.uleb128 0x14
 	.long	.LASF65
 	.byte	0x1
@@ -598,7 +576,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -52
+	.sleb128 -40
 	.uleb128 0x15
 	.long	.LASF68
 	.byte	0x1
@@ -606,7 +584,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -44
+	.sleb128 -32
 	.uleb128 0x15
 	.long	.LASF69
 	.byte	0x1
@@ -614,7 +592,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -56
+	.sleb128 -44
 	.uleb128 0x15
 	.long	.LASF70
 	.byte	0x1
@@ -622,7 +600,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -48
+	.sleb128 -36
 	.uleb128 0x16
 	.string	"tv1"
 	.byte	0x1
@@ -639,19 +617,7 @@ __x86.get_pc_thunk.bx:
 	.uleb128 0x2
 	.byte	0x75
 	.sleb128 -20
-	.uleb128 0x15
-	.long	.LASF71
-	.byte	0x1
-	.byte	0x9
-	.long	0x417
-	.uleb128 0x2
-	.byte	0x75
-	.sleb128 -40
 	.byte	0
-	.uleb128 0x3
-	.byte	0x8
-	.byte	0x4
-	.long	.LASF72
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
@@ -880,8 +846,6 @@ __x86.get_pc_thunk.bx:
 	.uleb128 0x18
 	.uleb128 0x2116
 	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x14
@@ -949,8 +913,6 @@ __x86.get_pc_thunk.bx:
 	.string	"__quad_t"
 .LASF32:
 	.string	"_old_offset"
-.LASF72:
-	.string	"double"
 .LASF59:
 	.string	"tv_sec"
 .LASF56:
@@ -963,8 +925,6 @@ __x86.get_pc_thunk.bx:
 	.string	"size_t"
 .LASF37:
 	.string	"_offset"
-.LASF71:
-	.string	"cpufreq"
 .LASF65:
 	.string	"cycle_2_h"
 .LASF21:
@@ -995,7 +955,7 @@ __x86.get_pc_thunk.bx:
 	.string	"_IO_2_1_stderr_"
 .LASF63:
 	.string	"tz_dsttime"
-.LASF77:
+.LASF75:
 	.string	"_IO_FILE_plus"
 .LASF49:
 	.string	"_pos"
@@ -1029,11 +989,11 @@ __x86.get_pc_thunk.bx:
 	.string	"short unsigned int"
 .LASF15:
 	.string	"char"
-.LASF78:
+.LASF76:
 	.string	"main"
 .LASF47:
 	.string	"_next"
-.LASF75:
+.LASF73:
 	.string	"/home/landon/AssembleLangFinal/freq"
 .LASF39:
 	.string	"__pad2"
@@ -1071,11 +1031,11 @@ __x86.get_pc_thunk.bx:
 	.string	"_mode"
 .LASF19:
 	.string	"_IO_read_base"
-.LASF73:
+.LASF71:
 	.string	"GNU C11 7.5.0 -m32 -mtune=generic -march=i686 -g -fPIC -fstack-protector-strong"
 .LASF64:
 	.string	"cycle_1_h"
-.LASF74:
+.LASF72:
 	.string	"freq.c"
 .LASF34:
 	.string	"_vtable_offset"
@@ -1099,7 +1059,7 @@ __x86.get_pc_thunk.bx:
 	.string	"stdout"
 .LASF51:
 	.string	"_IO_2_1_stdout_"
-.LASF76:
+.LASF74:
 	.string	"_IO_lock_t"
 	.hidden	__stack_chk_fail_local
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
