@@ -10,7 +10,7 @@ main(){
 	asm volatile(
 		"rdtsc\n\t"
 		"mov	%eax,cycle_1\n\t"
-		"mov	$0xfffff,%ecx\n\t"
+		"mov	$0xfff,%ecx\n\t"
 		"L1:\n\t"
 		"inc	%eax\n\t"
 		"loop L1\n\t"

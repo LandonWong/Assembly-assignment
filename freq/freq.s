@@ -35,7 +35,7 @@ main:
 # 10 "freq.c" 1
 	rdtsc
 	mov	%eax,cycle_1
-	mov	$0xfffff,%ecx
+	mov	$0xfff,%ecx
 	L1:
 	inc	%eax
 	loop L1
