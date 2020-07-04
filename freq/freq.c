@@ -6,8 +6,8 @@ main(){
 	long time;
 	long long cycle_1,cycle_2;
 	double cpufreq;
-	gettimeofday(&tv1, NULL);
 	while(1){
+		gettimeofday(&tv1, NULL);
 		asm volatile(
 			"rdtscp\n\t"
 			"shl	$32,%%rdx\n\t"
