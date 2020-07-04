@@ -3,7 +3,7 @@
 	.section	.rodata.str1.8,"aMS",@progbits,1
 	.align 8
 .LC0:
-	.string	"The cpu frequency is %.2f MHz, time = %d us, cycle = %d\n"
+	.string	"The cpu frequency is %.2f MHz, time = %d us, cycle = %lu\n"
 	.text
 	.globl	main
 	.type	main, @function
