@@ -4,7 +4,7 @@ void
 main(){
 	unsigned long cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
 	long time;
-	long cycle_1,cycle_2;
+	long long cycle_1,cycle_2;
 	struct timeval tv1, tv2;
 	double cpufreq;
 	gettimeofday(&tv1, NULL);
