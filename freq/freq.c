@@ -22,8 +22,8 @@ main(){
 			: "=a" (cycle_2_l), "=d" (cycle_2_h), "=r" (cycle_1_l), "=r" (cycle_1_h)
 		);
 		gettimeofday(&tv2, NULL);
-		cycle_1 = (cycle_1_h << 32) | (cycle_1_l & 0xffffffff00000000);
-		cycle_2 = (cycle_2_h << 32) | (cycle_2_l & 0xffffffff00000000);
+		cycle_1 = (cycle_1_h << 32) | (cycle_1_l);
+		cycle_2 = (cycle_2_h << 32) | (cycle_2_l);
 		time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
 		cpufreq = (cycle_2 - cycle_1) * 1.0 / (time * 1.0);
 		printf("The cpu frequency is %.3f MHz, time = %d us, cycle = %lu\n",cpufreq,time,cycle_2 - cycle_1);
