@@ -15,6 +15,7 @@ main(){
 		"mov	$0x7fffffff,%ecx\n\t"
 		"L1:\n\t"
 		"inc	%eax\n\t"
+		"loop L1\n\t"
 		"rdtsc\n\t"
 		"mov	%eax,cycle_2_l\n\t"
 		"mov	%edx,cycle_2_h\n\t"
