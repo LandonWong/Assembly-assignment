@@ -6,18 +6,22 @@ void
 main(){
 	struct timeval tv1, tv2;
 	long time;
-	long cycle_1,cycle_2;
+	long long cycle_1,cycle_2;
 	double cpufreq;
 	gettimeofday(&tv1, NULL);
 	asm volatile(
 		"rdtscp\n\t"
-		"mov	%%rax,%1\n\t"
+		"shl	$32,%%rdx\n\t"
+		"or	%%rax,%%rdx\n\t"
+		"mov	%%rdx,%1\n\t"
 		"mov	$0xfffffff,%%ecx\n\t"
 		"L1:\n\t"
 		"xor	%%ecx,%%eax\n\t"
 		"inc	%%eax\n\t"
 		"loop	L1\n\t"
-		"rdtscp"
+		"rdtscp\n\t"
+		"shl	$32,%%rdx\n\t"
+		"or	%%rdx,%%rax\n\t"
 		//"mov	%eax,cycle_2\n\t"
 		: "=a" (cycle_2), "=r" (cycle_1)
 	);

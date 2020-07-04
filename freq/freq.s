@@ -20,13 +20,18 @@ main:
 #APP
 # 12 "freq.c" 1
 	rdtscp
-	mov	%rax,%rbp
+	shl	$32,%rdx
+	or	%rax,%rdx
+	mov	%rdx,%rbp
 	mov	$0xfffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
 	loop	L1
 	rdtscp
+	shl	$32,%rdx
+	or	%rdx,%rax
+	
 # 0 "" 2
 #NO_APP
 	movq	%rax, %rbx
