@@ -30,7 +30,7 @@ main:
 	shl	$32,%rdx
 	or	%rax,%rdx
 	mov	%rdx,%rbp
-	mov	$0x7fffffff,%rcx
+	mov	$0xffffffff,%rcx
 L1:
 	xor	%ecx,%eax
 	inc	%eax
