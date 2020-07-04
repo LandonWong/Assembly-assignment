@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -m32 -O -w -fno-asynchronous-unwind-tables
+CFLAGS = -w -fno-asynchronous-unwind-tables -Llibfsdk.so -shared 
 compile:
 	$(CC) $(CFLAGS) -S freq.c
 	$(CC) $(CFLAGS) -o freq freq.c
