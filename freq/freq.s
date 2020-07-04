@@ -30,8 +30,8 @@ main:
 #APP
 # 12 "freq.c" 1
 	rdtscp
-	mov	%eax,%eax
-	mov	$0xfffffff,%ecx
+	mov	%eax,%edi
+	mov	$0xffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax

@@ -11,8 +11,8 @@ main(){
 	gettimeofday(&tv1, NULL);
 	asm volatile(
 		"rdtscp\n\t"
-		"mov	%%eax,%0\n\t"
-		"mov	$0xfffffff,%%ecx\n\t"
+		"mov	%%eax,%1\n\t"
+		"mov	$0xffffff,%%ecx\n\t"
 		"L1:\n\t"
 		"xor	%%ecx,%%eax\n\t"
 		"inc	%%eax\n\t"
