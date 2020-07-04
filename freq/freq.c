@@ -2,7 +2,7 @@
 #include <sys/time.h>
 void
 main(){
-	unsigned long cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
+	long cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
 	long time;
 	long cycle_1,cycle_2;
 	struct timeval tv1, tv2;

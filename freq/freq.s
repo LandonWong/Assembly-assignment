@@ -577,12 +577,12 @@ __x86.get_pc_thunk.bx:
 	.long	.LASF64
 	.byte	0x1
 	.byte	0x5
-	.long	0x45
+	.long	0x85
 	.uleb128 0x15
 	.long	.LASF66
 	.byte	0x1
 	.byte	0x5
-	.long	0x45
+	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
 	.sleb128 -60
@@ -590,12 +590,12 @@ __x86.get_pc_thunk.bx:
 	.long	.LASF65
 	.byte	0x1
 	.byte	0x5
-	.long	0x45
+	.long	0x85
 	.uleb128 0x15
 	.long	.LASF67
 	.byte	0x1
 	.byte	0x5
-	.long	0x45
+	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
 	.sleb128 -52
