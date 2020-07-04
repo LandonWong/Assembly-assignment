@@ -24,69 +24,47 @@ main:
 	pushl	%ecx
 	.cfi_escape 0xf,0x3,0x75,0x78,0x6
 	.cfi_escape 0x10,0x3,0x2,0x75,0x7c
-	subl	$80, %esp
-	call	__x86.get_pc_thunk.bx
-	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
-	.loc 1 4 0
-	movl	%gs:20, %eax
-	movl	%eax, -12(%ebp)
-	xorl	%eax, %eax
-	.loc 1 10 0
-	subl	$8, %esp
-	pushl	$0
-	leal	-28(%ebp), %eax
-	pushl	%eax
-	call	gettimeofday@PLT
-	addl	$16, %esp
-	.loc 1 25 0
-	subl	$8, %esp
-	pushl	$0
-	leal	-20(%ebp), %eax
-	pushl	%eax
-	call	gettimeofday@PLT
-	addl	$16, %esp
+	subl	$64, %esp
+	call	__x86.get_pc_thunk.cx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ecx
 	.loc 1 26 0
-	movl	-60(%ebp), %eax
-	movl	%eax, -56(%ebp)
-	.loc 1 27 0
 	movl	-52(%ebp), %eax
 	movl	%eax, -48(%ebp)
+	.loc 1 27 0
+	movl	-44(%ebp), %eax
+	movl	%eax, -40(%ebp)
 	.loc 1 28 0
-	movl	-20(%ebp), %edx
-	movl	-28(%ebp), %eax
+	movl	-16(%ebp), %edx
+	movl	-24(%ebp), %eax
 	subl	%eax, %edx
 	movl	%edx, %eax
 	imull	$1000000, %eax, %eax
-	movl	-16(%ebp), %ecx
-	movl	-24(%ebp), %edx
-	subl	%edx, %ecx
-	movl	%ecx, %edx
+	movl	-12(%ebp), %ebx
+	movl	-20(%ebp), %edx
+	subl	%edx, %ebx
+	movl	%ebx, %edx
 	addl	%edx, %eax
-	movl	%eax, -44(%ebp)
+	movl	%eax, -36(%ebp)
 	.loc 1 29 0
-	movl	-48(%ebp), %eax
-	subl	-56(%ebp), %eax
+	movl	-40(%ebp), %eax
+	subl	-48(%ebp), %eax
 	cltd
-	idivl	-44(%ebp)
-	movl	%eax, -76(%ebp)
-	fildl	-76(%ebp)
-	fstpl	-40(%ebp)
+	idivl	-36(%ebp)
+	movl	%eax, -60(%ebp)
+	fildl	-60(%ebp)
+	fstpl	-32(%ebp)
 	.loc 1 30 0
 	subl	$4, %esp
-	pushl	-36(%ebp)
-	pushl	-40(%ebp)
-	leal	.LC0@GOTOFF(%ebx), %eax
+	pushl	-28(%ebp)
+	pushl	-32(%ebp)
+	leal	.LC0@GOTOFF(%ecx), %eax
 	pushl	%eax
+	movl	%ecx, %ebx
 	call	printf@PLT
 	addl	$16, %esp
 	.loc 1 31 0
 	nop
 	.loc 1 32 0
-	movl	-12(%ebp), %eax
-	xorl	%gs:20, %eax
-	je	.L3
-	call	__stack_chk_fail_local
-.L3:
 	leal	-8(%ebp), %esp
 	popl	%ecx
 	.cfi_restore 1
@@ -101,14 +79,14 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.section	.text.__x86.get_pc_thunk.bx,"axG",@progbits,__x86.get_pc_thunk.bx,comdat
-	.globl	__x86.get_pc_thunk.bx
-	.hidden	__x86.get_pc_thunk.bx
-	.type	__x86.get_pc_thunk.bx, @function
-__x86.get_pc_thunk.bx:
+	.section	.text.__x86.get_pc_thunk.cx,"axG",@progbits,__x86.get_pc_thunk.cx,comdat
+	.globl	__x86.get_pc_thunk.cx
+	.hidden	__x86.get_pc_thunk.cx
+	.type	__x86.get_pc_thunk.cx, @function
+__x86.get_pc_thunk.cx:
 .LFB1:
 	.cfi_startproc
-	movl	(%esp), %ebx
+	movl	(%esp), %ecx
 	ret
 	.cfi_endproc
 .LFE1:
@@ -567,7 +545,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -60
+	.sleb128 -52
 	.uleb128 0x14
 	.long	.LASF65
 	.byte	0x1
@@ -580,7 +558,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -52
+	.sleb128 -44
 	.uleb128 0x15
 	.long	.LASF68
 	.byte	0x1
@@ -588,7 +566,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -44
+	.sleb128 -36
 	.uleb128 0x15
 	.long	.LASF69
 	.byte	0x1
@@ -596,7 +574,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -56
+	.sleb128 -48
 	.uleb128 0x15
 	.long	.LASF70
 	.byte	0x1
@@ -604,7 +582,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x85
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -48
+	.sleb128 -40
 	.uleb128 0x16
 	.string	"tv1"
 	.byte	0x1
@@ -612,7 +590,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x326
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -28
+	.sleb128 -24
 	.uleb128 0x16
 	.string	"tv2"
 	.byte	0x1
@@ -620,7 +598,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x326
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -20
+	.sleb128 -16
 	.uleb128 0x15
 	.long	.LASF71
 	.byte	0x1
@@ -628,7 +606,7 @@ __x86.get_pc_thunk.bx:
 	.long	0x417
 	.uleb128 0x2
 	.byte	0x75
-	.sleb128 -40
+	.sleb128 -32
 	.byte	0
 	.uleb128 0x3
 	.byte	0x8
@@ -1083,6 +1061,5 @@ __x86.get_pc_thunk.bx:
 	.string	"_IO_2_1_stdout_"
 .LASF76:
 	.string	"_IO_lock_t"
-	.hidden	__stack_chk_fail_local
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits

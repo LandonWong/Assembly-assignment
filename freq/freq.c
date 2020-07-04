@@ -7,8 +7,8 @@ main(){
 	long cycle_1,cycle_2;
 	struct timeval tv1, tv2;
 	double cpufreq;
-	gettimeofday(&tv1, NULL);
-	/*asm(
+	/*gettimeofday(&tv1, NULL);
+	asm(
 		"push	%eax\n\t"
 		"push	%ecx\n\t"
 		"rdtsc\n\t"
@@ -21,8 +21,8 @@ main(){
 		"mov	%eax,cycle_2_l\n\t"
 		"pop	%ecx\n\t"
 		"pop	%eax\n\t"
-	);*/
-	gettimeofday(&tv2, NULL);
+	);
+	gettimeofday(&tv2, NULL);*/
 	cycle_1 = cycle_1_l;
 	cycle_2 = cycle_2_l;
 	time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
