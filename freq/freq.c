@@ -6,6 +6,10 @@ main(){
 	long time,cycle_1_l,cycle_2_l,cycle_1_h,cycle_2_h;
 	long long cycle_1,cycle_2;
 	double cpufreq;
+	asm volatile(
+		"xor	%rax,%rax\n\t"
+		"xor	%rdx,%rdx"
+	);
 	while(1){
 		gettimeofday(&tv1, NULL);
 		asm volatile(
