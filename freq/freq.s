@@ -29,6 +29,7 @@ main:
 # 10 "freq.c" 1
 	rdtscp
 	mov	%eax,cycle_1
+	mov	%edx,cycle_1_h
 	mov	$0xfffffff,%ecx
 	L1:
 	xor	%ecx,%eax
@@ -36,6 +37,7 @@ main:
 	loop	L1
 	rdtscp
 	mov	%eax,cycle_2
+	mov	%edx,cycle_2_h
 	
 # 0 "" 2
 #NO_APP
@@ -82,6 +84,8 @@ main:
 .L4:
 	call	__stack_chk_fail_local
 	.size	main, .-main
+	.comm	cycle_2_h,4,4
+	.comm	cycle_1_h,4,4
 	.comm	cycle_2,4,4
 	.comm	cycle_1,4,4
 	.comm	time,4,4
