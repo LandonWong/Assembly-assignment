@@ -27,7 +27,8 @@ main:
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
-	loop	L1
+	dec	%ecx
+	jnz	L1
 	rdtscp
 	shl	$32,%rdx
 	or	%rdx,%rax
