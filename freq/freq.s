@@ -30,7 +30,7 @@ main:
 	rdtscp
 	mov	%eax,cycle_1
 	mov	%edx,cycle_1_h
-	mov	$0xfffffff,%ecx
+	mov	$0x7fffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
