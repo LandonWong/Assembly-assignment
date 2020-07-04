@@ -30,7 +30,7 @@ main:
 	cpuid
 	rdtscp
 	mov	%eax,cycle_1
-	mov	$0xffffff,%ecx
+	mov	$0xffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
