@@ -30,7 +30,7 @@ main:
 	lfence
 	rdtscp
 	mov	%eax,cycle_1
-	mov	$0x7fffffff,%ecx
+	mov	$0xffffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
