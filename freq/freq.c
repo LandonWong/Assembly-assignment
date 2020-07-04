@@ -13,7 +13,7 @@ main(){
 			"shl	$32,%%rdx\n\t"
 			"or	%%rax,%%rdx\n\t"
 			"mov	%%rdx,%1\n\t"
-			"mov	$0xffffffff,%%rcx\n"
+			"mov	$0x8fffffff,%%rcx\n"
 			"L1:\n\t"
 			"xor	%%ecx,%%eax\n\t"
 			"inc	%%eax\n\t"
