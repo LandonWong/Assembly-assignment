@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -m32 -g -O
+CFLAGS = -m32 -O
 compile:
 	$(CC) $(CFLAGS) -S freq.c
 	$(CC) $(CFLAGS) -o freq freq.c
