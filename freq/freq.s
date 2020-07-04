@@ -14,12 +14,14 @@ main:
 	pushq	%r12
 	pushq	%rbp
 	pushq	%rbx
-	subq	$56, %rsp
+	subq	$72, %rsp
 	movq	%fs:40, %rax
-	movq	%rax, 40(%rsp)
+	movq	%rax, 56(%rsp)
 	xorl	%eax, %eax
-	movq	%rsp, %r15
-	leaq	16(%rsp), %r14
+	leaq	16(%rsp), %r15
+	leaq	32(%rsp), %rax
+	movq	%rax, 8(%rsp)
+	movabsq	$-4294967296, %r14
 .L2:
 	movl	$0, %esi
 	movq	%r15, %rdi
@@ -27,7 +29,7 @@ main:
 #APP
 # 11 "freq.c" 1
 	rdtscp
-	mov	%rdx,%rbx
+	mov	%rdx,%rbp
 	mov	%rax,%r12
 	mov	$0x7fffffff,%rcx
 L1:
@@ -39,28 +41,29 @@ L1:
 	
 # 0 "" 2
 #NO_APP
-	movq	%rdx, %rbp
+	movq	%rdx, %rbx
 	movq	%rax, %r13
 	movl	$0, %esi
-	movq	%r14, %rdi
+	movq	8(%rsp), %rdi
 	call	gettimeofday@PLT
-	movq	16(%rsp), %rdx
-	subq	(%rsp), %rdx
+	movq	32(%rsp), %rdx
+	subq	16(%rsp), %rdx
 	imulq	$1000000, %rdx, %rdx
-	addq	24(%rsp), %rdx
-	subq	8(%rsp), %rdx
-	movq	%rbp, %rax
-	salq	$32, %rax
-	orq	%rax, %r13
+	addq	40(%rsp), %rdx
+	subq	24(%rsp), %rdx
 	salq	$32, %rbx
-	orq	%rbx, %r12
-	subq	%r12, %r13
+	movq	%rbx, %rcx
+	andq	%r14, %r13
+	orq	%r13, %rcx
+	salq	$32, %rbp
+	andq	%r14, %r12
+	orq	%rbp, %r12
+	subq	%r12, %rcx
 	pxor	%xmm0, %xmm0
-	cvtsi2sdq	%r13, %xmm0
+	cvtsi2sdq	%rcx, %xmm0
 	pxor	%xmm1, %xmm1
 	cvtsi2sdq	%rdx, %xmm1
 	divsd	%xmm1, %xmm0
-	movq	%rbp, %rcx
 	leaq	.LC0(%rip), %rsi
 	movl	$1, %edi
 	movl	$1, %eax
