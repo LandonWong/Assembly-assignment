@@ -8,17 +8,20 @@
 	.globl	main
 	.type	main, @function
 main:
+	pushq	%r12
 	pushq	%rbp
 	pushq	%rbx
-	subq	$56, %rsp
+	subq	$48, %rsp
 	movq	%fs:40, %rax
 	movq	%rax, 40(%rsp)
 	xorl	%eax, %eax
 	movq	%rsp, %rdi
 	movl	$0, %esi
 	call	gettimeofday@PLT
+	leaq	16(%rsp), %r12
+.L2:
 #APP
-# 10 "freq.c" 1
+# 11 "freq.c" 1
 	rdtscp
 	shl	$32,%rdx
 	or	%rax,%rdx
@@ -36,8 +39,8 @@ L1:
 # 0 "" 2
 #NO_APP
 	movq	%rax, %rbx
-	leaq	16(%rsp), %rdi
 	movl	$0, %esi
+	movq	%r12, %rdi
 	call	gettimeofday@PLT
 	movq	16(%rsp), %rdx
 	subq	(%rsp), %rdx
@@ -55,15 +58,7 @@ L1:
 	movl	$1, %edi
 	movl	$1, %eax
 	call	__printf_chk@PLT
-	movq	40(%rsp), %rax
-	xorq	%fs:40, %rax
-	jne	.L4
-	addq	$56, %rsp
-	popq	%rbx
-	popq	%rbp
-	ret
-.L4:
-	call	__stack_chk_fail@PLT
+	jmp	.L2
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
