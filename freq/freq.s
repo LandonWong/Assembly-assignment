@@ -35,6 +35,8 @@ main:
 	addl	$16, %esp
 #APP
 # 11 "freq.c" 1
+	push	%eax
+	push	%ecx
 	rdtsc
 	mov	%eax,cycle_1_l
 	mov	$0x7fffffff,%ecx
@@ -43,6 +45,8 @@ main:
 	loop L1
 	rdtsc
 	mov	%eax,cycle_2_l
+	pop	%ecx
+	pop	%eax
 	
 # 0 "" 2
 #NO_APP
