@@ -48,7 +48,7 @@ main:
 	rdtsc
 	mov	%eax,cycle_1_l
 	mov	%edx,cycle_1_h
-	mov	$0xffff,%ecx
+	mov	$0x7fffffff,%ecx
 	L1:
 	inc	%eax
 	loop L1
