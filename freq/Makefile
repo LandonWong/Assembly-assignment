@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -m32 -Llibfsdk.so -shared -g
+CFLAGS = -m32 -g
 compile:
 	$(CC) $(CFLAGS) -S freq.c
 	$(CC) $(CFLAGS) -o freq freq.c
