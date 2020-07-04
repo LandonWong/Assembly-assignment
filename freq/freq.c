@@ -2,7 +2,7 @@
 #include <sys/time.h>
 void
 main(){
-	long cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
+	/*long cycle_1_h,cycle_1_l,cycle_2_h,cycle_2_l;
 	long time;
 	long cycle_1,cycle_2;
 	struct timeval tv1, tv2;
@@ -22,11 +22,11 @@ main(){
 		"pop	%ecx\n\t"
 		"pop	%eax\n\t"
 	);
-	gettimeofday(&tv2, NULL);*/
+	gettimeofday(&tv2, NULL);
 	cycle_1 = cycle_1_l;
 	cycle_2 = cycle_2_l;
 	time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
-	cpufreq = (cycle_2 - cycle_1) / time;
-	printf("The cpu frequency is %.2f MHz\n", cpufreq);
+	cpufreq = (cycle_2 - cycle_1) / time;*/
+	printf("The cpu frequency is MHz\n");
 	return;
 }
