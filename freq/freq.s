@@ -18,12 +18,6 @@ main:
 	movq	%fs:40, %rax
 	movq	%rax, 40(%rsp)
 	xorl	%eax, %eax
-#APP
-# 9 "freq.c" 1
-	xor	%rax,%rax
-	xor	%rdx,%rdx
-# 0 "" 2
-#NO_APP
 	movq	%rsp, %r15
 	leaq	16(%rsp), %r14
 .L2:
@@ -31,7 +25,7 @@ main:
 	movq	%r15, %rdi
 	call	gettimeofday@PLT
 #APP
-# 15 "freq.c" 1
+# 11 "freq.c" 1
 	rdtscp
 	mov	%rdx,%rbp
 	mov	%rax,%r12
@@ -57,8 +51,10 @@ L1:
 	subq	8(%rsp), %rdx
 	salq	$32, %rbx
 	movq	%rbx, %rcx
+	andl	$268435455, %r13d
 	orq	%r13, %rcx
 	salq	$32, %rbp
+	andl	$268435455, %r12d
 	orq	%rbp, %r12
 	subq	%r12, %rcx
 	pxor	%xmm0, %xmm0
