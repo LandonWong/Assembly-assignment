@@ -13,55 +13,51 @@ main:
 	pushl	-4(%ecx)
 	pushl	%ebp
 	movl	%esp, %ebp
+	pushl	%edi
+	pushl	%esi
 	pushl	%ebx
 	pushl	%ecx
-	subl	$56, %esp
+	subl	$64, %esp
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
 	movl	%gs:20, %eax
-	movl	%eax, -12(%ebp)
+	movl	%eax, -28(%ebp)
 	xorl	%eax, %eax
 	pushl	$0
-	leal	-28(%ebp), %eax
+	leal	-44(%ebp), %eax
 	pushl	%eax
 	call	gettimeofday@PLT
 #APP
-# 10 "freq.c" 1
+# 12 "freq.c" 1
 	rdtscp
-	mov	%eax,cycle_1
+	mov	%eax,%eax
 	mov	$0xfffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
 	loop	L1
 	rdtscp
-	mov	%eax,cycle_2
-	
 # 0 "" 2
 #NO_APP
+	movl	%eax, %esi
 	addl	$8, %esp
 	pushl	$0
-	leal	-20(%ebp), %eax
+	leal	-36(%ebp), %eax
 	pushl	%eax
 	call	gettimeofday@PLT
-	movl	-20(%ebp), %eax
-	subl	-28(%ebp), %eax
+	movl	-36(%ebp), %eax
+	subl	-44(%ebp), %eax
 	imull	$1000000, %eax, %eax
-	addl	-16(%ebp), %eax
-	subl	-24(%ebp), %eax
-	movl	time@GOT(%ebx), %edx
-	movl	%eax, (%edx)
-	movl	cycle_2@GOT(%ebx), %edx
-	movl	cycle_1@GOT(%ebx), %ecx
-	movl	(%edx), %edx
-	subl	(%ecx), %edx
+	addl	-32(%ebp), %eax
+	subl	-40(%ebp), %eax
+	subl	%edi, %esi
 	addl	$8, %esp
-	pushl	%edx
+	pushl	%esi
 	pushl	%eax
-	movl	%edx, -44(%ebp)
-	fildl	-44(%ebp)
-	movl	%eax, -44(%ebp)
-	fildl	-44(%ebp)
+	movl	%esi, -60(%ebp)
+	fildl	-60(%ebp)
+	movl	%eax, -60(%ebp)
+	fildl	-60(%ebp)
 	fdivrp	%st, %st(1)
 	leal	-8(%esp), %esp
 	fstpl	(%esp)
@@ -70,12 +66,14 @@ main:
 	pushl	$1
 	call	__printf_chk@PLT
 	addl	$32, %esp
-	movl	-12(%ebp), %eax
+	movl	-28(%ebp), %eax
 	xorl	%gs:20, %eax
 	jne	.L4
-	leal	-8(%ebp), %esp
+	leal	-16(%ebp), %esp
 	popl	%ecx
 	popl	%ebx
+	popl	%esi
+	popl	%edi
 	popl	%ebp
 	leal	-4(%ecx), %esp
 	ret
