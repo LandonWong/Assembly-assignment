@@ -31,9 +31,8 @@ main:
 	mov	%eax,cycle_1
 	mov	$0xffff,%ecx
 	L1:
-	xor	%ecx,%eax
 	inc	%eax
-	loop L1
+	loop	L1
 	rdtsc
 	mov	%eax,cycle_2
 	

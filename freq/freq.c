@@ -12,9 +12,9 @@ main(){
 		"mov	%eax,cycle_1\n\t"
 		"mov	$0xffff,%ecx\n\t"
 		"L1:\n\t"
-		"xor	%ecx,%eax\n\t"
+		//"xor	%ecx,%eax\n\t"
 		"inc	%eax\n\t"
-		"loop L1\n\t"
+		"loop	L1\n\t"
 		"rdtsc\n\t"
 		"mov	%eax,cycle_2\n\t"
 	);
