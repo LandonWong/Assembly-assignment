@@ -27,6 +27,7 @@ main:
 	call	gettimeofday@PLT
 #APP
 # 10 "freq.c" 1
+	lfence
 	rdtscp
 	mov	%eax,cycle_1
 	mov	$0xfffff,%ecx
