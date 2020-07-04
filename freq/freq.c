@@ -14,7 +14,7 @@ main(){
 		"shl	$32,%%rdx\n\t"
 		"or	%%rax,%%rdx\n\t"
 		"mov	%%rdx,%1\n\t"
-		"mov	$0x7fffffff,%%ecx\n\t"
+		"mov	$0x7ffffffff,%%rcx\n\t"
 		"L1:\n\t"
 		"xor	%%ecx,%%eax\n\t"
 		"inc	%%eax\n\t"
