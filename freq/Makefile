@@ -1,8 +1,8 @@
 CC = gcc
-CFLAGS = -m32 -Llibfsdk.so -shared -fPIC -o
+CFLAGS = -m32 -Llibfsdk.so -shared -fPIC
 compile:
 	$(CC) $(CFLAGS) -S freq.c
-	$(CC) $(CFLAGS) freq freq.c
+	$(CC) $(CFLAGS) -o freq freq.c
 	git add --all && git commit -m "Update: freq_compile"
 clean:
 	rm -rf freq.s freq
