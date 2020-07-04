@@ -8,7 +8,7 @@ main(){
 	double cpufreq;
 	gettimeofday(&tv1, NULL);
 	asm volatile(
-		"lfence\n\t"
+		"cpuid\n\t"
 		"rdtscp\n\t"
 		"mov	%eax,cycle_1\n\t"
 		"mov	$0xfffffff,%ecx\n\t"
