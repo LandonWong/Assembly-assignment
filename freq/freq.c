@@ -11,7 +11,7 @@ main(){
 		"lfence\n\t"
 		"rdtscp\n\t"
 		"mov	%eax,cycle_1\n\t"
-		"mov	$0xffffffff,%ecx\n\t"
+		"mov	$0xfffffff,%ecx\n\t"
 		"L1:\n\t"
 		"xor	%ecx,%eax\n\t"
 		"inc	%eax\n\t"
