@@ -27,7 +27,7 @@ main:
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
-	dec	%ecx
+	dec	%rcx
 	jnz	L1
 	rdtscp
 	shl	$32,%rdx

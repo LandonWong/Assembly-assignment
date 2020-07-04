@@ -18,7 +18,7 @@ main(){
 		"L1:\n\t"
 		"xor	%%ecx,%%eax\n\t"
 		"inc	%%eax\n\t"
-		"dec	%%ecx\n\t"
+		"dec	%%rcx\n\t"
 		"jnz	L1\n\t"
 		"rdtscp\n\t"
 		"shl	$32,%%rdx\n\t"
