@@ -1,37 +1,27 @@
 	.file	"freq.c"
 	.text
-	.section	.rodata.str1.4,"aMS",@progbits,1
-	.align 4
+	.section	.rodata.str1.8,"aMS",@progbits,1
+	.align 8
 .LC0:
 	.string	"The cpu frequency is %.2f MHz, time = %d us, cycle = %d\n"
 	.text
 	.globl	main
 	.type	main, @function
 main:
-	leal	4(%esp), %ecx
-	andl	$-16, %esp
-	pushl	-4(%ecx)
-	pushl	%ebp
-	movl	%esp, %ebp
-	pushl	%edi
-	pushl	%esi
-	pushl	%ebx
-	pushl	%ecx
-	subl	$64, %esp
-	call	__x86.get_pc_thunk.bx
-	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
-	movl	%gs:20, %eax
-	movl	%eax, -28(%ebp)
+	pushq	%rbp
+	pushq	%rbx
+	subq	$56, %rsp
+	movq	%fs:40, %rax
+	movq	%rax, 40(%rsp)
 	xorl	%eax, %eax
-	pushl	$0
-	leal	-44(%ebp), %eax
-	pushl	%eax
+	movq	%rsp, %rdi
+	movl	$0, %esi
 	call	gettimeofday@PLT
 #APP
 # 12 "freq.c" 1
 	rdtscp
-	mov	%eax,%edi
-	mov	$0xffffff,%ecx
+	mov	%rax,%rbp
+	mov	$0xfffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
@@ -39,57 +29,38 @@ main:
 	rdtscp
 # 0 "" 2
 #NO_APP
-	movl	%eax, %esi
-	addl	$8, %esp
-	pushl	$0
-	leal	-36(%ebp), %eax
-	pushl	%eax
+	movq	%rax, %rbx
+	leaq	16(%rsp), %rdi
+	movl	$0, %esi
 	call	gettimeofday@PLT
-	movl	-36(%ebp), %eax
-	subl	-44(%ebp), %eax
-	imull	$1000000, %eax, %eax
-	addl	-32(%ebp), %eax
-	subl	-40(%ebp), %eax
-	subl	%edi, %esi
-	addl	$8, %esp
-	pushl	%esi
-	pushl	%eax
-	movl	%esi, -60(%ebp)
-	fildl	-60(%ebp)
-	movl	%eax, -60(%ebp)
-	fildl	-60(%ebp)
-	fdivrp	%st, %st(1)
-	leal	-8(%esp), %esp
-	fstpl	(%esp)
-	leal	.LC0@GOTOFF(%ebx), %eax
-	pushl	%eax
-	pushl	$1
+	movq	16(%rsp), %rdx
+	subq	(%rsp), %rdx
+	imulq	$1000000, %rdx, %rdx
+	addq	24(%rsp), %rdx
+	subq	8(%rsp), %rdx
+	subq	%rbp, %rbx
+	movq	%rbx, %rcx
+	pxor	%xmm0, %xmm0
+	cvtsi2sdq	%rbx, %xmm0
+	pxor	%xmm1, %xmm1
+	cvtsi2sdq	%rdx, %xmm1
+	divsd	%xmm1, %xmm0
+	leaq	.LC0(%rip), %rsi
+	movl	$1, %edi
+	movl	$1, %eax
 	call	__printf_chk@PLT
-	addl	$32, %esp
-	movl	-28(%ebp), %eax
-	xorl	%gs:20, %eax
+	movq	40(%rsp), %rax
+	xorq	%fs:40, %rax
 	jne	.L4
-	leal	-16(%ebp), %esp
-	popl	%ecx
-	popl	%ebx
-	popl	%esi
-	popl	%edi
-	popl	%ebp
-	leal	-4(%ecx), %esp
+	addq	$56, %rsp
+	popq	%rbx
+	popq	%rbp
 	ret
 .L4:
-	call	__stack_chk_fail_local
+	call	__stack_chk_fail@PLT
 	.size	main, .-main
-	.comm	cycle_2,4,4
-	.comm	cycle_1,4,4
-	.comm	time,4,4
-	.section	.text.__x86.get_pc_thunk.bx,"axG",@progbits,__x86.get_pc_thunk.bx,comdat
-	.globl	__x86.get_pc_thunk.bx
-	.hidden	__x86.get_pc_thunk.bx
-	.type	__x86.get_pc_thunk.bx, @function
-__x86.get_pc_thunk.bx:
-	movl	(%esp), %ebx
-	ret
-	.hidden	__stack_chk_fail_local
+	.comm	cycle_2,8,8
+	.comm	cycle_1,8,8
+	.comm	time,8,8
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
