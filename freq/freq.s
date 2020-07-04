@@ -27,7 +27,7 @@ main:
 #APP
 # 11 "freq.c" 1
 	rdtscp
-	mov	%rdx,%rbp
+	mov	%rdx,%rbx
 	mov	%rax,%r12
 	mov	$0x7fffffff,%rcx
 L1:
@@ -39,7 +39,7 @@ L1:
 	
 # 0 "" 2
 #NO_APP
-	movq	%rdx, %rbx
+	movq	%rdx, %rbp
 	movq	%rax, %r13
 	movl	$0, %esi
 	movq	%r14, %rdi
@@ -49,17 +49,18 @@ L1:
 	imulq	$1000000, %rdx, %rdx
 	addq	24(%rsp), %rdx
 	subq	8(%rsp), %rdx
+	movq	%rbp, %rax
+	salq	$32, %rax
+	orq	%rax, %r13
 	salq	$32, %rbx
-	movq	%rbx, %rcx
-	orq	%r13, %rcx
-	salq	$32, %rbp
-	orq	%rbp, %r12
-	subq	%r12, %rcx
+	orq	%rbx, %r12
+	subq	%r12, %r13
 	pxor	%xmm0, %xmm0
-	cvtsi2sdq	%rcx, %xmm0
+	cvtsi2sdq	%r13, %xmm0
 	pxor	%xmm1, %xmm1
 	cvtsi2sdq	%rdx, %xmm1
 	divsd	%xmm1, %xmm0
+	movq	%rbp, %rcx
 	leaq	.LC0(%rip), %rsi
 	movl	$1, %edi
 	movl	$1, %eax
