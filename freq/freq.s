@@ -29,7 +29,7 @@ main:
 # 10 "freq.c" 1
 	rdtsc
 	mov	%eax,cycle_1
-	mov	$0xffff,%ecx
+	mov	$0x4000000,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
