@@ -20,7 +20,34 @@ main:
 	xorl	%eax, %eax
 	movq	%rsp, %r15
 	leaq	16(%rsp), %r14
+	jmp	.L6
 .L2:
+	movq	%rcx, %rax
+	shrq	%rax
+	movq	%rcx, %rsi
+	andl	$1, %esi
+	orq	%rsi, %rax
+	pxor	%xmm0, %xmm0
+	cvtsi2sdq	%rax, %xmm0
+	addsd	%xmm0, %xmm0
+	jmp	.L3
+.L4:
+	movq	%rdx, %rax
+	shrq	%rax
+	movq	%rdx, %rsi
+	andl	$1, %esi
+	orq	%rsi, %rax
+	pxor	%xmm1, %xmm1
+	cvtsi2sdq	%rax, %xmm1
+	addsd	%xmm1, %xmm1
+.L5:
+	divsd	%xmm1, %xmm0
+	movl	$8, %r8d
+	leaq	.LC0(%rip), %rsi
+	movl	$1, %edi
+	movl	$1, %eax
+	call	__printf_chk@PLT
+.L6:
 	movl	$0, %esi
 	movq	%r15, %rdi
 	call	gettimeofday@PLT
@@ -57,17 +84,15 @@ L1:
 	andl	$268435455, %r12d
 	orq	%rbp, %r12
 	subq	%r12, %rcx
+	js	.L2
 	pxor	%xmm0, %xmm0
 	cvtsi2sdq	%rcx, %xmm0
+.L3:
+	testq	%rdx, %rdx
+	js	.L4
 	pxor	%xmm1, %xmm1
 	cvtsi2sdq	%rdx, %xmm1
-	divsd	%xmm1, %xmm0
-	movl	$8, %r8d
-	leaq	.LC0(%rip), %rsi
-	movl	$1, %edi
-	movl	$1, %eax
-	call	__printf_chk@PLT
-	jmp	.L2
+	jmp	.L5
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
