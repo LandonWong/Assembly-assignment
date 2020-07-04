@@ -27,14 +27,14 @@ main:
 	call	gettimeofday@PLT
 #APP
 # 10 "freq.c" 1
-	rdtsc
+	rdtscp
 	mov	%eax,cycle_1
 	mov	$0xfffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
 	loop	L1
-	rdtsc
+	rdtscp
 	mov	%eax,cycle_2
 	
 # 0 "" 2
