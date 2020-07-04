@@ -18,12 +18,12 @@ main:
 	movl	$0, %esi
 	call	gettimeofday@PLT
 #APP
-# 12 "freq.c" 1
+# 10 "freq.c" 1
 	rdtscp
 	shl	$32,%rdx
 	or	%rax,%rdx
 	mov	%rdx,%rbp
-	mov	$0x7ffffffff,%rcx
+	mov	$0x7fffffff,%rcx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
@@ -65,8 +65,5 @@ main:
 .L4:
 	call	__stack_chk_fail@PLT
 	.size	main, .-main
-	.comm	cycle_2,8,8
-	.comm	cycle_1,8,8
-	.comm	time,8,8
 	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits
