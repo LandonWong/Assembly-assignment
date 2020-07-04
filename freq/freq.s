@@ -816,6 +816,8 @@ __x86.get_pc_thunk.ax:
 	.string	"_IO_write_end"
 .LASF12:
 	.string	"__off64_t"
+.LASF59:
+	.string	"GNU C11 7.5.0 -m32 -mtune=generic -march=i686 -g -fstack-protector-strong"
 .LASF10:
 	.string	"__off_t"
 .LASF27:
@@ -830,8 +832,6 @@ __x86.get_pc_thunk.ax:
 	.string	"_mode"
 .LASF17:
 	.string	"_IO_read_base"
-.LASF59:
-	.string	"GNU C11 7.5.0 -m32 -mtune=generic -march=i686 -g -fPIC -fstack-protector-strong"
 .LASF60:
 	.string	"freq.c"
 .LASF32:
