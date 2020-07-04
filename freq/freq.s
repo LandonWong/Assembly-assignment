@@ -27,10 +27,9 @@ main:
 	call	gettimeofday@PLT
 #APP
 # 10 "freq.c" 1
-	cpuid
 	rdtscp
 	mov	%eax,cycle_1
-	mov	$0xffff,%ecx
+	mov	$0xfffffff,%ecx
 	L1:
 	xor	%ecx,%eax
 	inc	%eax
