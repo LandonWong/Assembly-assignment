@@ -37,14 +37,12 @@ main:
 # 11 "freq.c" 1
 	rdtsc
 	mov	%eax,cycle_1_l
-	mov	%edx,cycle_1_h
 	mov	$0x7fffffff,%ecx
 	L1:
 	inc	%eax
 	loop L1
 	rdtsc
 	mov	%eax,cycle_2_l
-	mov	%edx,cycle_2_h
 	
 # 0 "" 2
 #NO_APP
