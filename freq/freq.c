@@ -21,7 +21,7 @@ main(){
 	);
 	gettimeofday(&tv2, NULL);
 	time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
-	cpufreq = (cycle_2 - cycle_1) / time;
+	cpufreq = (cycle_2 - cycle_1) * 1.0 / (time * 1.0);
 	printf("The cpu frequency is %.2f MHz, time = %d us, cycle = %d\n",cpufreq,time,cycle_2 - cycle_1);
 	return;
 }
