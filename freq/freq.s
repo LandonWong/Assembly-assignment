@@ -30,7 +30,7 @@ main:
 	movq	%r15, %rdi
 	call	gettimeofday@PLT
 #APP
-# 12 "freq.c" 1
+# 13 "freq.c" 1
 	rdtscp
 	mov	%rdx,%rbp
 	mov	%rax,%r12

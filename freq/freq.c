@@ -8,6 +8,7 @@ main(){
 	double cpufreq;
 	printf("Test begin. Please use <ctrl> + <C> to halt.\n\n");
 	while(1){
+		cycle_1_l = cycle_2_l = cycle_1_h = cycle_2_h = 0;
 		gettimeofday(&tv1, NULL);
 		asm volatile(
 			"rdtscp\n\t"
