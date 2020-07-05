@@ -3,7 +3,10 @@
 	.section	.rodata.str1.8,"aMS",@progbits,1
 	.align 8
 .LC0:
-	.string	"The cpu frequency is %.3f MHz, time = %ld us, cycle = %llu\n"
+	.string	"The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n"
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC1:
+	.string	"cycle 1 h %lu,cycle 2 h %lu\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -27,7 +30,7 @@ main:
 #APP
 # 11 "freq.c" 1
 	rdtscp
-	mov	%rdx,%rbp
+	mov	%rdx,%rbx
 	mov	%rax,%r12
 	mov	$0x7fffffff,%rcx
 L1:
@@ -39,7 +42,7 @@ L1:
 	
 # 0 "" 2
 #NO_APP
-	movq	%rdx, %rbx
+	movq	%rdx, %rbp
 	movq	%rax, %r13
 	movl	$0, %esi
 	movq	%r14, %rdi
@@ -49,11 +52,12 @@ L1:
 	imulq	$1000000, %rdx, %rdx
 	addq	24(%rsp), %rdx
 	subq	8(%rsp), %rdx
-	salq	$32, %rbx
-	movq	%rbx, %rcx
+	movq	%rbp, %rcx
+	salq	$32, %rcx
 	orq	%r13, %rcx
-	salq	$32, %rbp
-	orq	%rbp, %r12
+	movq	%rbx, %rax
+	salq	$32, %rax
+	orq	%rax, %r12
 	subq	%r12, %rcx
 	pxor	%xmm0, %xmm0
 	cvtsi2sdq	%rcx, %xmm0
@@ -63,6 +67,12 @@ L1:
 	leaq	.LC0(%rip), %rsi
 	movl	$1, %edi
 	movl	$1, %eax
+	call	__printf_chk@PLT
+	movq	%rbp, %rcx
+	movq	%rbx, %rdx
+	leaq	.LC1(%rip), %rsi
+	movl	$1, %edi
+	movl	$0, %eax
 	call	__printf_chk@PLT
 	jmp	.L2
 	.size	main, .-main

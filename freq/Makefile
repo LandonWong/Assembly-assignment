@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -m64 -O -fno-asynchronous-unwind-tables
+CFLAGS = -m64 -O -w -fno-asynchronous-unwind-tables
 compile:
 	$(CC) $(CFLAGS) -S freq.c
 	$(CC) $(CFLAGS) -o freq freq.c
