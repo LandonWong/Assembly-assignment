@@ -6,7 +6,7 @@
 	.string	"Test begin. Please use <ctrl> + <C> to halt.\n"
 	.align 8
 .LC1:
-	.string	"The cpu frequency is %.5f MHz, time = %ld us, cycle = %llu\n"
+	.string	"(freq) The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n"
 	.text
 	.globl	main
 	.type	main, @function
