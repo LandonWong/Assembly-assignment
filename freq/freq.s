@@ -51,6 +51,9 @@ L1:
 	call	gettimeofday@PLT
 	movq	16(%rsp), %rdx
 	subq	(%rsp), %rdx
+	imulq	$1000000, %rdx, %rdx
+	addq	24(%rsp), %rdx
+	subq	8(%rsp), %rdx
 	salq	$32, %rbx
 	movq	%rbx, %rcx
 	orq	%r13, %rcx
@@ -59,12 +62,8 @@ L1:
 	subq	%r12, %rcx
 	pxor	%xmm0, %xmm0
 	cvtsi2sdq	%rcx, %xmm0
-	movq	24(%rsp), %rax
-	subq	8(%rsp), %rax
-	imulq	$1000000, %rdx, %rsi
-	addq	%rsi, %rax
 	pxor	%xmm1, %xmm1
-	cvtsi2sdq	%rax, %xmm1
+	cvtsi2sdq	%rdx, %xmm1
 	divsd	%xmm1, %xmm0
 	leaq	.LC1(%rip), %rsi
 	movl	$1, %edi
