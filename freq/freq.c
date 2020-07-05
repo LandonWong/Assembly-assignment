@@ -6,6 +6,7 @@ main(){
 	long time,cycle_1_l,cycle_2_l,cycle_1_h,cycle_2_h;
 	long long cycle_1,cycle_2;
 	double cpufreq;
+	printf("Test begin. Please use <ctrl> + <C> to halt.\n\n");
 	while(1){
 		gettimeofday(&tv1, NULL);
 		asm volatile(
@@ -27,7 +28,6 @@ main(){
 		time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
 		cpufreq = (cycle_2 - cycle_1) * 1.0 / (time * 1.0);
 		printf("The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n",cpufreq,time,cycle_2 - cycle_1);
-		printf("cycle 1 l %llu,cycle 2 l %llu\n",cycle_1,cycle_2);
 	}
 	return;
 }

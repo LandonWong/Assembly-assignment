@@ -3,10 +3,10 @@
 	.section	.rodata.str1.8,"aMS",@progbits,1
 	.align 8
 .LC0:
-	.string	"The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n"
+	.string	"Test begin. Please use <ctrl> + <C> to halt.\n"
 	.align 8
 .LC1:
-	.string	"cycle 1 l %llu,cycle 2 l %llu\n"
+	.string	"The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -21,6 +21,8 @@ main:
 	movq	%fs:40, %rax
 	movq	%rax, 40(%rsp)
 	xorl	%eax, %eax
+	leaq	.LC0(%rip), %rdi
+	call	puts@PLT
 	movq	%rsp, %r15
 	leaq	16(%rsp), %r14
 .L2:
@@ -28,10 +30,10 @@ main:
 	movq	%r15, %rdi
 	call	gettimeofday@PLT
 #APP
-# 11 "freq.c" 1
+# 12 "freq.c" 1
 	rdtscp
-	mov	%rdx,%rbx
-	mov	%rax,%r13
+	mov	%rdx,%rbp
+	mov	%rax,%r12
 	mov	$0x7fffffff,%rcx
 L1:
 	xor	%ecx,%eax
@@ -42,36 +44,30 @@ L1:
 	
 # 0 "" 2
 #NO_APP
-	movq	%rdx, %rbp
-	movq	%rax, %r12
+	movq	%rdx, %rbx
+	movq	%rax, %r13
 	movl	$0, %esi
 	movq	%r14, %rdi
 	call	gettimeofday@PLT
-	salq	$32, %rbx
-	orq	%rbx, %r13
-	salq	$32, %rbp
-	orq	%rbp, %r12
 	movq	16(%rsp), %rdx
 	subq	(%rsp), %rdx
 	imulq	$1000000, %rdx, %rdx
 	addq	24(%rsp), %rdx
 	subq	8(%rsp), %rdx
-	movq	%r12, %rcx
-	subq	%r13, %rcx
+	salq	$32, %rbx
+	movq	%rbx, %rcx
+	orq	%r13, %rcx
+	salq	$32, %rbp
+	orq	%rbp, %r12
+	subq	%r12, %rcx
 	pxor	%xmm0, %xmm0
 	cvtsi2sdq	%rcx, %xmm0
 	pxor	%xmm1, %xmm1
 	cvtsi2sdq	%rdx, %xmm1
 	divsd	%xmm1, %xmm0
-	leaq	.LC0(%rip), %rsi
-	movl	$1, %edi
-	movl	$1, %eax
-	call	__printf_chk@PLT
-	movq	%r12, %rcx
-	movq	%r13, %rdx
 	leaq	.LC1(%rip), %rsi
 	movl	$1, %edi
-	movl	$0, %eax
+	movl	$1, %eax
 	call	__printf_chk@PLT
 	jmp	.L2
 	.size	main, .-main
