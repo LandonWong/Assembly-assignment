@@ -34,7 +34,7 @@ main:
 	rdtscp
 	mov	%rdx,%rbp
 	mov	%rax,%r12
-	mov	$0xffff,%rcx
+	mov	$0xfffff,%rcx
 L1:
 	xor	%ecx,%eax
 	inc	%eax
