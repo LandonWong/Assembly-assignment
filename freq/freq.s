@@ -4,9 +4,9 @@
 	.align 8
 .LC0:
 	.string	"The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n"
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.align 8
 .LC1:
-	.string	"cycle 1 l %lu,cycle 2 l %lu\n"
+	.string	"cycle 1 l %llu,cycle 2 l %llu\n"
 	.text
 	.globl	main
 	.type	main, @function
