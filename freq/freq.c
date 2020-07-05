@@ -13,7 +13,7 @@ main(){
 			"rdtscp\n\t"
 			"mov	%%rdx,%3\n\t"
 			"mov	%%rax,%2\n\t"
-			"mov	$0x7fffffff,%%rcx\n"
+			"mov	$0x7ffffffff,%%rcx\n"
 			"L1:\n\t"
 			"xor	%%ecx,%%eax\n\t"
 			"inc	%%eax\n\t"
