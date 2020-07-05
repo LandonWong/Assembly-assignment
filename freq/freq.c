@@ -26,7 +26,7 @@ main(){
 		cycle_1 = (cycle_1_h << 32) | (cycle_1_l);
 		cycle_2 = (cycle_2_h << 32) | (cycle_2_l);
 		time = (tv2.tv_sec - tv1.tv_sec) * 1000000 + (tv2.tv_usec - tv1.tv_usec);
-		cpufreq = (cycle_2 - cycle_1) * 1.0 / (time * 1.0);
+		cpufreq = (cycle_2_l - cycle_1_l) * 1.0 / (time * 1.0);
 		printf("The cpu frequency is %.2f MHz, time = %ld us, cycle = %llu\n",cpufreq,time,cycle_2 - cycle_1);
 	}
 	return;
