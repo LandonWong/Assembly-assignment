@@ -30,8 +30,8 @@ main:
 #APP
 # 11 "freq.c" 1
 	rdtscp
-	mov	%rdx,%rbp
-	mov	%rax,%r12
+	mov	%rdx,%rbx
+	mov	%rax,%r13
 	mov	$0x7fffffff,%rcx
 L1:
 	xor	%ecx,%eax
@@ -42,22 +42,22 @@ L1:
 	
 # 0 "" 2
 #NO_APP
-	movq	%rdx, %rbx
-	movq	%rax, %r13
+	movq	%rdx, %rbp
+	movq	%rax, %r12
 	movl	$0, %esi
 	movq	%r14, %rdi
 	call	gettimeofday@PLT
+	salq	$32, %rbx
+	orq	%rbx, %r13
+	salq	$32, %rbp
+	orq	%rbp, %r12
 	movq	16(%rsp), %rdx
 	subq	(%rsp), %rdx
 	imulq	$1000000, %rdx, %rdx
 	addq	24(%rsp), %rdx
 	subq	8(%rsp), %rdx
-	salq	$32, %rbx
-	movq	%rbx, %rcx
-	orq	%r13, %rcx
-	salq	$32, %rbp
-	orq	%r12, %rbp
-	subq	%rbp, %rcx
+	movq	%r12, %rcx
+	subq	%r13, %rcx
 	pxor	%xmm0, %xmm0
 	cvtsi2sdq	%rcx, %xmm0
 	pxor	%xmm1, %xmm1
@@ -67,8 +67,8 @@ L1:
 	movl	$1, %edi
 	movl	$1, %eax
 	call	__printf_chk@PLT
-	movq	%r13, %rcx
-	movq	%r12, %rdx
+	movq	%r12, %rcx
+	movq	%r13, %rdx
 	leaq	.LC1(%rip), %rsi
 	movl	$1, %edi
 	movl	$0, %eax
