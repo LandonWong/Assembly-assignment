@@ -134,11 +134,8 @@ check:
 	.section	.rodata.str1.1,"aMS",@progbits,1
 .LC1:
 	.string	"glib2.0 memcpy durtime:\t%d\n"
-	.section	.rodata.str1.8
-	.align 8
 .LC2:
-	.string	"single char copy durtime:\t%d\n\n"
-	.section	.rodata.str1.1
+	.string	"1-char copy durtime:\t%d\n\n"
 .LC3:
 	.string	"Failed. "
 	.section	.rodata.str1.8
