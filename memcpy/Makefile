@@ -1,10 +1,10 @@
 CC = gcc
-CFLAGS = -w -O -g -mmmx -fno-asynchronous-unwind-tables 
+CFLAGS = -w -g -mmmx -fno-asynchronous-unwind-tables 
 
 asm:
 	$(CC) $(CFLAGS) -S main.c
 	$(CC) $(CFLAGS) -c main.c
-	$(CC) $(CFLAGS) -O4 -c memcpy.s
+	$(CC) $(CFLAGS) -c memcpy.s
 	git add --all && git commit -m "Update: memcpy_asm"
 link:
 	$(CC) $(CFLAGS) main.o memcpy.o -o memcpy -lm
