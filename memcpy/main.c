@@ -82,7 +82,7 @@ main(){
 			memset(dst,-2,SIZE);
 			InitSrcArea(SIZE);
 			tick1 = rdtsc();
-			memcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
+			mymemcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 			tick2 = rdtsc();
 			printf("glib2.0 memcpy durtime:\t%d\n",tick2 - tick1);
 			memset(dst,-1,SIZE);
