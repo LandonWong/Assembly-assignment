@@ -24,16 +24,15 @@ myatoi:
 	je	.L6	
 	cmp	$'\t',%cl		# skip '\t'
 	je	.L6
-	jmp	.L2			# skip finish, jump to L2
-.L6:					# L1 <skip loop>, continue scan and skip
-	inc	%edx
-	jmp	.L1
 .L2:					# L2: Read '+'/'-'
 	cmp	$'-',%cl		# set sign = -1
 	je	.L3
 	cmp	$'+',%cl		# sign has been already set to 1, just nptr++ 
 	je	.L4
 	jmp	.L50			# Cannot find
+.L6:					# L1 <skip loop>, continue scan and skip
+	inc	%edx
+	jmp	.L1
 .L3:					# set sign = -1
 	mov	$-1,%ebx
 .L4:					# nptr++
