@@ -78,6 +78,7 @@ mymemcpy:
 	movsq
 	movsq
 	loop	.L201
+	jmp	.L2
 .L1:
 	pop	%r8
 	pop	%rdx
