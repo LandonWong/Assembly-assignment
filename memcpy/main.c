@@ -2,20 +2,25 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/time.h>
-#define SIZE		100000
-#define BENCHNUM	5
+#define SIZE		1024 * 1024 * 12
+#define BENCHNUM	15
 void *src;
 void *dst;
 
-int basic_1_size[BENCHNUM] = {1,2,4,8,64};
-int basic_2_size[BENCHNUM] = {0x11000,99999,0xffff,0xc000,0x10000};
+int size[BENCHNUM] = 
+{1,2,4,8,64,9,63,25,1024*5 + 12,1024,1024*100 + 3,1024*1024,1024*1024*3 + 66,1024*1024*8 + 555,1024*1024*10};
 
-int basic_1_src_offset[BENCHNUM] = {0x10,0x20,0xcc30,0x38,0x3778};
-int basic_2_src_offset[BENCHNUM] = {0x88,0x1124,0x65c,0x8,0x888};
+int src_offset[BENCHNUM] = 
+{0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x7,0x9,0x4,0x8,0xc,0x1,0x3,0x5};
+int dst_offset[BENCHNUM] = 
+{0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x4,0x8,0xc,0x1,0x3,0x5,0x7};
 
-int basic_1_dst_offset[BENCHNUM] = {0x10c,0x1124,0x65c,0x8,0x88};
-int basic_2_dst_offset[BENCHNUM] = {0x8,0x20,0xc00,0x38,0x38};
-
+static inline unsigned long
+rdtsc(){
+	unsigned long tickl, tickh;
+	asm volatile ("rdtscp" : "=a"(tickl), "=d"(tickh));
+	return ((unsigned long)tickh << 32) | tickl;
+}
 
 void *
 mymemcpy(void *dest, const void *src, size_t n);
@@ -58,70 +63,22 @@ check(char *dest, const char *src, size_t n){
 
 int
 main(){
-	int i = 0;
+	unsigned long tick1,tick2;
 	int pass = 0;
-	struct timeval tv1, tv2;
-	void *adst;
-	dst = (void *)malloc(SIZE * sizeof(char));
-	InitSrcArea(SIZE);
-	gettimeofday(&tv1, NULL);
-	// Basic1 benchmark (all aligned)
-	printf("<<< Basic 01 Test begin >>>\n");
-	for(i = 0;i < BENCHNUM;i++){
-		pass = 0;
-		gettimeofday(&tv1, NULL);
-		adst = mymemcpy(dst + basic_1_dst_offset[i],
-			        src + basic_1_src_offset[i],
-			        basic_1_size[i]);
-		gettimeofday(&tv2, NULL);
-		pass = (adst == dst + basic_1_dst_offset[i]) &&
-		       (check(dst + basic_1_dst_offset[i],
-			      src + basic_1_src_offset[i],
-			      basic_1_size[i])
-			== 1);
-		printf("Test (basic #1) %d / 5: Prod: %x --> %x, size = %d.\n",i+1,src + basic_1_src_offset[i],dst + basic_1_dst_offset[i],basic_1_size[i]);
-		printf("[Mine] %s time: %u.\n\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec + (tv2.tv_sec - tv1.tv_sec) * 1000);
-		memset(dst,0,SIZE);
-	}
-	printf("<<< Basic 01 Test end >>>\n\n");
-	// Basic2 benchmark (all aligned)
-	printf("<<< Basic 02 Test begin >>>\n");
-	for(i = 0;i < BENCHNUM;i++){
-		pass = 0;
-		gettimeofday(&tv1, NULL);
-		gettimeofday(&tv1, NULL);
-		adst = mymemcpy(dst + basic_2_dst_offset[i],
-			        src + basic_2_src_offset[i],
-			        basic_2_size[i]);
-		gettimeofday(&tv2, NULL);
-		pass = (adst == dst + basic_2_dst_offset[i]) &&
-		       (check(dst + basic_2_dst_offset[i],
-			      src + basic_2_src_offset[i],
-			      basic_2_size[i])
-			== 1);
-		printf("Test (basic #2) %d / 5: Prod: %x --> %x, size = %d.\n",i+1,src + basic_2_src_offset[i],dst + basic_2_dst_offset[i],basic_2_size[i]);
-		printf("[Mine] %s time: %u.\n", pass ? "pass" : "fail", tv2.tv_usec - tv1.tv_usec);
-		memset(dst,0,SIZE);
-		gettimeofday(&tv1, NULL);
-		memcpy(dst + basic_2_dst_offset[i],
-		       src + basic_2_src_offset[i],
-		       basic_2_size[i]);
-		gettimeofday(&tv2, NULL);
-		printf("[CLIB]      time: %u.\n",tv2.tv_usec - tv1.tv_usec);
+	//src = (char *)malloc(SIZE * sizeof(char));
+	dst = (char *)malloc(SIZE * sizeof(char));
+	for(int i = 1; i<= 15; i++){
+		printf("Test %2d:\tsize = %6x\n\t%x -> %x\n",i,size[i],src + src_offset[i],dst + dst_offset[i]);
+		InitSrcArea(SIZE);
 		memset(dst,-1,SIZE);
-		gettimeofday(&tv1, NULL);
-		char_memcpy(dst + basic_2_dst_offset[i],
-		       src + basic_2_src_offset[i],
-		       basic_2_size[i]);
-		gettimeofday(&tv2, NULL);
-		printf("[NORM]      time: %u.\n\n",tv2.tv_usec - tv1.tv_usec);
-		memset(dst,0,SIZE);
+		tick1 = rdtsc();
+		mymemcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
+		tick2 = rdtsc();
+		pass = check(dst + dst_offset[i],src + src_offset[i],size[i]);
+		if(!pass) {printf("Failed. \n");}
+		else{
+			printf("Passed. \nDurTime: %d",tick2 - tick1);
+		}
 	}
-	printf("<<< Basic 02 Test end >>>\n\n");
-	// Medium1 benchmark (src unaligned)
-
-	// Medium2 benchmark (dest unaligned)
-
-	// Advanced benchmark (src & dest unaligned)
 	return 0;
 }
