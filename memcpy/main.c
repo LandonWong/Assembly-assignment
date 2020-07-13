@@ -77,7 +77,7 @@ main(){
 		pass = check(dst + dst_offset[i],src + src_offset[i],size[i]);
 		if(!pass) {printf("Failed. \n");}
 		else{
-			printf("Passed. \nDurTime: %d",tick2 - tick1);
+			printf("Passed. \nDurTime: %d\n",tick2 - tick1);
 		}
 	}
 	return 0;
