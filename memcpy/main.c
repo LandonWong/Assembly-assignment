@@ -77,18 +77,18 @@ main(){
 		pass = check(dst + dst_offset[i],src + src_offset[i],size[i]);
 		if(!pass) {printf("Failed. \n");}
 		else{
-			printf("Passed. \nDurTime: %d\n",tick2 - tick1);
+			printf("Passed. \nDurTime:\t%d\n",tick2 - tick1);
 		}
 		memset(dst,-1,SIZE);
 		tick1 = rdtsc();
 		memcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 		tick2 = rdtsc();
-		printf("glib2.0 memcpy durtime: %d\n\n",tick2 - tick1);
+		printf("glib2.0 memcpy durtime:\t%d\n",tick2 - tick1);
 		memset(dst,-1,SIZE);
 		tick1 = rdtsc();
 		char_memcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 		tick2 = rdtsc();
-		printf("single char copy durtime: %d\n\n",tick2 - tick1);
+		printf("single char copy durtime:\t%d\n\n",tick2 - tick1);
 	}
 	return 0;
 }

@@ -133,16 +133,16 @@ check:
 	.string	"Test %2d:\tsize = %6lx\n\t%x -> %x\n"
 	.section	.rodata.str1.1,"aMS",@progbits,1
 .LC1:
-	.string	"glib2.0 memcpy durtime: %d\n\n"
+	.string	"glib2.0 memcpy durtime:\t%d\n"
 	.section	.rodata.str1.8
 	.align 8
 .LC2:
-	.string	"single char copy durtime: %d\n\n"
+	.string	"single char copy durtime:\t%d\n\n"
 	.section	.rodata.str1.1
 .LC3:
 	.string	"Failed. "
 .LC4:
-	.string	"Passed. \nDurTime: %d\n"
+	.string	"Passed. \nDurTime:\t%d\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4,,15
 	.globl	main
