@@ -12,9 +12,9 @@ myatoi:
 .L0:
 	movl	4(%esp),%edx 		# base ptr
 	push	%ebx			# sign
-	xor	%eax,%eax		# return value
 	push	%ecx			# use for store elements
 	xor	%ecx,%ecx		# clear
+	xor	%eax,%eax		# return value
 	mov	$1,%ebx			# sign(value: 1/-1): default = 1
 .L1:					# L1: Skip space
 	movb	(%edx),%cl		# load element
