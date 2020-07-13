@@ -52,7 +52,7 @@ mymemcpy:
 	sub	$4,%rbx
 	jmp	.L2
 .L10:
-	cmp	$64,%rbx
+	cmp	$256,%rbx
 	jge	.L200
 	mov	%rbx,%rcx
 	shr	$3,%rcx
@@ -64,11 +64,35 @@ mymemcpy:
 	jmp	.L2
 .L200:
 	mov	%rbx,%rcx
-	shr	$6,%rcx
+	shr	$8,%rcx
 	mov	%rcx,%r8
-	shl	$6,%r8
+	shl	$8,%r8
 	sub	%r8,%rbx
 .L201:
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
+	movsq
 	movsq
 	movsq
 	movsq
