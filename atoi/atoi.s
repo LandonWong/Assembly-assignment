@@ -40,7 +40,7 @@ myatoi:
 	inc	%edx
 .L5:					# L5: <main loop>
 	movb	(%edx),%cl		# load element
-	sub	$-48,%cl
+	sub	$'0',%cl
 .L50:
 	jl	.L8			# is not num
 	cmp	$9,%cl			# is not num
