@@ -67,7 +67,7 @@ main(){
 	int pass = 0;
 	src = (char *)malloc(SIZE * sizeof(char));
 	dst = (char *)malloc(SIZE * sizeof(char));
-	printf("========================================");
+	printf("========================================\n");
 	for(int i = 0; i<= 14; i++){
 		printf("Test %2d:\tsize = %6lx\n\t%x -> %x\n",i + 1,size[i],src + src_offset[i],dst + dst_offset[i]);
 		InitSrcArea(SIZE);
@@ -89,8 +89,8 @@ main(){
 		tick1 = rdtsc();
 		char_memcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 		tick2 = rdtsc();
-		printf("1-char copy durtime:\t%d\n\n",tick2 - tick1);
-		printf("========================================");
+		printf("1-char copy durtime:\t%d\n",tick2 - tick1);
+		printf("========================================\n");
 	}
 	return 0;
 }
