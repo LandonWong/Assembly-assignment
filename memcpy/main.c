@@ -7,8 +7,8 @@
 void *src;
 void *dst;
 
-int size[BENCHNUM] = 
-{1,2,4,8,64,9,63,25,1024*5 + 12,1024,1024*100 + 3,1024*1024,1024*1024*3 + 66,1024*1024*8 + 555,1024*1024*10,1024*1024*10};
+unsigned long size[BENCHNUM] = 
+{1,2,4,8,64,9,63,25,1024*5 + 12,1024,1024*100 + 3,1024*1024,1024*1024*3 + 66,1024*1024*8 + 555,1024*1024*10};
 
 int src_offset[BENCHNUM] = 
 {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x7,0x9,0x4,0x8,0xc,0x1,0x3,0x5};
@@ -68,7 +68,7 @@ main(){
 	src = (char *)malloc(SIZE * sizeof(char));
 	dst = (char *)malloc(SIZE * sizeof(char));
 	for(int i = 1; i<= 15; i++){
-		printf("Test %2d:\tsize = %6x\n\t%x -> %x\n",i,size[i],src + src_offset[i],dst + dst_offset[i]);
+		printf("Test %2d:\tsize = %6lx\n\t%x -> %x\n",i,size[i],src + src_offset[i],dst + dst_offset[i]);
 		InitSrcArea(SIZE);
 		memset(dst,-1,SIZE);
 		tick1 = rdtsc();
