@@ -27,7 +27,7 @@ mymemcpy(void *dest, const void *src, size_t n);
 
 void
 InitSrcArea(int size){
-	src = (void *)malloc(SIZE * sizeof(char));
+	//src = (void *)malloc(SIZE * sizeof(char));
 	char *psrc = (char *)src;
 	while(size){
 		*psrc = size;
@@ -65,7 +65,7 @@ int
 main(){
 	unsigned long tick1,tick2;
 	int pass = 0;
-	//src = (char *)malloc(SIZE * sizeof(char));
+	src = (char *)malloc(SIZE * sizeof(char));
 	dst = (char *)malloc(SIZE * sizeof(char));
 	for(int i = 1; i<= 15; i++){
 		printf("Test %2d:\tsize = %6x\n\t%x -> %x\n",i,size[i],src + src_offset[i],dst + dst_offset[i]);
