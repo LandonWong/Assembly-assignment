@@ -4,8 +4,8 @@
 #include <sys/time.h>
 #define SIZE		1024 * 1024 * 12
 #define BENCHNUM	15
-void *src;
-void *dst;
+volatile void *src;
+volatile void *dst;
 
 unsigned long size[BENCHNUM] = 
 {1,2,4,8,64,9,63,25,1024*5 + 12,1024,1024*100 + 3,1024*1024,1024*1024*3 + 66,1024*1024*8 + 555,1024*1024*10};
@@ -79,12 +79,14 @@ main(){
 		if(!pass) {printf("Failed. \n");}
 		else{
 			printf("Passed. \n\nmymemcpy durtime:\t%d\n",tick2 - tick1);
-			memset(dst,-1,SIZE);
+			memset(dst,-2,SIZE);
+			InitSrcArea(SIZE);
 			tick1 = rdtsc();
 			memcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 			tick2 = rdtsc();
 			printf("glib2.0 memcpy durtime:\t%d\n",tick2 - tick1);
 			memset(dst,-1,SIZE);
+			InitSrcArea(SIZE);
 			tick1 = rdtsc();
 			char_memcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 			tick2 = rdtsc();
