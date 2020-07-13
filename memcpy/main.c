@@ -18,7 +18,7 @@ int dst_offset[BENCHNUM] =
 static inline unsigned long
 rdtsc(){
 	unsigned long tickl, tickh;
-	asm volatile ("rdtscp" : "=a"(tickl), "=d"(tickh));
+	asm volatile ("rdtsc" : "=a"(tickl), "=d"(tickh));
 	return ((unsigned long)tickh << 32) | tickl;
 }
 

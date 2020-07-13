@@ -280,7 +280,7 @@ main:
 	.loc 1 21 0
 #APP
 # 21 "main.c" 1
-	rdtscp
+	rdtsc
 # 0 "" 2
 #NO_APP
 .LBE80:
@@ -312,7 +312,7 @@ main:
 	.loc 1 21 0
 #APP
 # 21 "main.c" 1
-	rdtscp
+	rdtsc
 # 0 "" 2
 #NO_APP
 .LBE87:
@@ -398,7 +398,7 @@ main:
 	.loc 1 21 0
 #APP
 # 21 "main.c" 1
-	rdtscp
+	rdtsc
 # 0 "" 2
 .LVL40:
 #NO_APP
@@ -442,7 +442,7 @@ main:
 	.loc 1 21 0
 #APP
 # 21 "main.c" 1
-	rdtscp
+	rdtsc
 # 0 "" 2
 .LVL44:
 #NO_APP
@@ -493,7 +493,7 @@ main:
 	.loc 1 21 0
 #APP
 # 21 "main.c" 1
-	rdtscp
+	rdtsc
 # 0 "" 2
 #NO_APP
 	movq	%rax, %rdi
@@ -540,7 +540,7 @@ main:
 	.loc 1 21 0
 #APP
 # 21 "main.c" 1
-	rdtscp
+	rdtsc
 # 0 "" 2
 .LVL53:
 #NO_APP
