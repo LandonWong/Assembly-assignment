@@ -67,8 +67,8 @@ main(){
 	int pass = 0;
 	src = (char *)malloc(SIZE * sizeof(char));
 	dst = (char *)malloc(SIZE * sizeof(char));
-	for(int i = 1; i<= 15; i++){
-		printf("Test %2d:\tsize = %6lx\n\t%x -> %x\n",i,size[i],src + src_offset[i],dst + dst_offset[i]);
+	for(int i = 0; i<= 14; i++){
+		printf("Test %2d:\tsize = %6lx\n\t%x -> %x\n",i + 1,size[i],src + src_offset[i],dst + dst_offset[i]);
 		InitSrcArea(SIZE);
 		memset(dst,-1,SIZE);
 		tick1 = rdtsc();

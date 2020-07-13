@@ -171,8 +171,8 @@ main:
 	pushq	%rbx
 	.cfi_def_cfa_offset 56
 	.cfi_offset 3, -56
-	leaq	4+dst_offset(%rip), %r12
-	leaq	size(%rip), %r13
+	leaq	dst_offset(%rip), %r12
+	leaq	-8+size(%rip), %r13
 .LBB44:
 .LBB45:
 .LBB46:
@@ -203,7 +203,7 @@ main:
 .L30:
 .LBB109:
 	.loc 1 71 0
-	leaq	src_offset(%rip), %rdi
+	leaq	-4+src_offset(%rip), %rdi
 	movslq	(%r12), %rsi
 .LBB48:
 .LBB49:
@@ -278,7 +278,7 @@ main:
 .LBE56:
 .LBE55:
 	.loc 1 75 0
-	leaq	src_offset(%rip), %rax
+	leaq	-4+src_offset(%rip), %rax
 	movslq	(%r12), %rdi
 	addq	dst(%rip), %rdi
 .LBB61:
@@ -304,7 +304,7 @@ main:
 .LBE63:
 .LBE62:
 	.loc 1 77 0
-	leaq	src_offset(%rip), %rdi
+	leaq	-4+src_offset(%rip), %rdi
 	movq	0(%r13,%r15), %r9
 	movslq	(%r12), %r8
 	addq	dst(%rip), %r8
@@ -414,7 +414,7 @@ main:
 .LBE82:
 .LBE81:
 	.loc 1 84 0 discriminator 2
-	leaq	src_offset(%rip), %rsi
+	leaq	-4+src_offset(%rip), %rsi
 	movslq	(%r12), %rdi
 .LBB88:
 .LBB83:
@@ -2354,12 +2354,16 @@ size:
 .LLST9:
 	.quad	.LVL22
 	.quad	.LVL45
-	.value	0x1
-	.byte	0x56
+	.value	0x3
+	.byte	0x76
+	.sleb128 -1
+	.byte	0x9f
 	.quad	.LVL47
 	.quad	.LVL49
-	.value	0x1
-	.byte	0x56
+	.value	0x3
+	.byte	0x76
+	.sleb128 -1
+	.byte	0x9f
 	.quad	0
 	.quad	0
 .LLST10:
@@ -2572,7 +2576,7 @@ size:
 	.byte	0x7f
 	.sleb128 0
 	.byte	0x3
-	.quad	size
+	.quad	size-8
 	.byte	0x22
 	.quad	0
 	.quad	0
@@ -2583,7 +2587,7 @@ size:
 	.byte	0x7e
 	.sleb128 0
 	.byte	0x3
-	.quad	src_offset
+	.quad	src_offset-4
 	.byte	0x22
 	.byte	0x94
 	.byte	0x4
