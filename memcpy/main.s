@@ -133,7 +133,7 @@ check:
 	.string	"========================================"
 	.align 8
 .LC1:
-	.string	"Test %2d:\tsize = %6lx\n\t%x -> %x\n"
+	.string	"Test %2d:\tsize = 0x%6lx\n\t0x%x -> 0x%x\n"
 	.section	.rodata.str1.1,"aMS",@progbits,1
 .LC2:
 	.string	"1-char copy durtime:\t%d\n"
