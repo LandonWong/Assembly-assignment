@@ -39,11 +39,11 @@ myatoi:
 .L4:					# nptr++
 	inc	%edx
 .L5:					# L5: <main loop>
-	movsbl	(%edx),%ecx		# load element
-	sub	$-48,%ecx
+	movb	(%edx),%cl		# load element
+	sub	$-48,%cl
 .L50:
 	jl	.L8			# is not num
-	cmp	$'9',%cl		# is not num
+	cmp	$9,%cl			# is not num
 	jg	.L8
 	imull	$10,%eax		# result = result * 10
 	jo	.L7			# if OVERFLOW, goto OVERFLOW handle
