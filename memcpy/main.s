@@ -148,7 +148,7 @@ check:
 .LC1:
 	.string	"Failed. "
 .LC2:
-	.string	"Passed. \nDurTime: %d"
+	.string	"Passed. \nDurTime: %d\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4,,15
 	.globl	main
