@@ -77,7 +77,7 @@ main(){
 		pass = check(dst + dst_offset[i],src + src_offset[i],size[i]);
 		if(!pass) {printf("Failed. \n");}
 		else{
-			printf("Passed. \nDurTime:\t%d\n",tick2 - tick1);
+			printf("Passed. \nmymemcpy durtime:\t%d\n",tick2 - tick1);
 		}
 		memset(dst,-1,SIZE);
 		tick1 = rdtsc();

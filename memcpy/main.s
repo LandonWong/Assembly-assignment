@@ -141,8 +141,10 @@ check:
 	.section	.rodata.str1.1
 .LC3:
 	.string	"Failed. "
+	.section	.rodata.str1.8
+	.align 8
 .LC4:
-	.string	"Passed. \nDurTime:\t%d\n"
+	.string	"Passed. \nmymemcpy durtime:\t%d\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4,,15
 	.globl	main
