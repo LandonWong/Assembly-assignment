@@ -57,7 +57,10 @@ myatoi:
 	not	%eax			# if sign == -1, set value min
 	jmp	.L9
 .L8:
-	imull	%ebx,%eax		# result = result * sign
+	cmp	$1,%ebx
+	je	.L9
+	not	%eax			# result = result * sign
+	inc	%eax
 .L9:
 	pop	%ecx
 	pop	%ebx			# restore registers
