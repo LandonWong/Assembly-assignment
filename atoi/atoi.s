@@ -29,7 +29,7 @@ myatoi:
 	je	.L3
 	cmp	$'+',%cl		# sign has been already set to 1, just nptr++ 
 	je	.L4
-	jmp	.L50			# Cannot find
+	jmp	.L10			# Cannot find
 .L6:					# L1 <skip loop>, continue scan and skip
 	inc	%edx
 	jmp	.L1
@@ -39,7 +39,7 @@ myatoi:
 	inc	%edx
 .L5:					# L5: <main loop>
 	movb	(%edx),%cl		# load element
-.L50:
+.L10:
 	sub	$'0',%cl
 	jl	.L8			# is not num
 	cmp	$9,%cl			# is not num
