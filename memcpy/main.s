@@ -515,13 +515,6 @@ main:
 	.loc 1 98 0 discriminator 2
 	leaq	.LC0(%rip), %rdi
 	call	puts@PLT
-	.loc 1 99 0 discriminator 2
-	movl	-28(%rbp), %eax
-	movl	$20, %edx
-	movl	%eax, %esi
-	leaq	.LC6(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
 	.loc 1 72 0 discriminator 2
 	addl	$1, -24(%rbp)
 .L16:
@@ -529,7 +522,14 @@ main:
 	cmpl	$19, -24(%rbp)
 	jle	.L19
 .LBE2:
-	.loc 1 101 0 is_stmt 1
+	.loc 1 100 0 is_stmt 1
+	movl	-28(%rbp), %eax
+	movl	$20, %edx
+	movl	%eax, %esi
+	leaq	.LC6(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 101 0
 	movl	$0, %eax
 	.loc 1 102 0
 	leave

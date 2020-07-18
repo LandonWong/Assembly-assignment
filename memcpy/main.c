@@ -96,7 +96,7 @@ main(){
 			printf("1-char copy durtime:\t%d\n",tick2 - tick1);
 		}
 		printf("========================================\n");
-		printf("PASS: %d / %d\n",count,BENCHNUM);
 	}
+	printf("PASS: %d / %d\n",count,BENCHNUM);
 	return 0;
 }
