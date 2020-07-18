@@ -14,25 +14,25 @@ mymemcpy:
 	push	%r8
 	mov	%rdi,%rax	# return value: dest
 .L_main:
-	test	%rdx,%rdx
+	test	%rdx,%rdx	# if zero, goto exit
 	jz	.L_exit
-	cmp	$16,%rdx
+	cmp	$16,%rdx	# if less than 16B, goto byte copy and finish after it
 	jl	.L_byte_finish
-	mov	%rdi,%rcx
-	and	$0xf,%rcx
-	jnz	.L_byte
-	cmp	$128,%rdx
+	mov	%rdi,%rcx	
+	and	$0xf,%rcx	# check if dest is 16B align
+	jnz	.L_byte		# if unalign, goto 1 byte copy until 16 align
+	cmp	$128,%rdx	# if >128B, goto 128B-copy
 	jge	.L_128byte
-.L_qword:
-	mov	%rdx,%rcx
-	shr	$3,%rcx
-	lea	(,%rcx,8),%r8
-	sub	%r8,%rdx
+.L_qword:			# 8B copy using movsq
+	mov	%rdx,%rcx	# if align && >=16 %% <128, use movsq
+	shr	$3,%rcx		# calculate how many times
+	lea	(,%rcx,4),%r8
+	sub	%r8,%rdx	# refresh remain length
 	cld
 	rep	movsq
 	jmp	.L_main
-.L_128byte:
-	mov	%rdx,%rcx
+.L_128byte:			# 128B copy using xmm regs
+	mov	%rdx,%rcx	# calculate loop times and refresh remain length
 	shr	$7,%rcx
 	mov	%rcx,%r8
 	shl	$7,%r8
