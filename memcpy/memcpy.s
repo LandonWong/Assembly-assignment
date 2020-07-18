@@ -75,7 +75,7 @@ mymemcpy:
 	rep	movsb
 .L_exit:
 	cmp	%r9,%rdi
-	jne	.L_exit
+	je	.L_exit
 	pop	%r8
 	pop	%rcx
 	ret
