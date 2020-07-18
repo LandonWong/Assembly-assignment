@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define MAXLEN		100
-#define BENCH_SIZE	4
+#define BENCH_SIZE	5
 char *basic[BENCH_SIZE];
 char *medium[BENCH_SIZE];
 char *advanced[BENCH_SIZE];
@@ -88,14 +88,17 @@ void init(){
 	basic[1] = "2147483640";
 	basic[2] = "-+-+-5852";
 	basic[3] = "+2351";
+	basic[4] = "-876452";
 	medium[0] = "\t256";
 	medium[1] = "         -658";
 	medium[2] = "\n\n\n\t 23452";
 	medium[3] = "-2561_ds";
+	medium[4] = "+ds525";
 	advanced[0] = "- \t256adfs";
 	advanced[1] = "   -\n25a2sdfdfda";
 	advanced[2] = "\n-99999999999";
 	advanced[3] = "   +77777788888877";
+	advanced[4] = "\t\n  -ad5455\n";
 	printf("Benchmark prepare done. Test begin\n");
 }
 
