@@ -43,7 +43,7 @@ mymemcpy:
 	movdqu	6*16(%rsi),%xmm6
 	movdqu	7*16(%rsi),%xmm7
 	movdqa	%xmm0,0*16(%rdi)
-	movdqa	%xmm1,1*16(%rdi)
+	movntpd	%xmm1,1*16(%rdi)
 	movdqa	%xmm2,2*16(%rdi)
 	movdqa	%xmm3,3*16(%rdi)
 	movdqa	%xmm4,4*16(%rdi)
