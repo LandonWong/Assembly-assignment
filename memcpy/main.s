@@ -513,7 +513,7 @@ main:
 	addl	$1, -24(%rbp)
 .L16:
 	.loc 1 71 0 is_stmt 0 discriminator 1
-	cmpl	$19, -24(%rbp)
+	cmpl	$18, -24(%rbp)
 	jle	.L19
 .LBE2:
 	.loc 1 98 0 is_stmt 1
