@@ -51,8 +51,8 @@ mymemcpy:
 	movdqu	%xmm5,5*16(%rdi)
 	movdqu	%xmm6,6*16(%rdi)
 	movdqu	%xmm7,7*16(%rdi)
-	sub	$0x80,%rsi
-	sub	$0x80,%rdi
+	add	$0x80,%rsi
+	add	$0x80,%rdi
 	loop	.L40
 	jmp	.L2
 .L3:
