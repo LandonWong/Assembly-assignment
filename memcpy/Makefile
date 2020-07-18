@@ -3,8 +3,8 @@ CFLAGS = -w -g -mmmx -fno-asynchronous-unwind-tables
 
 asm:	main.c memcpy.s
 	$(CC) $(CFLAGS) -S main.c
-	$(CC) $(CFLAGS) -O2 -c main.c
-	$(CC) $(CFLAGS) -O2 -c memcpy.s
+	$(CC) $(CFLAGS) -c main.c
+	$(CC) $(CFLAGS) -c memcpy.s
 	git add --all && git commit -m "Update: memcpy_asm"
 link:	main.o memcpy.o
 	$(CC) $(CFLAGS) main.o memcpy.o -o memcpy -lm
