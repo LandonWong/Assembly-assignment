@@ -56,6 +56,7 @@ mymemcpy:
 	loop	.L40
 	jmp	.L2
 .L3:
+	sub	$16,%rcx
 	not	%rcx
 	inc	%rcx
 	sub	%rcx,%rbx
