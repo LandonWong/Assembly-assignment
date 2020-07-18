@@ -27,7 +27,7 @@ mymemcpy:
 	mov	%rdx,%rcx	# if align && >=16 %% <128, use movsq
 	shr	$3,%rcx		# calculate how many times
 	mov	%rcx,%r8
-	shl	$7,%r8
+	shl	$3,%r8
 	sub	%r8,%rdx	# refresh remain length
 	cld
 	rep	movsq
