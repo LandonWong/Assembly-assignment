@@ -15,21 +15,20 @@ mymemcpy:
 	cmp	$16,%rbx
 	jl	.L30
 	mov	%rdi,%rcx
-	and	$0x7f,%rcx
+	and	$0xf,%rcx
 	jnz	.L3
 	cmp	$128,%rbx
 	jge	.L4
 .L5:
 	mov	%rbx,%rcx
-	shr	$6,%rcx
-	sub	%ecx,%ebx
+	shr	$3,%rcx
 	rep	movsq
 	jmp	.L1
 .L4:
 	mov	%rbx,%rcx
-	shr	$10,%rcx
+	shr	$7,%rcx
 	mov	%rcx,%r8
-	shl	$10,%r8
+	shl	$7,%r8
 	sub	%r8,%rbx
 .L40:
 	movdqu	0*16(%rsi),%xmm0
@@ -54,12 +53,10 @@ mymemcpy:
 	jmp	.L2
 .L3:
 	sub	%rcx,%rbx
-	shr	$3,%rcx
 	rep	movsb
 	jmp	.L2
 .L30:
 	mov	%rbx,%rcx
-	shr	$3,%rcx
 	rep	movsb
 .L1:
 	pop	%r8
