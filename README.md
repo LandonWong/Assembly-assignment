@@ -3,7 +3,7 @@
 ## Author
 * Landon WONG, UCAS
 * 王嵩岳, 2018K8009929033
-* Last modified: July. 04, 2020
+* Last modified: July. 18, 2020
 ## Notice
 * Development environment: Ubuntu 18.04 (Desktop) amd-64 (physical machine), Linux Kernel: 4.15, compilation tool: gcc
 * **ERROR Handle**: If an error is reported when executing `make *_asm` (including `make memcpy_asm`, `make atoi_asm`):\
@@ -16,12 +16,6 @@ This assignment has three parts:
 | atoi | Use the assembler to implement the atoi function and convert strings to numbers (need to consider the sign and irrelevant symbols) |
 | memcpy | Use the assembler to implement the memcpy function, realize memory data movement, optimize as much as possible, and introduce performance evaluation and evaluation efficiency |
 | freq | Use embedded assembly to record the execution cycle, combined with the timing function, calculate the frequency of machine operation |
-## Schedule
-| Assignment Name | Status |
-| :---------------: | :---------------: |
-| atoi (#1) | Finished (Jun. 24) |
-| memcpy (#2) | Almost Finished (Jun. 25) (need benchmark) |
-| freq (#3) | Finished (July. 04) |
 ## File structure
 For checking assignment:
 | Filename | Description |
@@ -31,9 +25,6 @@ For checking assignment:
 | `freq/freq.c` | Assignment #3 (freq) |
 ```
 AssembleLangFinal
-  |
-  |--doc                    # assignment report
-  |    |--2018K8009929033.pdf
   |
   |--atoi
   |    |--main.c            # test main program
@@ -49,10 +40,11 @@ AssembleLangFinal
   |    |--freq.c            # Assignment #3: frequency
   |    |--Makefile
   |
-  |--Readme.md              # Documentation
-  |--Readme.pdf             # Documentation (PDF)
-  |--Makefile
-  |--LICENSE            
+  |--README.md              # Documentation
+  |
+  |--2018K8009929033.pdf    # Report
+  |
+  |--Makefile          
  ```
 ## Usage
 **NOTE: All the following commands are executed in the top directory.**
