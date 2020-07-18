@@ -57,18 +57,18 @@ mymemcpy:
 	movntpd	%xmm5,5*16(%rdi)
 	movntpd	%xmm6,6*16(%rdi)
 	movntpd	%xmm7,7*16(%rdi)
-	lea	0x80(%rsi),%rsi
+	lea	0x80(%rsi),%rsi		# refresh rsi and rdi
 	lea	0x80(%rdi),%rdi
 	loop	.L_128byte_main
 	jmp	.L_main
-.L_byte:
+.L_byte:				# one byte copy
 	lea	-16(%rdx,%rcx),%rdx
 	sub	$17,%rcx
-	not	%rcx
+	not	%rcx			# refresh remain length
 	cld
-	#rep	movsb
+	rep	movsb
 	jmp	.L_main
-.L_byte_finish:
+.L_byte_finish:				# one byte copy and exit
 	mov	%rdx,%rcx
 	cld
 	rep	movsb
