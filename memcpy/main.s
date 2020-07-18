@@ -319,6 +319,10 @@ main:
 	call	rdtsc
 	movq	%rax, -16(%rbp)
 	.loc 1 76 0
+	movl	$0, %eax
+	call	rdtsc
+	movq	%rax, -16(%rbp)
+	.loc 1 77 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -343,11 +347,11 @@ main:
 	movq	%rax, %rdx
 	movq	%rcx, %rdi
 	call	mymemcpy@PLT
-	.loc 1 77 0
+	.loc 1 78 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -8(%rbp)
-	.loc 1 78 0
+	.loc 1 79 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -373,35 +377,35 @@ main:
 	movq	%rcx, %rdi
 	call	check
 	movl	%eax, -20(%rbp)
-	.loc 1 79 0
+	.loc 1 80 0
 	cmpl	$0, -20(%rbp)
 	jne	.L17
-	.loc 1 79 0 is_stmt 0 discriminator 1
+	.loc 1 80 0 is_stmt 0 discriminator 1
 	leaq	.LC2(%rip), %rdi
 	call	puts@PLT
 	jmp	.L18
 .L17:
-	.loc 1 81 0 is_stmt 1
+	.loc 1 82 0 is_stmt 1
 	movq	-8(%rbp), %rax
 	subq	-16(%rbp), %rax
 	movq	%rax, %rsi
 	leaq	.LC3(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 82 0
+	.loc 1 83 0
 	movq	dst(%rip), %rax
 	movl	$12582912, %edx
 	movl	$-2, %esi
 	movq	%rax, %rdi
 	call	memset@PLT
-	.loc 1 83 0
+	.loc 1 84 0
 	movl	$12582912, %edi
 	call	InitSrcArea
-	.loc 1 84 0
+	.loc 1 85 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -16(%rbp)
-	.loc 1 85 0
+	.loc 1 86 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -426,31 +430,31 @@ main:
 	movq	%rax, %rdx
 	movq	%rcx, %rdi
 	call	memcpy@PLT
-	.loc 1 86 0
+	.loc 1 87 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -8(%rbp)
-	.loc 1 87 0
+	.loc 1 88 0
 	movq	-8(%rbp), %rax
 	subq	-16(%rbp), %rax
 	movq	%rax, %rsi
 	leaq	.LC4(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 88 0
+	.loc 1 89 0
 	movq	dst(%rip), %rax
 	movl	$12582912, %edx
 	movl	$-1, %esi
 	movq	%rax, %rdi
 	call	memset@PLT
-	.loc 1 89 0
+	.loc 1 90 0
 	movl	$12582912, %edi
 	call	InitSrcArea
-	.loc 1 90 0
+	.loc 1 91 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -16(%rbp)
-	.loc 1 91 0
+	.loc 1 92 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -475,11 +479,11 @@ main:
 	movq	%rax, %rdx
 	movq	%rcx, %rdi
 	call	char_memcpy
-	.loc 1 92 0
+	.loc 1 93 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -8(%rbp)
-	.loc 1 93 0
+	.loc 1 94 0
 	movq	-8(%rbp), %rax
 	subq	-16(%rbp), %rax
 	movq	%rax, %rsi
@@ -487,7 +491,7 @@ main:
 	movl	$0, %eax
 	call	printf@PLT
 .L18:
-	.loc 1 95 0 discriminator 2
+	.loc 1 96 0 discriminator 2
 	leaq	.LC0(%rip), %rdi
 	call	puts@PLT
 	.loc 1 71 0 discriminator 2
@@ -497,9 +501,9 @@ main:
 	cmpl	$14, -24(%rbp)
 	jle	.L19
 .LBE2:
-	.loc 1 97 0 is_stmt 1
+	.loc 1 98 0 is_stmt 1
 	movl	$0, %eax
-	.loc 1 98 0
+	.loc 1 99 0
 	leave
 	.cfi_def_cfa 7, 8
 	ret

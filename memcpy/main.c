@@ -73,6 +73,7 @@ main(){
 		InitSrcArea(SIZE);
 		memset(dst,-1,SIZE);
 		tick1 = rdtsc();
+		tick1 = rdtsc();
 		mymemcpy(dst + dst_offset[i],src + src_offset[i],size[i]);
 		tick2 = rdtsc();
 		pass = check(dst + dst_offset[i],src + src_offset[i],size[i]);
