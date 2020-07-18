@@ -68,7 +68,7 @@ main(){
 	src = (char *)malloc(SIZE * sizeof(char));
 	dst = (char *)malloc(SIZE * sizeof(char));
 	printf("========================================\n");
-	for(int i = 0; i<= 14; i++){
+	for(int i = 8; i<= 8; i++){
 		printf("Test %2d:\tsize = 0x%6lx\n\t0x%x -> 0x%x\n",i + 1,size[i],src + src_offset[i],dst + dst_offset[i]);
 		InitSrcArea(SIZE);
 		memset(dst,-1,SIZE);
