@@ -34,14 +34,14 @@ mymemcpy:
 .L_128byte_main:
 	prefetchnta	1*128(%rsi)
 	prefetchnta	2*128(%rsi)
-	movdqu	0*16(%rsi),%xmm0
-	movdqu	1*16(%rsi),%xmm1
-	movdqu	2*16(%rsi),%xmm2
-	movdqu	3*16(%rsi),%xmm3
-	movdqu	4*16(%rsi),%xmm4
-	movdqu	5*16(%rsi),%xmm5
-	movdqu	6*16(%rsi),%xmm6
-	movdqu	7*16(%rsi),%xmm7
+	movaps	0*16(%rsi),%xmm0
+	movaps	1*16(%rsi),%xmm1
+	movaps	2*16(%rsi),%xmm2
+	movaps	3*16(%rsi),%xmm3
+	movaps	4*16(%rsi),%xmm4
+	movaps	5*16(%rsi),%xmm5
+	movaps	6*16(%rsi),%xmm6
+	movaps	7*16(%rsi),%xmm7
 	movntpd	%xmm0,0*16(%rdi)
 	movntpd	%xmm1,1*16(%rdi)
 	movntpd	%xmm2,2*16(%rdi)
