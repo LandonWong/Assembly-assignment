@@ -13,6 +13,7 @@ mymemcpy:
 	push	%rcx
 	push	%r8
 	mov	%rdi,%rax	# return value: dest
+	lea	(%rax,%rdx),%r9
 .L_main:
 	test	%rdx,%rdx	# if zero, goto exit
 	jz	.L_exit
@@ -73,6 +74,8 @@ mymemcpy:
 	cld
 	rep	movsb
 .L_exit:
+	cmp	%r9,%rdi
+	jne	.L_exit
 	pop	%r8
 	pop	%rcx
 	ret
