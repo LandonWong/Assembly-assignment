@@ -10,9 +10,8 @@ myatoi:
 # | eax | return value (result) |
 
 .L0:
-	movl	4(%esp),%edx 		# base ptr
 	push	%ebx			# sign
-	push	%ecx			# use for store elements
+	movl	8(%esp),%edx 		# base ptr
 	xor	%ecx,%ecx		# clear
 	xor	%eax,%eax		# return value
 	mov	$1,%ebx			# sign(value: 1/-1): default = 1
@@ -62,6 +61,5 @@ myatoi:
 	not	%eax			# result = result * sign
 	inc	%eax
 .L9:
-	pop	%ecx
 	pop	%ebx			# restore registers
 	ret				# return
