@@ -63,7 +63,7 @@ mymemcpy:
 	jmp	.L_main
 .L_byte:				# one byte copy
 	lea	-16(%rdx,%rcx),%rdx
-	#sub	$17,%rcx
+	sub	$16,%rcx
 	not	%rcx			# refresh remain length
 	cld
 	rep	movsb
