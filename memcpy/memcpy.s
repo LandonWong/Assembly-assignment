@@ -40,7 +40,10 @@ mymemcpy:
 	and	$0x7f,%rdx	# refresh remain length
 	
 .L_128byte_main:
-	prefetchnta	128(%rsi)	# prefetch data for next loop
+	prefetchnta	0x80(%rsi)	# prefetch data for next loop
+	prefetchnta	0xa0(%rsi)
+	prefetchnta	0xc0(%rsi)
+	prefetchnta	0xe0(%rsi)
 	movdqu	0*16(%rsi),%xmm0
 	movdqu	1*16(%rsi),%xmm1
 	movdqu	2*16(%rsi),%xmm2
