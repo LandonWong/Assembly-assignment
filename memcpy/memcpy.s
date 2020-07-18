@@ -21,10 +21,10 @@ mymemcpy:
 	mov	%rdi,%rcx	
 	and	$0xf,%rcx	# check if dest is 16B align
 	jnz	.L_byte		# if unalign, goto 1 byte copy until 16 align
-	cmp	$128,%rdx	# if >128B, goto 128B-copy
+	cmp	$128,%rdx	# if >=128B, goto 128B-copy
 	jge	.L_128byte
 .L_qword:			# 8B copy using movsq
-	mov	%rdx,%rcx	# if align && >=16 %% <128, use movsq
+	mov	%rdx,%rcx	# if align && >=16 && <128, use movsq
 	shr	$3,%rcx		# calculate how many times
 	mov	%rcx,%r8
 	shl	$3,%r8
@@ -63,7 +63,7 @@ mymemcpy:
 	jmp	.L_main
 .L_byte:				# one byte copy
 	lea	-16(%rdx,%rcx),%rdx
-	sub	$17,%rcx
+	#sub	$17,%rcx
 	not	%rcx			# refresh remain length
 	cld
 	rep	movsb
