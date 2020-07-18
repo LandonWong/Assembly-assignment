@@ -76,7 +76,7 @@ mymemcpy:
 	rep	movsb
 .L_exit:
 	cmp	%r9,%rdi
-	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
+#	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
 	pop	%r9
 	pop	%r8
 	pop	%rcx
