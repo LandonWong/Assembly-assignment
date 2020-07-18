@@ -55,10 +55,11 @@ mymemcpy:
 	loop	.L_128byte_main
 	jmp	.L_main
 .L_byte:
+	lea	-16(%rdx,%rcx),%rdx
 	sub	$16,%rcx
 	not	%rcx
 	inc	%rcx
-	sub	%rcx,%rdx
+#	sub	%rcx,%rdx
 	cld
 	rep	movsb
 	jmp	.L_main
