@@ -42,14 +42,14 @@ mymemcpy:
 	movdqu	5*16(%rsi),%xmm5
 	movdqu	6*16(%rsi),%xmm6
 	movdqu	7*16(%rsi),%xmm7
-	movdqa	%xmm0,0*16(%rdi)
+	movntpd	%xmm0,0*16(%rdi)
 	movntpd	%xmm1,1*16(%rdi)
-	movdqa	%xmm2,2*16(%rdi)
-	movdqa	%xmm3,3*16(%rdi)
-	movdqa	%xmm4,4*16(%rdi)
-	movdqa	%xmm5,5*16(%rdi)
-	movdqa	%xmm6,6*16(%rdi)
-	movdqa	%xmm7,7*16(%rdi)
+	movntpd	%xmm2,2*16(%rdi)
+	movntpd	%xmm3,3*16(%rdi)
+	movntpd	%xmm4,4*16(%rdi)
+	movntpd	%xmm5,5*16(%rdi)
+	movntpd	%xmm6,6*16(%rdi)
+	movntpd	%xmm7,7*16(%rdi)
 	lea	0x80(%rsi),%rsi
 	lea	0x80(%rdi),%rdi
 	loop	.L_128byte_main
