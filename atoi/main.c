@@ -107,17 +107,17 @@ main(int argc,char *argv){
 	char str[MAXLEN];
 	char c,*p;
 	int i = 0;
-	if(argv[1] == "--user"){
-		printf("User Test: (Press Ctrl + D to end )");
+	init();
+	basic_test();
+	medium_test();
+	advanced_test();
+	while(1){
+		printf("User Test: (Press Ctrl + D to end input, Ctrl + C to HALT):\n");
 		p = str;
 		while((c=getchar())!=EOF){
 			*p++ = c; 
 		}
 		printf("Result = %d\n",atoi(str));
 	}
-	init();
-	basic_test();
-	medium_test();
-	advanced_test();
 	return 0;
 }
