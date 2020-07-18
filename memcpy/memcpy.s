@@ -50,8 +50,8 @@ mymemcpy:
 	movdqa	%xmm5,5*16(%rdi)
 	movdqa	%xmm6,6*16(%rdi)
 	movdqa	%xmm7,7*16(%rdi)
-	add	$0x80,%rsi
-	add	$0x80,%rdi
+	lea	0x80(%rsi),%rsi
+	lea	0x80(%rdi),%rdi
 	loop	.L_128byte_main
 	jmp	.L_main
 .L_byte:
