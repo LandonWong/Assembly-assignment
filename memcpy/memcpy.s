@@ -28,7 +28,7 @@ mymemcpy:
 .L_qword:			# 8B copy using movsq
 	mov	%rdx,%rcx	# if align && >=16 && <128, use movsq
 	shr	$3,%rcx		# calculate how many times
-	and	$0xf,%rdx
+	and	$0x7,%rdx
 #	mov	%rcx,%r8
 #	shl	$3,%r8
 #	sub	%r8,%rdx	# refresh remain length
