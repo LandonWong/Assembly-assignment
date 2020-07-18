@@ -2,10 +2,17 @@
 	.globl	mymemcpy
 	.type	mymemcpy, @function
 mymemcpy:
+
+# %rax: return value: dest
+# %rdx: remain length (bytes)
+# %rdi: dest pointer
+# %rsi: src pointer
+# %rcx: loop times
+
 .L0:
 	push	%rcx
 	push	%r8
-	mov	%rdi,%rax
+	mov	%rdi,%rax	# return value: dest
 .L_main:
 	test	%rdx,%rdx
 	jz	.L_exit
@@ -19,8 +26,7 @@ mymemcpy:
 .L_qword:
 	mov	%rdx,%rcx
 	shr	$3,%rcx
-	mov	%rcx,%r8
-	shl	$3,%r8
+	lea	(,%rcx,8),%r8
 	sub	%r8,%rdx
 	cld
 	rep	movsq
