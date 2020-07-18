@@ -272,7 +272,7 @@ main:
 	call	puts@PLT
 .LBB2:
 	.loc 1 71 0
-	movl	$6, -24(%rbp)
+	movl	$0, -24(%rbp)
 	jmp	.L16
 .L19:
 	.loc 1 72 0
@@ -494,7 +494,7 @@ main:
 	addl	$1, -24(%rbp)
 .L16:
 	.loc 1 71 0 is_stmt 0 discriminator 1
-	cmpl	$6, -24(%rbp)
+	cmpl	$14, -24(%rbp)
 	jle	.L19
 .LBE2:
 	.loc 1 97 0 is_stmt 1
