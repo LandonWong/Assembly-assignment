@@ -6,17 +6,17 @@ mymemcpy:
 	push	%rcx
 	push	%r8
 	mov	%rdi,%rax
-.L2:
+.L_main:
 	test	%rdx,%rdx
-	jz	.L1
+	jz	.L_exit
 	cmp	$16,%rdx
-	jl	.L30
+	jl	.L_byte_finish
 	mov	%rdi,%rcx
 	and	$0xf,%rcx
-	jnz	.L3
+	jnz	.L_byte
 	cmp	$128,%rdx
-	jge	.L4
-.L5:
+	jge	.L_128byte
+.L_qword:
 	mov	%rdx,%rcx
 	shr	$3,%rcx
 	mov	%rcx,%r8
@@ -24,14 +24,14 @@ mymemcpy:
 	sub	%r8,%rdx
 	cld
 	rep	movsq
-	jmp	.L2
-.L4:
+	jmp	.L_main
+.L_128byte:
 	mov	%rdx,%rcx
 	shr	$7,%rcx
 	mov	%rcx,%r8
 	shl	$7,%r8
 	sub	%r8,%rdx
-.L40:
+.L_128byte_main:
 	prefetchnta	1*128(%rsi)
 	prefetchnta	2*128(%rsi)
 	movdqu	0*16(%rsi),%xmm0
@@ -52,21 +52,21 @@ mymemcpy:
 	movdqa	%xmm7,7*16(%rdi)
 	add	$0x80,%rsi
 	add	$0x80,%rdi
-	loop	.L40
-	jmp	.L2
-.L3:
+	loop	.L_128byte_main
+	jmp	.L_main
+.L_byte:
 	sub	$16,%rcx
 	not	%rcx
 	inc	%rcx
 	sub	%rcx,%rdx
 	cld
 	rep	movsb
-	jmp	.L2
-.L30:
+	jmp	.L_main
+.L_byte_finish:
 	mov	%rdx,%rcx
 	cld
 	rep	movsb
-.L1:
+.L_exit:
 	pop	%r8
 	pop	%rcx
 	ret
