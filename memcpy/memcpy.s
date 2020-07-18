@@ -30,7 +30,7 @@ mymemcpy:
 	shl	$3,%r8
 	sub	%r8,%rdx	# refresh remain length
 	cld
-	#rep	movsq
+	rep	movsq
 	jmp	.L_main
 .L_128byte:			# 128B copy using xmm regs
 	mov	%rdx,%rcx	# calculate loop times and refresh remain length
