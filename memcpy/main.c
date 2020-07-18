@@ -8,12 +8,12 @@ volatile void *src;
 volatile void *dst;
 
 unsigned long size[BENCHNUM] = 
-{1,2,4,8,64,9,63,25,1024*5 + 12,1024,1024*100 + 3,1024*1024,1024*1024*3 + 66,1024*1024*8 + 555,1024*1024*10,1024*1024*10,1024*1024*10,1024*1024*10,1024*1024*10};
+{1,2,4,8,64,9,63,25,1024*5 + 12,1024,1024*100 + 3,1024*1024,1024*1024*3 + 66,1024*1024*8 + 555,1024*1024*10,1024*1024*10,1024*1024*10,1024*1024*10,1024*1024*10,1024*1024+6};
 
 int src_offset[BENCHNUM] = 
-{0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x7,0x6,0x4,0x8,0xc,0x1,0x3,0x5,0x1,0x3,0x5,0x7,0x9};
+{0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x7,0x6,0x4,0x8,0xc,0x1,0x3,0x5,0x1,0x3,0x5,0x7,0x9,0x1};
 int dst_offset[BENCHNUM] = 
-{0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x4,0x8,0xc,0x1,0x3,0x5,0x7,0x9,0x5,0x1,0x3,0x5};
+{0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x4,0x8,0xc,0x1,0x3,0x5,0x7,0x9,0x5,0x1,0x3,0x5,0x7};
 
 static inline unsigned long
 rdtsc(){
@@ -65,10 +65,11 @@ int
 main(){
 	unsigned long tick1,tick2;
 	int pass = 0;
+	int count = 0;
 	src = (char *)malloc(SIZE * sizeof(char));
 	dst = (char *)malloc(SIZE * sizeof(char));
 	printf("========================================\n");
-	for(int i = 0; i< BENCHNUM - 1; i++){
+	for(int i = 0; i<= BENCHNUM - 1; i++){
 		printf("Test %2d:\tsize = 0x%6lx\n\t0x%x -> 0x%x\n",i + 1,size[i],src + src_offset[i],dst + dst_offset[i]);
 		InitSrcArea(SIZE);
 		memset(dst,-1,SIZE);
@@ -79,6 +80,7 @@ main(){
 		pass = check(dst + dst_offset[i],src + src_offset[i],size[i]);
 		if(!pass) {printf("Failed. \n");}
 		else{
+			count ++;
 			printf("Passed. \n\nmymemcpy durtime:\t%d\n",tick2 - tick1);
 			memset(dst,-2,SIZE);
 			InitSrcArea(SIZE);
@@ -94,6 +96,7 @@ main(){
 			printf("1-char copy durtime:\t%d\n",tick2 - tick1);
 		}
 		printf("========================================\n");
+		printf("PASS: %d / %d\n",count,BENCHNUM);
 	}
 	return 0;
 }

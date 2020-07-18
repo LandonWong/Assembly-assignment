@@ -29,7 +29,7 @@ size:
 	.quad	10485760
 	.quad	10485760
 	.quad	10485760
-	.zero	8
+	.quad	1048582
 	.globl	src_offset
 	.align 32
 	.type	src_offset, @object
@@ -259,6 +259,8 @@ check:
 	.string	"glib2.0 memcpy durtime:\t%d\n"
 .LC5:
 	.string	"1-char copy durtime:\t%d\n"
+.LC6:
+	.string	"PASS: %d / %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -275,22 +277,24 @@ main:
 	.loc 1 67 0
 	movl	$0, -20(%rbp)
 	.loc 1 68 0
-	movl	$12582912, %edi
-	call	malloc@PLT
-	movq	%rax, src(%rip)
+	movl	$0, -28(%rbp)
 	.loc 1 69 0
 	movl	$12582912, %edi
 	call	malloc@PLT
-	movq	%rax, dst(%rip)
+	movq	%rax, src(%rip)
 	.loc 1 70 0
+	movl	$12582912, %edi
+	call	malloc@PLT
+	movq	%rax, dst(%rip)
+	.loc 1 71 0
 	leaq	.LC0(%rip), %rdi
 	call	puts@PLT
 .LBB2:
-	.loc 1 71 0
+	.loc 1 72 0
 	movl	$0, -24(%rbp)
 	jmp	.L16
 .L19:
-	.loc 1 72 0
+	.loc 1 73 0
 	movq	dst(%rip), %rdx
 	movl	-24(%rbp), %eax
 	cltq
@@ -320,24 +324,24 @@ main:
 	leaq	.LC1(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 73 0
+	.loc 1 74 0
 	movl	$12582912, %edi
 	call	InitSrcArea
-	.loc 1 74 0
+	.loc 1 75 0
 	movq	dst(%rip), %rax
 	movl	$12582912, %edx
 	movl	$-1, %esi
 	movq	%rax, %rdi
 	call	memset@PLT
-	.loc 1 75 0
-	movl	$0, %eax
-	call	rdtsc
-	movq	%rax, -16(%rbp)
 	.loc 1 76 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -16(%rbp)
 	.loc 1 77 0
+	movl	$0, %eax
+	call	rdtsc
+	movq	%rax, -16(%rbp)
+	.loc 1 78 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -362,11 +366,11 @@ main:
 	movq	%rax, %rdx
 	movq	%rcx, %rdi
 	call	mymemcpy@PLT
-	.loc 1 78 0
+	.loc 1 79 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -8(%rbp)
-	.loc 1 79 0
+	.loc 1 80 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -392,35 +396,37 @@ main:
 	movq	%rcx, %rdi
 	call	check
 	movl	%eax, -20(%rbp)
-	.loc 1 80 0
+	.loc 1 81 0
 	cmpl	$0, -20(%rbp)
 	jne	.L17
-	.loc 1 80 0 is_stmt 0 discriminator 1
+	.loc 1 81 0 is_stmt 0 discriminator 1
 	leaq	.LC2(%rip), %rdi
 	call	puts@PLT
 	jmp	.L18
 .L17:
-	.loc 1 82 0 is_stmt 1
+	.loc 1 83 0 is_stmt 1
+	addl	$1, -28(%rbp)
+	.loc 1 84 0
 	movq	-8(%rbp), %rax
 	subq	-16(%rbp), %rax
 	movq	%rax, %rsi
 	leaq	.LC3(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 83 0
+	.loc 1 85 0
 	movq	dst(%rip), %rax
 	movl	$12582912, %edx
 	movl	$-2, %esi
 	movq	%rax, %rdi
 	call	memset@PLT
-	.loc 1 84 0
+	.loc 1 86 0
 	movl	$12582912, %edi
 	call	InitSrcArea
-	.loc 1 85 0
+	.loc 1 87 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -16(%rbp)
-	.loc 1 86 0
+	.loc 1 88 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -445,31 +451,31 @@ main:
 	movq	%rax, %rdx
 	movq	%rcx, %rdi
 	call	memcpy@PLT
-	.loc 1 87 0
+	.loc 1 89 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -8(%rbp)
-	.loc 1 88 0
+	.loc 1 90 0
 	movq	-8(%rbp), %rax
 	subq	-16(%rbp), %rax
 	movq	%rax, %rsi
 	leaq	.LC4(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 89 0
+	.loc 1 91 0
 	movq	dst(%rip), %rax
 	movl	$12582912, %edx
 	movl	$-1, %esi
 	movq	%rax, %rdi
 	call	memset@PLT
-	.loc 1 90 0
+	.loc 1 92 0
 	movl	$12582912, %edi
 	call	InitSrcArea
-	.loc 1 91 0
+	.loc 1 93 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -16(%rbp)
-	.loc 1 92 0
+	.loc 1 94 0
 	movl	-24(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -494,11 +500,11 @@ main:
 	movq	%rax, %rdx
 	movq	%rcx, %rdi
 	call	char_memcpy
-	.loc 1 93 0
+	.loc 1 95 0
 	movl	$0, %eax
 	call	rdtsc
 	movq	%rax, -8(%rbp)
-	.loc 1 94 0
+	.loc 1 96 0
 	movq	-8(%rbp), %rax
 	subq	-16(%rbp), %rax
 	movq	%rax, %rsi
@@ -506,19 +512,26 @@ main:
 	movl	$0, %eax
 	call	printf@PLT
 .L18:
-	.loc 1 96 0 discriminator 2
+	.loc 1 98 0 discriminator 2
 	leaq	.LC0(%rip), %rdi
 	call	puts@PLT
-	.loc 1 71 0 discriminator 2
+	.loc 1 99 0 discriminator 2
+	movl	-28(%rbp), %eax
+	movl	$20, %edx
+	movl	%eax, %esi
+	leaq	.LC6(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 72 0 discriminator 2
 	addl	$1, -24(%rbp)
 .L16:
-	.loc 1 71 0 is_stmt 0 discriminator 1
-	cmpl	$18, -24(%rbp)
+	.loc 1 72 0 is_stmt 0 discriminator 1
+	cmpl	$19, -24(%rbp)
 	jle	.L19
 .LBE2:
-	.loc 1 98 0 is_stmt 1
+	.loc 1 101 0 is_stmt 1
 	movl	$0, %eax
-	.loc 1 99 0
+	.loc 1 102 0
 	leave
 	.cfi_def_cfa 7, 8
 	ret
@@ -534,15 +547,15 @@ main:
 	.file 7 "/usr/include/x86_64-linux-gnu/sys/time.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x551
+	.long	0x55f
 	.value	0x4
 	.long	.Ldebug_abbrev0
 	.byte	0x8
 	.uleb128 0x1
-	.long	.LASF72
-	.byte	0xc
 	.long	.LASF73
+	.byte	0xc
 	.long	.LASF74
+	.long	.LASF75
 	.quad	.Ltext0
 	.quad	.Letext0-.Ltext0
 	.long	.Ldebug_line0
@@ -786,7 +799,7 @@ main:
 	.byte	0xc4
 	.byte	0
 	.uleb128 0xb
-	.long	.LASF75
+	.long	.LASF76
 	.byte	0x4
 	.byte	0x9a
 	.uleb128 0x8
@@ -838,7 +851,7 @@ main:
 	.byte	0x13
 	.byte	0
 	.uleb128 0xe
-	.long	.LASF76
+	.long	.LASF77
 	.uleb128 0xf
 	.long	.LASF45
 	.byte	0x4
@@ -986,7 +999,7 @@ main:
 	.byte	0x3
 	.quad	dst_offset
 	.uleb128 0x17
-	.long	.LASF67
+	.long	.LASF68
 	.byte	0x1
 	.byte	0x41
 	.long	0x62
@@ -994,7 +1007,7 @@ main:
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x43e
+	.long	0x44c
 	.uleb128 0x18
 	.long	.LASF61
 	.byte	0x1
@@ -1019,13 +1032,21 @@ main:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -36
+	.uleb128 0x18
+	.long	.LASF64
+	.byte	0x1
+	.byte	0x44
+	.long	0x62
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -44
 	.uleb128 0x19
 	.quad	.LBB2
 	.quad	.LBE2-.LBB2
 	.uleb128 0x1a
 	.string	"i"
 	.byte	0x1
-	.byte	0x47
+	.byte	0x48
 	.long	0x62
 	.uleb128 0x2
 	.byte	0x91
@@ -1033,7 +1054,7 @@ main:
 	.byte	0
 	.byte	0
 	.uleb128 0x1b
-	.long	.LASF65
+	.long	.LASF66
 	.byte	0x1
 	.byte	0x33
 	.long	0x62
@@ -1041,9 +1062,9 @@ main:
 	.quad	.LFE8-.LFB8
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x488
+	.long	0x496
 	.uleb128 0x1c
-	.long	.LASF64
+	.long	.LASF65
 	.byte	0x1
 	.byte	0x33
 	.long	0x88
@@ -1068,7 +1089,7 @@ main:
 	.sleb128 -40
 	.byte	0
 	.uleb128 0x1b
-	.long	.LASF66
+	.long	.LASF67
 	.byte	0x1
 	.byte	0x29
 	.long	0x86
@@ -1076,9 +1097,9 @@ main:
 	.quad	.LFE7-.LFB7
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x4e0
+	.long	0x4ee
 	.uleb128 0x1c
-	.long	.LASF64
+	.long	.LASF65
 	.byte	0x1
 	.byte	0x29
 	.long	0x86
@@ -1111,14 +1132,14 @@ main:
 	.sleb128 -24
 	.byte	0
 	.uleb128 0x1e
-	.long	.LASF68
+	.long	.LASF69
 	.byte	0x1
 	.byte	0x1d
 	.quad	.LFB6
 	.quad	.LFE6-.LFB6
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x51a
+	.long	0x528
 	.uleb128 0x1c
 	.long	.LASF58
 	.byte	0x1
@@ -1128,7 +1149,7 @@ main:
 	.byte	0x91
 	.sleb128 -36
 	.uleb128 0x18
-	.long	.LASF69
+	.long	.LASF70
 	.byte	0x1
 	.byte	0x1f
 	.long	0x88
@@ -1137,7 +1158,7 @@ main:
 	.sleb128 -24
 	.byte	0
 	.uleb128 0x1f
-	.long	.LASF77
+	.long	.LASF78
 	.byte	0x1
 	.byte	0x13
 	.long	0x38
@@ -1146,7 +1167,7 @@ main:
 	.uleb128 0x1
 	.byte	0x9c
 	.uleb128 0x18
-	.long	.LASF70
+	.long	.LASF71
 	.byte	0x1
 	.byte	0x14
 	.long	0x38
@@ -1154,7 +1175,7 @@ main:
 	.byte	0x91
 	.sleb128 -32
 	.uleb128 0x18
-	.long	.LASF71
+	.long	.LASF72
 	.byte	0x1
 	.byte	0x14
 	.long	0x38
@@ -1600,6 +1621,8 @@ main:
 	.section	.debug_str,"MS",@progbits,1
 .LASF8:
 	.string	"__off_t"
+.LASF64:
+	.string	"count"
 .LASF12:
 	.string	"_IO_read_ptr"
 .LASF24:
@@ -1616,7 +1639,7 @@ main:
 	.string	"_IO_buf_base"
 .LASF54:
 	.string	"long long unsigned int"
-.LASF68:
+.LASF69:
 	.string	"InitSrcArea"
 .LASF53:
 	.string	"long long int"
@@ -1628,7 +1651,7 @@ main:
 	.string	"_IO_read_end"
 .LASF6:
 	.string	"long int"
-.LASF65:
+.LASF66:
 	.string	"check"
 .LASF11:
 	.string	"_flags"
@@ -1650,9 +1673,9 @@ main:
 	.string	"unsigned int"
 .LASF0:
 	.string	"long unsigned int"
-.LASF74:
+.LASF75:
 	.string	"/home/landon/AssembleLangFinal/memcpy"
-.LASF76:
+.LASF77:
 	.string	"_IO_FILE_plus"
 .LASF16:
 	.string	"_IO_write_ptr"
@@ -1670,7 +1693,7 @@ main:
 	.string	"short unsigned int"
 .LASF20:
 	.string	"_IO_save_base"
-.LASF73:
+.LASF74:
 	.string	"main.c"
 .LASF56:
 	.string	"tz_minuteswest"
@@ -1684,19 +1707,19 @@ main:
 	.string	"stdout"
 .LASF45:
 	.string	"_IO_2_1_stdin_"
-.LASF71:
+.LASF72:
 	.string	"tickh"
-.LASF70:
+.LASF71:
 	.string	"tickl"
 .LASF17:
 	.string	"_IO_write_end"
-.LASF69:
+.LASF70:
 	.string	"psrc"
-.LASF75:
+.LASF76:
 	.string	"_IO_lock_t"
 .LASF40:
 	.string	"_IO_FILE"
-.LASF64:
+.LASF65:
 	.string	"dest"
 .LASF44:
 	.string	"_pos"
@@ -1712,11 +1735,11 @@ main:
 	.string	"_vtable_offset"
 .LASF46:
 	.string	"_IO_2_1_stdout_"
-.LASF72:
+.LASF73:
 	.string	"GNU C11 7.5.0 -mmmx -mtune=generic -march=x86-64 -g -fno-asynchronous-unwind-tables -fstack-protector-strong"
-.LASF66:
+.LASF67:
 	.string	"char_memcpy"
-.LASF77:
+.LASF78:
 	.string	"rdtsc"
 .LASF10:
 	.string	"char"
@@ -1750,7 +1773,7 @@ main:
 	.string	"_IO_backup_base"
 .LASF63:
 	.string	"pass"
-.LASF67:
+.LASF68:
 	.string	"main"
 .LASF15:
 	.string	"_IO_write_base"
