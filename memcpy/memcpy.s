@@ -27,7 +27,7 @@ mymemcpy:
 	sub	%r8,%rbx
 	cld
 	rep	movsq
-	jmp	.L1
+	jmp	.L2
 .L4:
 	mov	%rbx,%rcx
 	shr	$7,%rcx
