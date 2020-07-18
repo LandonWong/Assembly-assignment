@@ -12,8 +12,9 @@ mymemcpy:
 .L0:
 	push	%rcx
 	push	%r8
+	push	%r9
 	mov	%rdi,%rax	# return value: dest
-	lea	(%rax,%rdx),%r9
+	lea	(%rax,%rdx),%r9	# for testing, check if final (rdi == dest + size)
 .L_main:
 	test	%rdx,%rdx	# if zero, goto exit
 	jz	.L_exit
@@ -28,7 +29,7 @@ mymemcpy:
 	mov	%rdx,%rcx	# if align && >=16 && <128, use movsq
 	shr	$3,%rcx		# calculate how many times
 	mov	%rcx,%r8
-	shl	$3,%r8
+	shl	$2,%r8
 	sub	%r8,%rdx	# refresh remain length
 	cld
 	rep	movsq
@@ -75,7 +76,8 @@ mymemcpy:
 	rep	movsb
 .L_exit:
 	cmp	%r9,%rdi
-	je	.L_exit
+	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
+	pop	%r9
 	pop	%r8
 	pop	%rcx
 	ret
