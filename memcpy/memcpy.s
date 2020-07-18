@@ -37,7 +37,7 @@ mymemcpy:
 .L_128byte:			# 128B copy using xmm regs
 	mov	%rdx,%rcx	# calculate loop times and refresh remain length
 	shr	$0x7,%rcx
-	and	$0x7f,%rdx	# refresh remain length
+	and	$0xff,%rdx	# refresh remain length
 	
 .L_128byte_main:
 	prefetchnta	128(%rsi)	# prefetch data for next loop
