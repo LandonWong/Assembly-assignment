@@ -35,8 +35,8 @@ mymemcpy:
 	shl	$7,%r8
 	sub	%r8,%rbx
 .L40:
-	prefetchnta	(%rsi)
-	prefetchnta	0x80(%rsi)
+	prefetchnta	1*128(%rsi)
+	prefetchnta	2*128(%rsi)
 	movdqu	0*16(%rsi),%xmm0
 	movdqu	1*16(%rsi),%xmm1
 	movdqu	2*16(%rsi),%xmm2
