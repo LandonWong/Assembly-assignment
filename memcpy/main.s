@@ -249,7 +249,7 @@ check:
 	.string	"========================================"
 	.align 8
 .LC1:
-	.string	"Test %2d:\tsize = 0x%6lx\n\t0x%x -> 0x%x\n"
+	.string	"Test %2d:\tsize = 0x%6lx\n\t0x%llx -> 0x%llx\n"
 .LC2:
 	.string	"Failed. "
 	.align 8
