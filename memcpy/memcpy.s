@@ -56,6 +56,7 @@ mymemcpy:
 	add	$0x80,%rsi
 	add	$0x80,%rdi
 	sfence
+	emms
 	loop	.L40
 	jmp	.L2
 .L3:
