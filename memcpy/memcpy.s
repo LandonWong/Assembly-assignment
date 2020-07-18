@@ -11,9 +11,9 @@ mymemcpy:
 
 .L0:
 	push	%rcx
-	push	%r9
-	mov	%rdi,%rax	# return value: dest
-	lea	(%rax,%rdx),%r9	# for testing, check if final (rdi == dest + size)
+#	push	%r9
+#	mov	%rdi,%rax	# return value: dest
+#	lea	(%rax,%rdx),%r9	# for testing, check if (final-rdi == dest + size)
 	
 .L_main:
 	test	%rdx,%rdx	# if zero, goto exit
@@ -79,8 +79,8 @@ mymemcpy:
 	rep	movsb
 	
 .L_exit:
-	cmp	%r9,%rdi
-	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
-	pop	%r9
+#	cmp	%r9,%rdi
+#	jne	.L_exit			# for testing...if (final-rdi != dest + size) will never halt...
+#	pop	%r9
 	pop	%rcx
 	ret
