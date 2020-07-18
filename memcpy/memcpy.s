@@ -22,6 +22,9 @@ mymemcpy:
 .L5:
 	mov	%rbx,%rcx
 	shr	$3,%rcx
+	mov	%rcx,%r8
+	shl	$3,%r8
+	sub	%r8,%rbx
 	cld
 	rep	movsq
 	jmp	.L1
