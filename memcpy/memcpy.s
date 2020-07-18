@@ -43,16 +43,17 @@ mymemcpy:
 	movdqu	5*16(%rsi),%xmm5
 	movdqu	6*16(%rsi),%xmm6
 	movdqu	7*16(%rsi),%xmm7
-	movdqu	%xmm0,0*16(%rdi)
-	movdqu	%xmm1,1*16(%rdi)
-	movdqu	%xmm2,2*16(%rdi)
-	movdqu	%xmm3,3*16(%rdi)
-	movdqu	%xmm4,4*16(%rdi)
-	movdqu	%xmm5,5*16(%rdi)
-	movdqu	%xmm6,6*16(%rdi)
-	movdqu	%xmm7,7*16(%rdi)
+	movdqa	%xmm0,0*16(%rdi)
+	movdqa	%xmm1,1*16(%rdi)
+	movdqa	%xmm2,2*16(%rdi)
+	movdqa	%xmm3,3*16(%rdi)
+	movdqa	%xmm4,4*16(%rdi)
+	movdqa	%xmm5,5*16(%rdi)
+	movdqa	%xmm6,6*16(%rdi)
+	movdqa	%xmm7,7*16(%rdi)
 	add	$0x80,%rsi
 	add	$0x80,%rdi
+	sfence
 	loop	.L40
 	jmp	.L2
 .L3:
