@@ -28,9 +28,10 @@ mymemcpy:
 .L_qword:			# 8B copy using movsq
 	mov	%rdx,%rcx	# if align && >=16 && <128, use movsq
 	shr	$3,%rcx		# calculate how many times
-	mov	%rcx,%r8
-	shl	$2,%r8
-	sub	%r8,%rdx	# refresh remain length
+	and	$0x7,%rdx
+#	mov	%rcx,%r8
+#	shl	$3,%r8
+#	sub	%r8,%rdx	# refresh remain length
 	cld
 	rep	movsq
 	jmp	.L_main
@@ -76,7 +77,7 @@ mymemcpy:
 	rep	movsb
 .L_exit:
 	cmp	%r9,%rdi
-#	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
+	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
 	pop	%r9
 	pop	%r8
 	pop	%rcx
