@@ -11,10 +11,10 @@ mymemcpy:
 
 .L0:
 	push	%rcx
-	push	%r8
 	push	%r9
 	mov	%rdi,%rax	# return value: dest
 	lea	(%rax,%rdx),%r9	# for testing, check if final (rdi == dest + size)
+	
 .L_main:
 	test	%rdx,%rdx	# if zero, goto exit
 	jz	.L_exit
@@ -25,25 +25,22 @@ mymemcpy:
 	jnz	.L_byte		# if unalign, goto 1 byte copy until 16 align
 	cmp	$128,%rdx	# if >=128B, goto 128B-copy
 	jge	.L_128byte
+	
 .L_qword:			# 8B copy using movsq
 	mov	%rdx,%rcx	# if align && >=16 && <128, use movsq
 	shr	$3,%rcx		# calculate how many times
-	and	$0x7,%rdx
-#	mov	%rcx,%r8
-#	shl	$3,%r8
-#	sub	%r8,%rdx	# refresh remain length
+	and	$0x7,%rdx	# refresh remain length
 	cld
 	rep	movsq
 	jmp	.L_main
+	
 .L_128byte:			# 128B copy using xmm regs
 	mov	%rdx,%rcx	# calculate loop times and refresh remain length
-	shr	$7,%rcx
-	mov	%rcx,%r8
-	shl	$7,%r8
-	sub	%r8,%rdx
+	shr	$0x7,%rcx
+	and	$0x7f,%rdx	# refresh remain length
+	
 .L_128byte_main:
-	prefetchnta	1*128(%rsi)	# prefetch data for next loop
-	prefetchnta	2*128(%rsi)
+	prefetchnta	128(%rsi)	# prefetch data for next loop
 	movdqu	0*16(%rsi),%xmm0
 	movdqu	1*16(%rsi),%xmm1
 	movdqu	2*16(%rsi),%xmm2
@@ -64,6 +61,7 @@ mymemcpy:
 	lea	0x80(%rdi),%rdi
 	loop	.L_128byte_main
 	jmp	.L_main
+	
 .L_byte:				# one byte copy
 	lea	-16(%rdx,%rcx),%rdx
 	sub	$17,%rcx
@@ -71,14 +69,15 @@ mymemcpy:
 	cld
 	rep	movsb
 	jmp	.L_main
+	
 .L_byte_finish:				# one byte copy and exit
 	mov	%rdx,%rcx
 	cld
 	rep	movsb
+	
 .L_exit:
 	cmp	%r9,%rdi
 	jne	.L_exit			# for testing...if final (rdi != dest + size) will never halt...
 	pop	%r9
-	pop	%r8
 	pop	%rcx
 	ret
