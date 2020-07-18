@@ -12,60 +12,55 @@ mymemcpy:
 .L2:
 	test	%rbx,%rbx
 	jz	.L1
-	cmp	$4,%rbx
-	jge	.L15
-	mov	%rbx,%rcx
-	jmp	.L6
-.L15:
-	mov	%rdi,%rcx
-	and	$3,%rcx
-	jz	.L3
-	sub	$0x4,%rcx
-	not	%rcx
-	inc	%rcx
-	jmp	.L6
-.L3:
 	cmp	$16,%rbx
-	jge	.L12
-	jmp	.L7
-.L12:
+	jl	.L30
 	mov	%rdi,%rcx
-	and	$7,%rcx
-	jz	.L10
-	jmp	.L30	
-.L6:
+	and	$0x7f,%rcx
+	jnz	.L3
+	cmp	$128,%rbx
+	jge	.L4
+.L5:
+	mov	%rbx,%rcx
+	shr	$6,%rcx
+	sub	%ecx,%ebx
+	rep	movsq
+	jmp	.L1
+.L4:
+	mov	%rbx,%rcx
+	shr	$10,%rcx
+	mov	%rcx,%r8
+	shl	$10,%r8
+	sub	%r8,%rbx
+.L40:
+	movdqu	0*16(%rsi),%xmm0
+	movdqu	1*16(%rsi),%xmm1
+	movdqu	2*16(%rsi),%xmm2
+	movdqu	3*16(%rsi),%xmm3
+	movdqu	4*16(%rsi),%xmm4
+	movdqu	5*16(%rsi),%xmm5
+	movdqu	6*16(%rsi),%xmm6
+	movdqu	7*16(%rsi),%xmm7
+	movdqa	%xmm0,0*16(%rdi)
+	movdqa	%xmm1,1*16(%rdi)
+	movdqa	%xmm2,2*16(%rdi)
+	movdqa	%xmm3,3*16(%rdi)
+	movdqa	%xmm4,4*16(%rdi)
+	movdqa	%xmm5,5*16(%rdi)
+	movdqa	%xmm6,6*16(%rdi)
+	movdqa	%xmm7,7*16(%rdi)
+	lea	-0x80(%rsi),%rsi
+	lea	-0x80(%rdi),%rdi
+	loop	.L40
+	jmp	.L2
+.L3:
 	sub	%rcx,%rbx
-	cld
+	shr	$3,%rcx
 	rep	movsb
 	jmp	.L2
-.L7:
-	mov	%rbx,%rcx
-	shr	$2,%rcx
-	mov	%rcx,%r8
-	shl	$2,%r8
-	sub	%r8,%rbx
-	cld
-	rep	movsl
-	jmp	.L2
 .L30:
-	movsl
-	sub	$4,%rbx
-	jmp	.L2
-.L10:
 	mov	%rbx,%rcx
 	shr	$3,%rcx
-	mov	%rcx,%r8
-	shl	$3,%r8
-	sub	%r8,%rbx
-	cld
-	rep	movsq
-	jmp	.L2
-.L200:
-	mov	%rbx,%rcx
-	shr	$8,%rcx
-	mov	%rcx,%r8
-	shl	$8,%r8
-	sub	%r8,%rbx
+	rep	movsb
 .L1:
 	pop	%r8
 	pop	%rdx
