@@ -3,36 +3,34 @@
 	.type	mymemcpy, @function
 mymemcpy:
 .L0:
-	push	%rbx
 	push	%rcx
 	push	%r8
-	mov	%rdx,%rbx
 	mov	%rdi,%rax
 .L2:
-	test	%rbx,%rbx
+	test	%rdx,%rdx
 	jz	.L1
-	cmp	$16,%rbx
+	cmp	$16,%rdx
 	jl	.L30
 	mov	%rdi,%rcx
 	and	$0xf,%rcx
 	jnz	.L3
-	cmp	$128,%rbx
+	cmp	$128,%rdx
 	jge	.L4
 .L5:
-	mov	%rbx,%rcx
+	mov	%rdx,%rcx
 	shr	$3,%rcx
 	mov	%rcx,%r8
 	shl	$3,%r8
-	sub	%r8,%rbx
+	sub	%r8,%rdx
 	cld
 	rep	movsq
 	jmp	.L2
 .L4:
-	mov	%rbx,%rcx
+	mov	%rdx,%rcx
 	shr	$7,%rcx
 	mov	%rcx,%r8
 	shl	$7,%r8
-	sub	%r8,%rbx
+	sub	%r8,%rdx
 .L40:
 	prefetchnta	1*128(%rsi)
 	prefetchnta	2*128(%rsi)
@@ -60,16 +58,15 @@ mymemcpy:
 	sub	$16,%rcx
 	not	%rcx
 	inc	%rcx
-	sub	%rcx,%rbx
+	sub	%rcx,%rdx
 	cld
 	rep	movsb
 	jmp	.L2
 .L30:
-	mov	%rbx,%rcx
+	mov	%rdx,%rcx
 	cld
 	rep	movsb
 .L1:
 	pop	%r8
 	pop	%rcx
-	pop	%rbx
 	ret
