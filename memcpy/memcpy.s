@@ -55,8 +55,6 @@ mymemcpy:
 	movdqa	%xmm7,7*16(%rdi)
 	add	$0x80,%rsi
 	add	$0x80,%rdi
-	sfence
-	emms
 	loop	.L40
 	jmp	.L2
 .L3:
