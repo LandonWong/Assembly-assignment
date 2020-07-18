@@ -38,7 +38,7 @@ src_offset:
 	.long	0
 	.long	0
 	.long	7
-	.long	9
+	.long	6
 	.long	4
 	.long	8
 	.long	12
