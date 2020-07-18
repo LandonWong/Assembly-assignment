@@ -56,6 +56,8 @@ mymemcpy:
 	loop	.L40
 	jmp	.L2
 .L3:
+	not	%rcx
+	inc	%rcx
 	sub	%rcx,%rbx
 	cld
 	rep	movsb
