@@ -1,4 +1,4 @@
-# Assemble Language Final Assignment (20sp, ucas)
+# Assembly Language Final Assignment (20sp, ucas)
 ## wangsongyue18@mails.ucas.ac.cn
 ## Author
 * Landon WONG, UCAS
@@ -13,8 +13,8 @@ Please execute `sudo apt-get install gcc-multilib` and try to execute `make *_as
 This assignment has three parts:
 | Assignment Name | Description |
 | :---------------: | :---------------: |
-| atoi | Use the assembler to implement the atoi function and convert strings to numbers (need to consider the sign and irrelevant symbols) |
-| memcpy | Use the assembler to implement the memcpy function, realize memory data movement, optimize as much as possible, and introduce performance evaluation and evaluation efficiency |
+| atoi | Use the assembly to implement the atoi function and convert strings to numbers (need to consider the sign and irrelevant symbols) |
+| memcpy | Use the assembly to implement the memcpy function, realize memory data movement, optimize as much as possible, and introduce performance evaluation and evaluation efficiency |
 | freq | Use embedded assembly to record the execution cycle, combined with the timing function, calculate the frequency of machine operation |
 ## File structure
 For checking assignment:
