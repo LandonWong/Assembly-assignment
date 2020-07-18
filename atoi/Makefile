@@ -12,5 +12,7 @@ link:
 clean:
 	rm -rf main.o atoi.o main.s atoi
 	git add --all && git commit -m "Update: atoi_clean"
-run:
+run_user:
+	@./atoi --user
+run_test:
 	@./atoi
