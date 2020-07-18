@@ -22,6 +22,7 @@ mymemcpy:
 .L5:
 	mov	%rbx,%rcx
 	shr	$3,%rcx
+	cld
 	rep	movsq
 	jmp	.L1
 .L4:
@@ -47,16 +48,18 @@ mymemcpy:
 	movdqa	%xmm5,5*16(%rdi)
 	movdqa	%xmm6,6*16(%rdi)
 	movdqa	%xmm7,7*16(%rdi)
-	lea	-0x80(%rsi),%rsi
-	lea	-0x80(%rdi),%rdi
+	sub	$0x80,%rsi
+	sub	$0x80,%rdi
 	loop	.L40
 	jmp	.L2
 .L3:
 	sub	%rcx,%rbx
+	cld
 	rep	movsb
 	jmp	.L2
 .L30:
 	mov	%rbx,%rcx
+	cld
 	rep	movsb
 .L1:
 	pop	%r8
