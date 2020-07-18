@@ -103,19 +103,21 @@ void init(){
 }
 
 int
-main(){
+main(int argc,char *argv){
 	char str[MAXLEN];
 	char c,*p;
 	int i = 0;
+	if(argv[1] == "--user"){
+		printf("User Test: (Press Ctrl + D to end )");
+		p = str;
+		while((c=getchar())!=EOF){
+			*p++ = c; 
+		}
+		printf("Result = %d\n",atoi(str));
+	}
 	init();
 	basic_test();
 	medium_test();
 	advanced_test();
-	printf("User Test: ");
-	p = str;
-	while((c=getchar())!=EOF){
-		*p++ = c; 
-	}
-	printf("Result = %d\n",atoi(str));
 	return 0;
 }

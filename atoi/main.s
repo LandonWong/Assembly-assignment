@@ -429,8 +429,13 @@ init:
 	.size	init, .-init
 	.section	.rodata.str1.1
 .LC27:
-	.string	"User Test: "
+	.string	"--user"
+	.section	.rodata.str1.4
+	.align 4
 .LC28:
+	.string	"User Test: (Press Ctrl + D to end )"
+	.section	.rodata.str1.1
+.LC29:
 	.string	"Result = %d\n"
 	.text
 	.globl	main
@@ -448,49 +453,23 @@ main:
 	subl	$120, %esp
 	call	__x86.get_pc_thunk.bx
 	addl	$_GLOBAL_OFFSET_TABLE_, %ebx
-	movl	%gs:20, %eax
-	movl	%eax, -28(%ebp)
-	xorl	%eax, %eax
+	movl	4(%ecx), %eax
+	movl	%gs:20, %edi
+	movl	%edi, -28(%ebp)
+	xorl	%edi, %edi
+	movsbl	1(%eax), %edx
+	leal	.LC27@GOTOFF(%ebx), %eax
+	cmpl	%eax, %edx
+	je	.L40
+.L35:
 	call	init
 	call	basic_test
 	call	medium_test
 	call	advanced_test
-	subl	$8, %esp
-	leal	.LC27@GOTOFF(%ebx), %eax
-	pushl	%eax
-	pushl	$1
-	call	__printf_chk@PLT
-	addl	$16, %esp
-	leal	-128(%ebp), %esi
-	movl	stdin@GOT(%ebx), %edi
-	jmp	.L35
-.L36:
-	addl	$1, %esi
-	movb	%al, -1(%esi)
-.L35:
-	subl	$12, %esp
-	pushl	(%edi)
-	call	_IO_getc@PLT
-	addl	$16, %esp
-	cmpb	$-1, %al
-	jne	.L36
-	subl	$4, %esp
-	pushl	$10
-	pushl	$0
-	leal	-128(%ebp), %eax
-	pushl	%eax
-	call	strtol@PLT
-	addl	$12, %esp
-	pushl	%eax
-	leal	.LC28@GOTOFF(%ebx), %eax
-	pushl	%eax
-	pushl	$1
-	call	__printf_chk@PLT
-	addl	$16, %esp
 	movl	$0, %eax
 	movl	-28(%ebp), %edx
 	xorl	%gs:20, %edx
-	jne	.L39
+	jne	.L41
 	leal	-16(%ebp), %esp
 	popl	%ecx
 	popl	%ebx
@@ -499,7 +478,41 @@ main:
 	popl	%ebp
 	leal	-4(%ecx), %esp
 	ret
-.L39:
+.L40:
+	subl	$8, %esp
+	leal	.LC28@GOTOFF(%ebx), %eax
+	pushl	%eax
+	pushl	$1
+	call	__printf_chk@PLT
+	addl	$16, %esp
+	leal	-128(%ebp), %esi
+	movl	stdin@GOT(%ebx), %edi
+	jmp	.L36
+.L37:
+	addl	$1, %esi
+	movb	%al, -1(%esi)
+.L36:
+	subl	$12, %esp
+	pushl	(%edi)
+	call	_IO_getc@PLT
+	addl	$16, %esp
+	cmpb	$-1, %al
+	jne	.L37
+	subl	$4, %esp
+	pushl	$10
+	pushl	$0
+	leal	-128(%ebp), %eax
+	pushl	%eax
+	call	strtol@PLT
+	addl	$12, %esp
+	pushl	%eax
+	leal	.LC29@GOTOFF(%ebx), %eax
+	pushl	%eax
+	pushl	$1
+	call	__printf_chk@PLT
+	addl	$16, %esp
+	jmp	.L35
+.L41:
 	call	__stack_chk_fail_local
 	.size	main, .-main
 	.comm	advanced,20,4
