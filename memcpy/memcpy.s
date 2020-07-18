@@ -54,7 +54,7 @@ mymemcpy:
 	movdqu	7*16(%rsi),%xmm7
 	movntpd	%xmm0,0*16(%rdi)	# write to memory directly
 	movntpd	%xmm1,1*16(%rdi)
-	#movntpd	%xmm2,2*16(%rdi)
+	movntpd	%xmm2,2*16(%rdi)
 	movntpd	%xmm3,3*16(%rdi)
 	movntpd	%xmm4,4*16(%rdi)
 	movntpd	%xmm5,5*16(%rdi)
