@@ -1,0 +1,117 @@
+Script started on 2020-07-19 15:36:11+0800
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ npm install --global xpm[3Psudo  apt install npmnpm install --global xpm[Kmaek[K[Kke run
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+make[2]: ./memcpy: Command not found
+Makefile:16: recipe for target 'run' failed
+make[2]: *** [run] Error 127
+make[2]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ maje[K[Kke asm
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -S main.c
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c main.c
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c memcpy.s
+git add --all && git commit -m "Update: memcpy_asm"
+[master 8aba26d] Update: memcpy_asm
+ 4 files changed, 7 insertions(+), 3 deletions(-)
+ delete mode 100755 memcpy/memcpy
+ create mode 100644 memcpy/screen.log
+make[2]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ make link
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  main.o memcpy.o -o memcpy -lm
+git add --all && git commit -m "Update: memcpy_link"
+[master 2c45fdc] Update: memcpy_link
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100755 memcpy/memcpy
+make[2]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ make run
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+========================================
+Test  1:	size = 0x     1
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	186
+glib2.0 memcpy durtime:	590
+1-char copy durtime:	310
+========================================
+Test  2:	size = 0x     2
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	414
+glib2.0 memcpy durtime:	868
+1-char copy durtime:	552
+========================================
+Test  3:	size = 0x     4
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	308
+glib2.0 memcpy durtime:	480
+1-char copy durtime:	476
+========================================
+Test  4:	size = 0x     8
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	530
+glib2.0 memcpy durtime:	492
+1-char copy durtime:	922
+========================================
+Test  5:	size = 0x    40
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	764
+glib2.0 memcpy durtime:	536
+1-char copy durtime:	756
+========================================
+Test  6:	size = 0x     9
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	1116
+glib2.0 memcpy durtime:	882
+1-char copy durtime:	738
+========================================
+Test  7:	size = 0x    3f
+	0x7fb285000010 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	718
+glib2.0 memcpy durtime:	484
+1-char copy durtime:	960
+========================================
+Test  8:	size = 0x    19
+	0x7fb285000017 -> 0x7fb2843ff010
+Passed. 
+
+mymemcpy durtime:	582
+glib2.0 memcpy durtime:	846
+1-char copy durtime:	550
+========================================
+Test  9:	size = 0x  140c
+	0x7fb285000016 -> 0x7fb2843ff014
+Passed. 
+
+mymemcpy durtime:	1912
+glib2.0 memcpy durtime:	1690
+1-char copy durtime:	17068
+========================================
+Test 10:	size = 0x   400
+	0x7fb285000014 -> 0x7fb2843ff018
+Passed. 
+
+mymemcpy durtime:	1050
+glib2.0 memcpy durtime:	1212
+1-char copy durtime:	3846
+========================================
+Test 11:	size = 0x 19003
+	0x7fb285000018 -> 0x7fb2843ff01c
+Passed. 
+
+mymemcpy durtime:	23028
+glib2.0 memcpy durtime:	34694
+1-char copy durtime:	319888
+================
