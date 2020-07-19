@@ -120,7 +120,7 @@ main(int argc,char *argv){
 		printf("User Test: (Press Ctrl + D to end input, Ctrl + C to HALT):\n");
 		p = str;
 		memset(str,MAXLEN,0);
-		while(c=getchar()){
+		while((c=getchar())!=EOF){
 			*p++ = c;
 		}
 		printf("Result = %d\n",atoi(str));

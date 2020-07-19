@@ -470,7 +470,7 @@ main:
 	pushl	(%edi)
 	call	_IO_getc@PLT
 	addl	$16, %esp
-	testb	%al, %al
+	cmpb	$-1, %al
 	jne	.L36
 	subl	$4, %esp
 	pushl	$10
