@@ -84,8 +84,8 @@ void init(){
 		advanced[i] = (char *)malloc(MAXLEN * sizeof(char));
 	}
 	// Init benchmark
-	basic[0] = "352";
-	basic[1] = "2147483640";
+	basic[0] = "352\0";
+	basic[1] = "2147483640\0";
 	basic[2] = "-+-+-5852";
 	basic[3] = "+2351";
 	basic[4] = "-876452";

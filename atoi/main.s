@@ -315,10 +315,14 @@ advanced_test:
 	.section	.rodata.str1.1
 .LC10:
 	.string	"Benchmark preparing..."
+	.section	.rodata
 .LC11:
 	.string	"352"
+	.string	""
 .LC12:
 	.string	"2147483640"
+	.string	""
+	.section	.rodata.str1.1
 .LC13:
 	.string	"-+-+-5852"
 .LC14:
