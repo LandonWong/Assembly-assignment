@@ -315,18 +315,18 @@ advanced_test:
 	.section	.rodata.str1.1
 .LC10:
 	.string	"Benchmark preparing..."
-	.section	.rodata
 .LC11:
+	.string	"-876452"
+	.section	.rodata
+.LC12:
 	.string	"354124"
 	.string	""
-.LC12:
+.LC13:
 	.string	"-1"
 	.string	""
 	.section	.rodata.str1.1
-.LC13:
-	.string	"-1"
 .LC14:
-	.string	"-876452"
+	.string	"-1"
 .LC15:
 	.string	"\t256"
 .LC16:
@@ -387,14 +387,14 @@ init:
 	jne	.L31
 	movl	basic@GOT(%ebx), %eax
 	leal	.LC11@GOTOFF(%ebx), %edx
-	movl	%edx, (%eax)
+	movl	%edx, 16(%eax)
 	leal	.LC12@GOTOFF(%ebx), %edx
+	movl	%edx, (%eax)
+	leal	.LC13@GOTOFF(%ebx), %edx
 	movl	%edx, 4(%eax)
 	movl	%edx, 8(%eax)
-	leal	.LC13@GOTOFF(%ebx), %edx
-	movl	%edx, 12(%eax)
 	leal	.LC14@GOTOFF(%ebx), %edx
-	movl	%edx, 16(%eax)
+	movl	%edx, 12(%eax)
 	movl	medium@GOT(%ebx), %eax
 	leal	.LC15@GOTOFF(%ebx), %edx
 	movl	%edx, (%eax)

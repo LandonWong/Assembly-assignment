@@ -83,12 +83,11 @@ void init(){
 		medium[i] = (char *)malloc(MAXLEN * sizeof(char));
 		advanced[i] = (char *)malloc(MAXLEN * sizeof(char));
 	}
-	// Init benchmark
-	/*basic[0] = "352\0";
+	basic[0] = "352\0";
 	basic[1] = "2147483640\0";
 	basic[2] = "-+-+-5852\0";
 	basic[3] = "+2351";
-	basic[4] = "-876452";*/
+	basic[4] = "-876452";
 	basic[0] = "354124\0";
 	basic[1] = "-1\0";
 	basic[2] = "-1\0";
