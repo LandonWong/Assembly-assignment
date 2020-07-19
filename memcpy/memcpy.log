@@ -3,3 +3,7 @@ gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -S main.c
 gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c main.c
 gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c memcpy.s
 git add --all && git commit -m "Update: memcpy_asm"
+[master 4886ed5] Update: memcpy_asm
+ 2 files changed, 6 insertions(+)
+ create mode 100644 memcpy/memcpy.log
+make[1]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
