@@ -114,11 +114,11 @@ main(int argc,char *argv){
 		printf("User Test: (Press Ctrl + D to end input, Ctrl + C to HALT):\n");
 		p = str;
 		for(i = 0;i<MAXLEN;i++)
-			str[i] = 0;
+			str[i] = 0; // clean
 		while((c=getchar())!=EOF){
 			*p++ = c;
 		}
-		printf("Result = %d\n",atoi(str));
+		printf("  Result = %d\n",atoi(str));
 	}
 	return 0;
 }

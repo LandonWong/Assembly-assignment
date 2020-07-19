@@ -438,7 +438,7 @@ init:
 	.string	"User Test: (Press Ctrl + D to end input, Ctrl + C to HALT):"
 	.section	.rodata.str1.1
 .LC28:
-	.string	"Result = %d\n"
+	.string	"  Result = %d\n"
 	.text
 	.globl	main
 	.type	main, @function
