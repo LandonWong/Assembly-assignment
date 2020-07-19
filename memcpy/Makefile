@@ -14,4 +14,3 @@ clean:
 	git add --all && git commit -m "Update: memcpy_clean"
 run:
 	@./memcpy
-	$(MAKE) 2>&1 |tee ./memcpy.log

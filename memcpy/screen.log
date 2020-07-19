@@ -114,4 +114,438 @@ Passed.
 mymemcpy durtime:	23028
 glib2.0 memcpy durtime:	34694
 1-char copy durtime:	319888
-================
+========================================
+Test 12:	size = 0x100000
+	0x7fb28500001c -> 0x7fb2843ff011
+Passed. 
+
+mymemcpy durtime:	221856
+glib2.0 memcpy durtime:	276790
+1-char copy durtime:	3241200
+========================================
+Test 13:	size = 0x300042
+	0x7fb285000011 -> 0x7fb2843ff013
+Passed. 
+
+mymemcpy durtime:	639062
+glib2.0 memcpy durtime:	784268
+1-char copy durtime:	9715584
+========================================
+Test 14:	size = 0x80022b
+	0x7fb285000013 -> 0x7fb2843ff015
+Passed. 
+
+mymemcpy durtime:	1686920
+glib2.0 memcpy durtime:	1538948
+1-char copy durtime:	26047268
+========================================
+Test 15:	size = 0xa00000
+	0x7fb285000015 -> 0x7fb2843ff017
+Passed. 
+
+mymemcpy durtime:	2203884
+glib2.0 memcpy durtime:	1993070
+1-char copy durtime:	32452576
+========================================
+Test 16:	size = 0xa00000
+	0x7fb285000011 -> 0x7fb2843ff019
+Passed. 
+
+mymemcpy durtime:	2182466
+glib2.0 memcpy durtime:	1924408
+1-char copy durtime:	32384150
+========================================
+Test 17:	size = 0xa00000
+	0x7fb285000013 -> 0x7fb2843ff015
+Passed. 
+
+mymemcpy durtime:	2218496
+glib2.0 memcpy durtime:	2528018
+1-char copy durtime:	32375442
+========================================
+Test 18:	size = 0xa00000
+	0x7fb285000015 -> 0x7fb2843ff011
+Passed. 
+
+mymemcpy durtime:	2152438
+glib2.0 memcpy durtime:	2031458
+1-char copy durtime:	32494626
+========================================
+Test 19:	size = 0xa00000
+	0x7fb285000017 -> 0x7fb2843ff013
+Passed. 
+
+mymemcpy durtime:	2159966
+glib2.0 memcpy durtime:	1921792
+1-char copy durtime:	32687640
+========================================
+Test 20:	size = 0x100006
+	0x7fb285000019 -> 0x7fb2843ff015
+Passed. 
+
+mymemcpy durtime:	284786
+glib2.0 memcpy durtime:	275360
+1-char copy durtime:	3268526
+========================================
+PASS: 20 / 20
+make 2>&1 |tee ./memcpy.log
+make[3]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -S main.c
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c main.c
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c memcpy.s
+git add --all && git commit -m "Update: memcpy_asm"
+[master 25b58a3] Update: memcpy_asm
+ 2 files changed, 118 insertions(+), 5 deletions(-)
+make[3]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+make[2]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ scp[Krpi[K[Kipr[Kt s.log
+Script started, file is s.log
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ asdg
+
+Command 'asdg' not found, did you mean:
+
+  command 'asdfg' from deb aoeui
+
+Try: sudo apt install <deb name>
+
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ sdg
+
+Command 'sdg' not found, did you mean:
+
+  command 'sdc' from deb hpsockd
+  command 'sg' from deb login
+  command 'stg' from deb stgit
+  command 'sdf' from deb sdf
+  command 'sng' from deb sng
+  command 'sdb' from deb sdb
+  command 'sds' from deb simh
+  command 'ddg' from deb python-duckduckgo2
+  command 'srg' from deb srg
+  command 'sdig' from deb pdns-tools
+
+Try: sudo apt install <deb name>
+
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ exit
+exit
+Script done, file is s.log
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ script s.log[4Pmake run
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+make[2]: ./script: Command not found
+Makefile:16: recipe for target 'run' failed
+make[2]: *** [run] Error 127
+make[2]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ make run
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+Script started, file is memcpy.log
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ exit
+exit
+Script done, file is memcpy.log
+========================================
+Test  1:	size = 0x     1
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	938
+glib2.0 memcpy durtime:	1118
+1-char copy durtime:	1050
+========================================
+Test  2:	size = 0x     2
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	1072
+glib2.0 memcpy durtime:	1014
+1-char copy durtime:	1206
+========================================
+Test  3:	size = 0x     4
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	416
+glib2.0 memcpy durtime:	966
+1-char copy durtime:	1108
+========================================
+Test  4:	size = 0x     8
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	408
+glib2.0 memcpy durtime:	1228
+1-char copy durtime:	1106
+========================================
+Test  5:	size = 0x    40
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	574
+glib2.0 memcpy durtime:	1234
+1-char copy durtime:	2160
+========================================
+Test  6:	size = 0x     9
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	346
+glib2.0 memcpy durtime:	984
+1-char copy durtime:	1532
+========================================
+Test  7:	size = 0x    3f
+	0x7fdf4c06e010 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	520
+glib2.0 memcpy durtime:	772
+1-char copy durtime:	1484
+========================================
+Test  8:	size = 0x    19
+	0x7fdf4c06e017 -> 0x7fdf4b46d010
+Passed. 
+
+mymemcpy durtime:	1660
+glib2.0 memcpy durtime:	1206
+1-char copy durtime:	1208
+========================================
+Test  9:	size = 0x  140c
+	0x7fdf4c06e016 -> 0x7fdf4b46d014
+Passed. 
+
+mymemcpy durtime:	1848
+glib2.0 memcpy durtime:	2754
+1-char copy durtime:	17112
+========================================
+Test 10:	size = 0x   400
+	0x7fdf4c06e014 -> 0x7fdf4b46d018
+Passed. 
+
+mymemcpy durtime:	1004
+glib2.0 memcpy durtime:	1580
+1-char copy durtime:	4244
+========================================
+Test 11:	size = 0x 19003
+	0x7fdf4c06e018 -> 0x7fdf4b46d01c
+Passed. 
+
+mymemcpy durtime:	32048
+glib2.0 memcpy durtime:	27568
+1-char copy durtime:	320256
+========================================
+Test 12:	size = 0x100000
+	0x7fdf4c06e01c -> 0x7fdf4b46d011
+Passed. 
+
+mymemcpy durtime:	250474
+glib2.0 memcpy durtime:	267922
+1-char copy durtime:	3373188
+========================================
+Test 13:	size = 0x300042
+	0x7fdf4c06e011 -> 0x7fdf4b46d013
+Passed. 
+
+mymemcpy durtime:	741408
+glib2.0 memcpy durtime:	810110
+1-char copy durtime:	9811344
+========================================
+Test 14:	size = 0x80022b
+	0x7fdf4c06e013 -> 0x7fdf4b46d015
+Passed. 
+
+mymemcpy durtime:	1758166
+glib2.0 memcpy durtime:	1572736
+1-char copy durtime:	26274008
+========================================
+Test 15:	size = 0xa00000
+	0x7fdf4c06e015 -> 0x7fdf4b46d017
+Passed. 
+
+mymemcpy durtime:	2399270
+glib2.0 memcpy durtime:	1930820
+1-char copy durtime:	32773030
+========================================
+Test 16:	size = 0xa00000
+	0x7fdf4c06e011 -> 0x7fdf4b46d019
+Passed. 
+
+mymemcpy durtime:	2465952
+glib2.0 memcpy durtime:	1925794
+1-char copy durtime:	32730066
+========================================
+Test 17:	size = 0xa00000
+	0x7fdf4c06e013 -> 0x7fdf4b46d015
+Passed. 
+
+mymemcpy durtime:	2335444
+glib2.0 memcpy durtime:	1926232
+1-char copy durtime:	32740972
+========================================
+Test 18:	size = 0xa00000
+	0x7fdf4c06e015 -> 0x7fdf4b46d011
+Passed. 
+
+mymemcpy durtime:	2211450
+glib2.0 memcpy durtime:	1947804
+1-char copy durtime:	32995538
+========================================
+Test 19:	size = 0xa00000
+	0x7fdf4c06e017 -> 0x7fdf4b46d013
+Passed. 
+
+mymemcpy durtime:	2208154
+glib2.0 memcpy durtime:	2017884
+1-char copy durtime:	32926256
+========================================
+Test 20:	size = 0x100006
+	0x7fdf4c06e019 -> 0x7fdf4b46d015
+Passed. 
+
+mymemcpy durtime:	252088
+glib2.0 memcpy durtime:	260598
+1-char copy durtime:	3269352
+========================================
+PASS: 20 / 20
+make[2]: ./exit: Command not found
+Makefile:16: recipe for target 'run' failed
+make[2]: *** [run] Error 127
+make[2]: Leaving directory '/home/landon/AssembleLangFinal/memcpy'
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ make run
+make[2]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+script memcpy.log
+Script started, file is memcpy.log
+]0;landon@ucas: ~/AssembleLangFinal/memcpy[01;32mlandon@ucas[00m:[01;34m~/AssembleLangFinal/memcpy[00m$ exit
+exit
+Script done, file is memcpy.log
+./memcpy
+========================================
+Test  1:	size = 0x     1
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	874
+glib2.0 memcpy durtime:	884
+1-char copy durtime:	650
+========================================
+Test  2:	size = 0x     2
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	394
+glib2.0 memcpy durtime:	764
+1-char copy durtime:	1220
+========================================
+Test  3:	size = 0x     4
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	748
+glib2.0 memcpy durtime:	944
+1-char copy durtime:	772
+========================================
+Test  4:	size = 0x     8
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	504
+glib2.0 memcpy durtime:	954
+1-char copy durtime:	1112
+========================================
+Test  5:	size = 0x    40
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	598
+glib2.0 memcpy durtime:	1172
+1-char copy durtime:	1262
+========================================
+Test  6:	size = 0x     9
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	450
+glib2.0 memcpy durtime:	920
+1-char copy durtime:	1082
+========================================
+Test  7:	size = 0x    3f
+	0x7f6540533010 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	986
+glib2.0 memcpy durtime:	560
+1-char copy durtime:	1224
+========================================
+Test  8:	size = 0x    19
+	0x7f6540533017 -> 0x7f653f932010
+Passed. 
+
+mymemcpy durtime:	594
+glib2.0 memcpy durtime:	854
+1-char copy durtime:	826
+========================================
+Test  9:	size = 0x  140c
+	0x7f6540533016 -> 0x7f653f932014
+Passed. 
+
+mymemcpy durtime:	1582
+glib2.0 memcpy durtime:	2226
+1-char copy durtime:	16578
+========================================
+Test 10:	size = 0x   400
+	0x7f6540533014 -> 0x7f653f932018
+Passed. 
+
+mymemcpy durtime:	922
+glib2.0 memcpy durtime:	1192
+1-char copy durtime:	4144
+========================================
+Test 11:	size = 0x 19003
+	0x7f6540533018 -> 0x7f653f93201c
+Passed. 
+
+mymemcpy durtime:	24670
+glib2.0 memcpy durtime:	27604
+1-char copy durtime:	317014
+========================================
+Test 12:	size = 0x100000
+	0x7f654053301c -> 0x7f653f932011
+Passed. 
+
+mymemcpy durtime:	236076
+glib2.0 memcpy durtime:	275678
+1-char copy durtime:	3237420
+========================================
+Test 13:	size = 0x300042
+	0x7f6540533011 -> 0x7f653f932013
+Passed. 
+
+mymemcpy durtime:	667994
+glib2.0 memcpy durtime:	807210
+1-char copy durtime:	9716930
+========================================
+Test 14:	size = 0x80022b
+	0x7f6540533013 -> 0x7f653f932015
+Passed. 
+
+mymemcpy durtime:	1826092
+glib2.0 memcpy durtime:	1674684
+1-char copy durtime:	26357848
+========================================
+Test 15:	size = 0xa00000
+	0x7f6540533015 -> 0x7f653f932017
+Passed. 
+
+mymemcpy durtime:	2644694
+glib2.0 memcpy durtime:	1912034
+1-char copy durtime:	32423716
+========================================
+Test 16:	size = 0xa00000
+	0x7f6540533011 -> 0x7f653f932019
+Passed. 
+
+mymemcpy durtime:	2820658
+glib2.0 memcpy durtime:	2006876
+1-char copy durtime:	32449102
+========================================
+Test 17:	size = 0xa00000
+	0x7f6540533013 -> 0x7f653f932015
+Passed. 
+
+mymemcpy durtime:	2168698
+glib2.0 memcpy durtime:	23775
