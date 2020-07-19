@@ -458,20 +458,11 @@ main:
 	call	basic_test
 	call	medium_test
 	call	advanced_test
-	leal	.LC26@GOTOFF(%ebx), %eax
+	movl	stdin@GOT(%ebx), %eax
 	movl	%eax, -140(%ebp)
-	movl	stdin@GOT(%ebx), %edi
+	movl	%eax, %edi
 	jmp	.L37
-.L36:
-	addl	$1, %esi
-	movb	%al, -1(%esi)
 .L35:
-	subl	$12, %esp
-	pushl	(%edi)
-	call	_IO_getc@PLT
-	addl	$16, %esp
-	cmpb	$-1, %al
-	jne	.L36
 	subl	$4, %esp
 	pushl	$10
 	pushl	$0
@@ -487,10 +478,27 @@ main:
 	addl	$16, %esp
 .L37:
 	subl	$12, %esp
-	pushl	-140(%ebp)
+	leal	.LC26@GOTOFF(%ebx), %eax
+	pushl	%eax
 	call	puts@PLT
+	addl	$4, %esp
+	movl	-140(%ebp), %eax
+	pushl	(%eax)
+	call	_IO_getc@PLT
+	movb	%al, -128(%ebp)
 	addl	$16, %esp
-	leal	-128(%ebp), %esi
+	testb	%al, %al
+	je	.L35
+	leal	-127(%ebp), %esi
+.L36:
+	subl	$12, %esp
+	pushl	(%edi)
+	call	_IO_getc@PLT
+	addl	$1, %esi
+	movb	%al, -1(%esi)
+	addl	$16, %esp
+	testb	%al, %al
+	jne	.L36
 	jmp	.L35
 	.size	main, .-main
 	.comm	advanced,20,4
