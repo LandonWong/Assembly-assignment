@@ -315,41 +315,44 @@ advanced_test:
 	.section	.rodata.str1.1
 .LC10:
 	.string	"Benchmark preparing..."
-.LC11:
-	.string	"-876452"
 	.section	.rodata
+.LC11:
+	.string	"352"
+	.string	""
 .LC12:
-	.string	"354124"
+	.string	"2147483640"
 	.string	""
 .LC13:
-	.string	"-1"
+	.string	"-+-+-5852"
 	.string	""
 	.section	.rodata.str1.1
 .LC14:
-	.string	"-1"
+	.string	"+2351"
 .LC15:
-	.string	"\t256"
+	.string	"-876452"
 .LC16:
-	.string	"         -658"
+	.string	"\t256"
 .LC17:
-	.string	"\n\n\n\t 23452"
+	.string	"         -658"
 .LC18:
-	.string	"-2561_ds"
+	.string	"\n\n\n\t 23452"
 .LC19:
-	.string	"+ds525"
+	.string	"-2561_ds"
 .LC20:
-	.string	"- \t256adfs"
+	.string	"+ds525"
 .LC21:
-	.string	"   -\n25a2sdfdfda"
+	.string	"- \t256adfs"
 .LC22:
-	.string	"\n-99999999999"
+	.string	"   -\n25a2sdfdfda"
 .LC23:
-	.string	"   +77777788888877"
+	.string	"\n-99999999999"
 .LC24:
+	.string	"   +77777788888877"
+.LC25:
 	.string	"\t\n  -ad5455\n"
 	.section	.rodata.str1.4
 	.align 4
-.LC25:
+.LC26:
 	.string	"Benchmark prepare done. Test begin"
 	.text
 	.globl	init
@@ -387,38 +390,39 @@ init:
 	jne	.L31
 	movl	basic@GOT(%ebx), %eax
 	leal	.LC11@GOTOFF(%ebx), %edx
-	movl	%edx, 16(%eax)
-	leal	.LC12@GOTOFF(%ebx), %edx
 	movl	%edx, (%eax)
-	leal	.LC13@GOTOFF(%ebx), %edx
+	leal	.LC12@GOTOFF(%ebx), %edx
 	movl	%edx, 4(%eax)
+	leal	.LC13@GOTOFF(%ebx), %edx
 	movl	%edx, 8(%eax)
 	leal	.LC14@GOTOFF(%ebx), %edx
 	movl	%edx, 12(%eax)
-	movl	medium@GOT(%ebx), %eax
 	leal	.LC15@GOTOFF(%ebx), %edx
-	movl	%edx, (%eax)
+	movl	%edx, 16(%eax)
+	movl	medium@GOT(%ebx), %eax
 	leal	.LC16@GOTOFF(%ebx), %edx
-	movl	%edx, 4(%eax)
+	movl	%edx, (%eax)
 	leal	.LC17@GOTOFF(%ebx), %edx
-	movl	%edx, 8(%eax)
+	movl	%edx, 4(%eax)
 	leal	.LC18@GOTOFF(%ebx), %edx
-	movl	%edx, 12(%eax)
+	movl	%edx, 8(%eax)
 	leal	.LC19@GOTOFF(%ebx), %edx
+	movl	%edx, 12(%eax)
+	leal	.LC20@GOTOFF(%ebx), %edx
 	movl	%edx, 16(%eax)
 	movl	advanced@GOT(%ebx), %eax
-	leal	.LC20@GOTOFF(%ebx), %edx
-	movl	%edx, (%eax)
 	leal	.LC21@GOTOFF(%ebx), %edx
-	movl	%edx, 4(%eax)
+	movl	%edx, (%eax)
 	leal	.LC22@GOTOFF(%ebx), %edx
-	movl	%edx, 8(%eax)
+	movl	%edx, 4(%eax)
 	leal	.LC23@GOTOFF(%ebx), %edx
-	movl	%edx, 12(%eax)
+	movl	%edx, 8(%eax)
 	leal	.LC24@GOTOFF(%ebx), %edx
+	movl	%edx, 12(%eax)
+	leal	.LC25@GOTOFF(%ebx), %edx
 	movl	%edx, 16(%eax)
 	subl	$12, %esp
-	leal	.LC25@GOTOFF(%ebx), %eax
+	leal	.LC26@GOTOFF(%ebx), %eax
 	pushl	%eax
 	call	puts@PLT
 	addl	$28, %esp
@@ -430,10 +434,10 @@ init:
 	.size	init, .-init
 	.section	.rodata.str1.4
 	.align 4
-.LC26:
+.LC27:
 	.string	"User Test: (Press Ctrl + D to end input, Ctrl + C to HALT):"
 	.section	.rodata.str1.1
-.LC27:
+.LC28:
 	.string	"Result = %d\n"
 	.text
 	.globl	main
@@ -458,7 +462,7 @@ main:
 	call	basic_test
 	call	medium_test
 	call	advanced_test
-	leal	.LC26@GOTOFF(%ebx), %eax
+	leal	.LC27@GOTOFF(%ebx), %eax
 	movl	%eax, -140(%ebp)
 	movl	stdin@GOT(%ebx), %edi
 	jmp	.L38
@@ -480,7 +484,7 @@ main:
 	call	strtol@PLT
 	addl	$12, %esp
 	pushl	%eax
-	leal	.LC27@GOTOFF(%ebx), %eax
+	leal	.LC28@GOTOFF(%ebx), %eax
 	pushl	%eax
 	pushl	$1
 	call	__printf_chk@PLT
