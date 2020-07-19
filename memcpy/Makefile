@@ -9,7 +9,7 @@ asm:	main.c memcpy.s
 link:	main.o memcpy.o
 	$(CC) $(CFLAGS) main.o memcpy.o -o memcpy -lm
 	git add --all && git commit -m "Update: memcpy_link"
-clean:	main.o memcpy.o main.s memcpy
+clean:
 	rm -rf main.o memcpy.o main.s memcpy
 	git add --all && git commit -m "Update: memcpy_clean"
 run:	memcpy
