@@ -119,7 +119,8 @@ main(int argc,char *argv){
 	while(1){
 		printf("User Test: (Press Ctrl + D to end input, Ctrl + C to HALT):\n");
 		p = str;
-		memset(str,MAXLEN,0);
+		for(i = 0;i<MAXLEN;i++)
+			str[i] = 0;
 		while((c=getchar())!=EOF){
 			*p++ = c;
 		}

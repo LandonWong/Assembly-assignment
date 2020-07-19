@@ -461,17 +461,17 @@ main:
 	leal	.LC26@GOTOFF(%ebx), %eax
 	movl	%eax, -140(%ebp)
 	movl	stdin@GOT(%ebx), %edi
-	jmp	.L37
-.L36:
+	jmp	.L38
+.L37:
 	addl	$1, %esi
 	movb	%al, -1(%esi)
-.L35:
+.L36:
 	subl	$12, %esp
 	pushl	(%edi)
 	call	_IO_getc@PLT
 	addl	$16, %esp
 	cmpb	$-1, %al
-	jne	.L36
+	jne	.L37
 	subl	$4, %esp
 	pushl	$10
 	pushl	$0
@@ -485,13 +485,20 @@ main:
 	pushl	$1
 	call	__printf_chk@PLT
 	addl	$16, %esp
-.L37:
+.L38:
 	subl	$12, %esp
 	pushl	-140(%ebp)
 	call	puts@PLT
+	leal	-128(%ebp), %eax
+	leal	-28(%ebp), %edx
 	addl	$16, %esp
+.L35:
+	movb	$0, (%eax)
+	addl	$1, %eax
+	cmpl	%edx, %eax
+	jne	.L35
 	leal	-128(%ebp), %esi
-	jmp	.L35
+	jmp	.L36
 	.size	main, .-main
 	.comm	advanced,20,4
 	.comm	medium,20,4
