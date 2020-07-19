@@ -1,0 +1,5 @@
+make[1]: Entering directory '/home/landon/AssembleLangFinal/memcpy'
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -S main.c
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c main.c
+gcc -w -g -mmmx -fno-asynchronous-unwind-tables  -c memcpy.s
+git add --all && git commit -m "Update: memcpy_asm"

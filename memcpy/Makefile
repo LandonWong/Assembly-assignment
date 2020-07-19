@@ -13,4 +13,5 @@ clean:
 	rm -rf main.o memcpy.o main.s memcpy
 	git add --all && git commit -m "Update: memcpy_clean"
 run:	memcpy
+	$(MAKE) 2>&1 |tee ./memcpy.log
 	@./memcpy
