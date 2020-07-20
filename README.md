@@ -1,9 +1,9 @@
 # Assembly Language Final Assignment (20sp, ucas)
 ## wangsongyue18@mails.ucas.ac.cn
 ## Author
-* Landon WONG, UCAS
-* 王嵩岳, 2018K8009929033
-* Last modified: July. 18, 2020
+* Landon WONG, ucas (University of Chinese Academy of Sciences)
+* Final assignment of Assembly Language (20sp, ucas).
+* Last modified: July. 20, 2020
 ## Notice
 * Development environment: Ubuntu 18.04 (Desktop) amd-64 (physical machine), Linux Kernel: 4.15, compilation tool: gcc
 * **ERROR Handle**: If an error is reported when executing `make asm`:\
