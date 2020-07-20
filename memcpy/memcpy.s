@@ -10,7 +10,7 @@ mymemcpy:
 # %rcx: loop times
 
 .L0:
-#	mov	%rdi,%rax	# return value: dest
+	mov	%rdi,%rax	# return value: dest
 #	lea	(%rax,%rdx),%r9	# for testing, check if (finalrdi == dest + size)
 .L_main:
 	test	%rdx,%rdx	# if zero, goto exit
